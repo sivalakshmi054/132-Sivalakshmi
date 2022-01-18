@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-3 | Grid View</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 40%;
+  padding: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h1>Employee Objects</h1>
+
+<p>List Of Employees :</p>
+
+<br>
+
+<div class="row">
+  <div class="column" style="background-color: rgb(220, 205, 250);">
+    <h2>Emplyee 1</h2>
+    <p>siva</p>
+    <p>Id: 1111</p>
+  </div>
+  <div class="column" style="background-color:rgb(145, 210, 205);">
+    <h2>Employee 2</h2>
+    <p>latha</p>
+    <p>Id: 1112</p>
+     </div>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:rgb(140, 132, 111);">
+    <h2>Employee 3</h2>
+    <p>suyra</p>
+    <p>Id: 1113</p>
+  </div>
+  <div class="column" style="background-color: rgb(99, 150, 150);">
+    <h2>Employee 4</h2>
+    <p>vijaya</p>
+    <p>Id: 1114</p>
+  </div>
+</div>
+
+<script>
+var elements = document.getElementsByClassName("column");
+
+var i;
+
+var container = document.getElementById("btnContainer");
+var btns = container.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+</body>
+</html>
