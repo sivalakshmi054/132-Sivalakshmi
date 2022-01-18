@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+                http://www.springframework.org/schema/beans 
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+        
+     <bean id="circleShape" class="com.marticus.Circle" /> 
+     <bean id="crectagleShape" class="com.marticus.Rectangle" /> 
+     
+     <bean id="proto" class="com.marticus.Prototype" scope="prototype" /> 
+        
+     <bean id="single" class="com.marticus.Singleton" >
+     <!--  <property name="prototype" ref="proto" />-->
+     	    <lookup-method bean="proto" name="getPrototypeBean"/>
+     </bean>  
+     
+     <bean id="geometry1" class="com.marticus.GeometryRect" scope="singleton" >
+     	   <property name="shape" ref="crectagleShape" />     	   
+     </bean>  
+     
+     
+     <bean id="protonew" class="com.marticus.ProtoNew" scope="prototype" /> 
+         
+    <bean id="singlenew" class="com.marticus.SingletonNew" >
+        <property name="protov" ref="protonew" />      	   
+     </bean> 
+     
+     
+     <bean id="protonewsolved" class="com.marticus.ProtoNewSolved" scope="prototype" />
+     
+     <bean id="singlenewsolved" class="com.marticus.SingletonSolved" >
+         	<lookup-method bean="protonewsolved" name="getProtoBean"/>   
+     </bean> 
+      
+</beans>

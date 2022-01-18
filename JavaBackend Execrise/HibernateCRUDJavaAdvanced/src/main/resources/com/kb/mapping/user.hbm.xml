@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.kb.model.User" table="users">
+        <id name="id" type="int" column="Id">
+            <generator class="increment" />
+        </id>
+        <property name="firstName">
+            <column name="FirstName" />
+        </property>
+        <property name="lastName">
+            <column name="LastName" />
+        </property>
+        <property name="dob">
+            <column name="Dob" />
+        </property>
+        <property name="email">
+            <column name="Email" />
+        </property>
+        <property name="age">
+            <column name="Age" />
+        </property>
+    </class>
+    
+    <query name="findUserByFirstName">  
+<![CDATA[from User u where u.firstName = :firstName]]>  
+</query>  
+</hibernate-mapping>
