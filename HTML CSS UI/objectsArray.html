@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+<p id="p1"></p> 
+<p id="p2"></p>
+<p id="lastElement"></p>   
+<hr/>
+<p id="f1" style="height: fit-content; width: fit-content; color: blue;"></p>
+<script>
+    const person=["Jack","Jill",40];
+
+    document.getElementById('p1').innerHTML=person[0];
+    document.getElementById("lastElement").innerHTML=person[person.length-1];//Access last element in array
+
+    var t='<ol>';
+    for (let index = 0; index < person.length; index++) {
+        t+='<li>' + person[index] + '</li>';
+
+    }
+    t+='</ol>';
+
+    document.getElementById("f1").innerHTML=t;
+
+
+    const personDet={firstname:"Jack",lastname:"Jill",age:40};
+    document.getElementById("p2").innerHTML=personDet["firstname"];
+
+
+</script>
+</body>
+</html> 

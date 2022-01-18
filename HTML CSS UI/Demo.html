@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p id="personDetails"></p>
+<p id="AllDetails"></p>
+<script>
+    let carname="Audi";
+    const person={
+        firstname:"siva",
+        city:"Anantapur",
+        vehname:"Activa",
+        fullDetails:function(){
+            return this.firstname + this.city + this.vehname + carname;
+        }
+    };
+    document.getElementById("personDetails").innerHTML=person.firstname+" "+person.city+" "+person.vehname+carname;
+    document.getElementById("AllDetails").innerHTML=person.fullDetails();
+    </script>
+    </body>
+    </html>

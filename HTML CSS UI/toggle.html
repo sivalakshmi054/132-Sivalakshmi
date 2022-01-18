@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+
+            height: 200px;
+            width: 200px;
+            background-color: blueviolet;
+            border:2px solid gold;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+$('#b1').click(function(){
+    $('#d1').fadeIn();//time--milliseconds/slow,medium,fast
+});
+
+$('#b2').click(function(){
+    $('#d2').fadeOut();//time--milliseconds/"slow","medium","fast"
+});
+$('#b3').click(function(){
+    $('#d3').slideDown();///time--milliseconds/"slow","medium","fast"
+});
+
+$('#b4').click(function(){
+    $("#d4").slideUp();
+});
+
+$('#b5').click(function(){
+    $("#d5").slideToggle();
+});
+
+$('#b6').click(function(){
+    $("#d6").fadeTo(5000,0.1);
+});
+
+
+
+
+
+});
+</script>
+</head>
+<body>
+     <!-- <button id="b1">Fade In</button>
+     <div id="d1" style="display: none;" ></div>
+    <br/>
+    <button id="b2">Fade out</button>
+     <div id="d2" ></div>
+     <br/>-->
+     <!-- <button id="b3">Slide down</button>
+     <div id="d3" style="display: none;"></div>
+     <br/>  -->
+    <!-- <button id="b4">Slide Up</button>
+    <div id="d4"></div> -->
+
+    <!-- <br/>
+    <button id="b5">Slide toggle</button>
+    <div id="d5"></div>  -->
+
+    <button id="b6">Slide to</button>
+    <div id="d6"></div> 
+
+</body>
+</html> 

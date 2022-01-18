@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+     function sayHello()
+ {
+     alert("hello");
+ }
+ //$(document).ready(sayHello());
+ $(document).ready(
+     function()
+     {
+         //sayhello();
+         //var text=$('#b1').text();
+         //alert("text() "+text);
+         //var html=$('#p1').html();
+         //alert("html() "+html);
+         //var val=$('#t1').val();
+         //(val);
+         $('#b1').click(function(){
+             var t=$('p').text();
+             alert("the paragrap contain the following" +t);
+             var r=$('p').attr("id");
+             alert("it is in the paragrap with id" +r);
+
+         });
+         
+
+     }
+ );
+ </script>
+</head>
+<body>
+    <input type="text" id="t1" value="siva"/>
+    <p id="p1">Hello from <b>para</b>of the passage</p>
+    <p id="p2">Hello second from <b>para</b>of the passage</p>
+
+    <button id="b1">Click here</button>
+    <a href="https://www/google.com">Google</a>
+    <button id="p1">Click</button>
+    <button id="t1">Click here</button>
+
+   
+</body>
+</html>

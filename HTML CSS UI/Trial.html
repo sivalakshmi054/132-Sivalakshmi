@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function(){
+$('#userid').val('Ex: abc@gmail.com');
+
+$('#tohide').hide();
+
+
+$('#showlogin').click(function(){
+    $('#tohide').show();
+});
+
+$('#userid').keypress(function(){
+alert('this is key press event');
+
+});
+
+$('#userid').keyup(function(){
+alert('this is key up event');
+
+});
+
+
+$('#userid').keydown(function(){
+alert('this is key down event');
+
+});
+
+//$('img').mouseover(function(){alert('mouse moved over the image')});
+$('img').mouseleave(function(){alert('mouse leaves the image');});
+$('img').mouseout(function(){alert('out of image')});//parent and child both
+
+
+
+$('#submitdata').dblclick(function(){
+var u=$('#userid').val();
+var p=$("#pwd").val();
+alert(u);
+alert(p);
+});
+
+
+      });
+
+
+<h3>Tabs</h3>
+                    <fieldset>
+                        <legend>Login</legend>
+                        <label for="userid">Enter User id</label>
+                        <input type="text" id="userid" name="userid" required />
+                        <input type="text" id="userid" name="userid" minlength="5" maxlength="10" required />
+                        <br/>
+                        <label for="pwd">Enter Password</label>
+                        <input type="password" id="pwd" name="pwd" required />
+                        <input type="password" id="pwd" name="pwd" minlength="4" maxlength="20" required />
+                        <br/>
+                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Submit" id="submitdata" />
+
+
+                    </fieldset>
+                </form>
+
+
+                </center>
+                <div style="height: 200px;width: 300;background-color: tomato;">
+                <img src="chess.jpg" height="100px" width="200px"/>
+            </div>
+    </div>
+    </li>
+    <li><a href="hello.html">Menu 2</a></li>
+ <h3>Tabs</h3>
+  <p><strong>Note:</strong> This example shows how to create a basic navigation tab. It is not toggleable/dynamic yet (you can't click on the links to display different content)- see the last example in the Bootstrap Tabs and Pills Tutorial to find out how this can be done.</p>
+</div>
+
+
+
+</body>
+</html>

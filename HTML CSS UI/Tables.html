@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
+   <script>
+$(document).ready(function(){
+$('#h').click(function(){
+$('tr:odd').hide();
+
+});
+
+$('#s').click(function(){
+$('tr:odd').show();
+
+});
+
+});
+
+   </script>
+</head>
+<body>
+    <button id='h'>Hide</button>
+    <button id='s'>Show</button>
+
+    <table style="border: 5px solid green;">
+        <tr>
+            <th>rollno</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Ankita</td>
+            <a id="a1" href="https://www.google.com" target="_blank">Google</a> </td>
+
+
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Amol</td>
+            <a id="a2" href="https://www.yahoo.com" target="_blank">Yahoo</a> </td>
+
+
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Nikita</td>
+            <td><a id="a3" href="https://www.axisbank.com" target="_blank">Axis</a> </td>
+
+
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Pranita</td>
+            <td><a id="a4" href="https://www.hdfcbank.com" target="_blank">Hdfc</a> </td>
+
+
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Kamlesh</td>
+            <td><a id="a5" href="https://www.icicibank.com" target="_blank">ICICI</a> </td>
+
+
+        </tr>
+    </table>
+    <ul>
+        <li>Grapes</li>
+        <li>Banana</li>
+        <li>Mango</li>
+        <li>Kivi</li>
+
+
+    </ul>
+<button id="b1">Click</button>
+
+    <ul>
+<li>Idli</li>
+<li>Dosa</li>
+<li>Uttapam</li>
+<li>Somthing</li>
+
+    </ul>
+
+
+</body>
+</html> 

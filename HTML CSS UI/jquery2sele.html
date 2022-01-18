@@ -1,0 +1,133 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
+   <script>
+    //    $(document).ready(function(){
+    //        alert('document is ready');
+    //         $('img').hide();
+    //         $('p').hide();
+
+
+
+
+    //    });
+
+//------------------------
+//     $(document).ready(function(){
+// $('img').click(function(){
+// $(this).hide();
+
+// });
+
+// $('p').click(function(){
+// $(this).hide();
+
+// });
+
+
+
+//     });
+//----------------------------------------
+
+$(document).ready(function(){
+
+    $('h1').click(function(){
+
+// $(".c1").css('background-color','red');
+$(".c1").css('color','Blue');
+// $('.c1').css('fontSize','20px');
+$('.c1').css('font-style','bold');
+
+
+    });
+
+// $(":button").click(function(){
+//     //code 1
+
+//     //:button means input type button and other button
+//     alert("Both are button --- input type button and other button");
+// });
+
+// $(":submit").click(function(){
+// //code 2
+//     //all input type-- button and  submit clicked
+//     alert("input type submit clicked");
+
+// });
+
+
+
+
+
+// $('*').click(function(){
+//     $(this).hide();
+// });
+
+$('#toApply').click(function(){
+    $('p.c1').hide();
+}
+);
+
+$('#firstPara').click(function(){
+    $('p:first').hide();
+});
+
+$('#lastPara').click(function(){
+    $('p:last').hide();
+});
+
+$('#evenodd').click(function(){
+$('p:odd').hide();
+
+});
+
+
+
+});
+
+
+
+   </script>
+</head>
+<body>
+    <h1>Heading 1</h1>
+    <div style="background-color: yellow; height: auto; width: auto;"> 
+    <p>This is first (even-- because zero) paragraph ie zero</p>
+    <p class="c1">This is second (odd-- because 1) paragraph has Class c1 applied ie one</p>
+    <p>This is third(even-- because 2) paragraph ie two</p>
+    <p>This is last(4th =---odd because 3) paragraph ie three</p>
+
+<button id="toApply">Click for paragraph with Class hiding</button>
+<button id="firstPara">First Para Hiding</button>
+<button id="lastPara">Last Para Hiding</button>
+<button id="evenodd">Even Odd Para Hiding</button>
+
+</div>
+
+
+    <img src="bird.jpg" height="100px" width="100px"/> 
+    <form>
+        <fieldset>
+            <legend>Personal Info</legend>
+            <label>First Name</label>
+            <input type="text" id="fname" />
+            <br/>
+            <label>Last Name</label>
+            <input type="text" id="lname" />
+            <br/>
+            <input type="button" class="c1" value="Submit" />//only code 1
+            <button class="c1">Submit Data here</button>// code1 and code 2
+
+            <input type="submit" class="c1" value="Submit Button"/> //only code 2
+        </fieldset>
+    </form>
+</body>
+</html>

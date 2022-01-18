@@ -1,0 +1,40 @@
+RICH Internet Application Technology
+-------------------------------------
+-------------------------------------
+
+	dynamic web pages/web apps
+	AJAX----- Asynchronous Javascript and XML
+	interactive web applications
+
+the news page doesnot everything changed only part of it updates...
+FLASH UPDATES------ AJAX--- faster,better and interactive web apps---- 
+	XML----data in xml format---- 
+	can be converted to json(data format) if required
+
+Given by the server-------------------------------------------------Comes to the client(Browser)
+Open source apps-------json/xml 				 XHTML--- content
+self- explanatory		   				 CSS---styling
+-----------------						 javascript
+var emp={"empid":"1","ename":"AJAY"}; 
+ <------ JSON-(Javascript object notation)
+
+<emp>
+<empid>1</empid>
+<ename>AJAY</ename>
+</emp>
+
+
+
+<input type="number" id="empid" value="1"/>
+<input type="text" id="ename" value="Ajay Devgan"/>
+
+<input type="submit" value="submit"/>
+
+
+1) Only part of the part is sent and received from the server
+so lower bandwidth
+2) smaller amt of data travels ---- no congestion on the network
+3) server processor is better utilised as only part of the page
+needs to be worked on
+4) low stand up time(response time) for the end user
+5) automatic updates

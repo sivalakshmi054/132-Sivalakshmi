@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js one</title>
+ 
+    <script>
+        var w;
+
+        function f1()
+        {
+if(typeof(Worker)!=="undefined")    
+{
+    alert("Web worker suppport available");
+    
+    if(typeof(w)=="undefined")
+    {
+         w=new Worker("node.js");
+         alert("going to file");
+    }
+    w.onmessage=function(event){
+
+        document.getElementById('p1').innerHTML= event.data;
+    };
+    
+}
+else
+{
+    alert("not available");
+}
+
+        }
+
+        function greet() {
+            alert("Hello all");
+        }
+        function f2()
+        {
+w.terminate();
+w=undefined;
+
+        }
+    </script>
+    <!-- <script src="mycode.js"></script> -->
+</head>
+<body>
+    <input type="button" value="Start" onclick="f1()"/>
+    <input type="button" value="Stop" onclick="f2()"/>
+
+    <input type="button" value="click" onclick="greet()"/>
+    <p id="p1"></p>
+
+</body>
+</html>

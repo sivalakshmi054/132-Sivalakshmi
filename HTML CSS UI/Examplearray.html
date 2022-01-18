@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const arr=new Array(5);
+        function populateDataInArray()
+        {
+            alert("Called");
+            arr[0]=10;
+        }
+        function addElementToArray()
+        {
+var i=document.getElementById("val1").value;
+
+arr.push(i);
+arr.splice(i);
+
+        }
+
+        function ShowElementByIndex()
+        {
+
+            var i=document.getElementById('ind').value;
+        var data=arr[i];
+        alert(data);
+        }
+
+        function popdata()
+    {
+
+        var data=arr.pop();
+        alert(data);
+    }
+
+        function showArrayElements()
+        {
+            var t='<ol type="a">';
+    for (let index = 0; index < arr.length; index++) {
+        t+='<li>' + arr[index] + '</li>';
+
+    }
+    t+='</ol>';
+
+document.getElementById('div1').innerHTML=t;
+        }
+    </script>
+ </head>
+<body>
+    <form>
+
+        <input type="button" onclick="populateDataInArray()" value="Populate"/>
+        <label for="i">Enter Element value</label>
+        <input type="text" name="val1" id="val1" />
+        <input type="button" value="Add" onclick="addElementToArray()"/>
+        <br/>
+        <input type="text" name="ind" id="ind" />
+        <input type="button" value="GetByElement" onclick="ShowElementByIndex()"/>
+        <br/>
+        <input type="button" value="Pop array" onclick="popdata()"/>
+        <br/>
+        <input type="button" value="Show" onclick="showArrayElements()"/>
+        <div id="div1">
+        </div>
+        <hr/>
+    </form>
+
+
+</body>
+</html> 

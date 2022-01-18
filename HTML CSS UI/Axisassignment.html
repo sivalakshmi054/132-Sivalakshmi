@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html>
+<head>
+  <title>AXIS BANK</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+      body{
+          background-color: darkturquoise;
+           font-size:10px ;
+      }
+      #tohide{
+          height:150px;
+          width:200px;
+          background-color: firebrick;
+      }
+  </style>
+  <script>
+      $(document).ready(function(){
+$('#tohide').hide();
+
+    
+
+
+$('#showlogin').click(function(){
+    $('#tohide').show();
+});
+
+});
+
+
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h3>AXIS <BANK</h3>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="">WELCOME TO AXIS BANK</a></li>
+    <li>
+        <a id="showlogin">Login Id</a>
+    <div id="tohide">
+        <center>
+
+            <form>
+                    <div class="row mb-3">
+                    <label for="login id" class="col-sm-2 col-form-label">Login Id</label>
+                    <div class="col-sm-10">
+
+                    <input type="login" class="form-control" id="login id">
+                    </div>
+                    </div>
+                    <div class="row mb-3">
+                    <label for="Password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="Password">
+                    </div>
+                    </div>
+                    </form>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary" type="button">Login</button>
+                    </div>
+                    
+                    </center>
+                    <li>
+                        <a id="showlogin">Debit CardNo</a>
+                    <div id="tohide">
+                        <center>
+                
+                            <form>
+                                    <div class="row mb-3">
+                                    <label for="inputcard" class="col-sm-2 col-form-label">Card No</label>
+                                    <div class="col-sm-10">
+                
+                                    <input type="card no" class="form-control" id="inputcard">
+                                    </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                    <label for="pin no" class="col-sm-2 col-form-label">Pin No</label>
+                                    <div class="col-sm-10">
+                                        <input type="pin no" class="form-control" id="pin no">
+                                    </div>
+                                    </div>
+                                    </form>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button class="btn btn-primary" type="button">Login</button>
+                                    </div>
+                                    </center>
+                   <li>
+                       <a id="showlogin">MPin</a>
+                       <div id="tohide">
+                           <center>
+                               <form>
+                                   <fieldset class="row mb-3">
+                                       <legend class="col-form-label col-sm-2 pt-0"></legend>
+                                       <div class="col-sm-10">
+                                           <div class="form-check">
+                                               <input class="form-check-input" type="radio" name="gridradios" id="gridradios1" value="option1" checked>
+                                               <label class="form-check-label" for="gridradios1">
+                                                   CUSTOMER ID/
+                                               </label>
+                                           </div>
+                                           <div class="form-check-input" type="radio"name="gridradios" id="gridradios2" value="option1" checked>
+                                            <label class="form-check-label" for="gridradios2">
+                                            MOBILE NO:
+                                            </label>
+                                       </div>
+                                       <div class="form-check">
+
+                                       </div>
+                                       <div class ="row mb-3" style="width: fit-content;float:left;">
+                                        <label for ="login id" class="col-sm-2" col-form-label">Customer ID/Mobile No</label>
+                                        <input type="number" class="form control" id="number" placeholder="Customer ID/Mobile No">
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputPassword" class="col-sm-2" col-form-label">mPin</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="mPin">
+                                        </div>
+                                    </div>
+
+                        
+                               </form>
+                               <div class="d-grid gap-2 col-6 mx-auto">
+                                   <button class="btn btn-primary" type="button">Login</button>
+                               </div>
+                           </center>
+                       </div>
+                   </li>                 
+
+            
+    
+    
+  
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+    function add(i,j)
+    {
+var k=10;
+k-=i+j;
+alert(k);
+
+    }
+
+    // var i=new Number();
+    // alert(i);//Output-- 0
+    // var k;
+    // alert(k);//Output--- undefined
+
+
+    // var s=new String("hello");
+    // alert("s=" + s);
+
+
+    // var s1;
+    // alert("S1= " + s1);
+
+    // var s2=new String();
+    // alert("s2= " + s2);
+
+</script>    
+
+</head>
+
+<body>
+<button onclick="add(10,20)">Call Function</button>
+<br/>
+<label>Call by (dot) .</label>
+    <p id="personDetails"></p>
+    <hr/>
+    <label>Call full details property</label>
+    <p id="AllDetails"></p>
+    <hr/>
+    <label>Call by [] </label>
+    <p id="p1"></p>
+
+    <script>
+         //properties,methods,functions,const,objects
+        let carname="Swift";
+//         //Javascript object
+        const person={ 
+            firstname:"Archana",
+            city:"Bangalore",
+            vehname:"Activa",
+            fullDetails:function(){
+return this.firstname + this.vehname  +this.city + carname;
+
+            }
+
+
+    };
+document.getElementById("personDetails").innerHTML  =person.firstname + "  "+  person.vehname +  "  "+ person.city + carname;
+
+
+document.getElementById("AllDetails").innerHTML=person.fullDetails(); 
+
+ document.getElementById('p1').innerHTML=person["firstname"] + "  " + person["vehname"] +  "  "  + person["city"];
+
+
+
+    </script>
+</body>
+</html> 

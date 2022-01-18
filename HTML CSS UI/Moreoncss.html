@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+         /* div>p{ */
+            /* All p who r child of div */
+            /* color:darkmagenta */
+        /* }  */
+
+        /* div>span{
+            color:darkmagenta
+        } */
+
+        /* div + p{
+            color:darkmagenta
+        } */
+
+        p:first-child
+        {
+color:indianred
+
+        }
+
+        p:last-of-type
+        {
+background-color: lightsalmon;
+
+        }
+
+        a:hover{
+            font-size: larger;
+        }
+
+        p~ul{
+            /*Color all ul preceding p*/
+            color:darkmagenta
+        }
+
+        a[href^="https"]
+        {
+color: red;
+
+        }
+
+a[href$="html"]
+        {
+color: grey;
+
+        }
+
+        :not(p)
+        {
+            border: 5px solid green;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+     <a href="https://www.google.com">google</a>
+     <a href="https://www.yahoo.com">Yahoo</a>
+
+     <a href="Login.html">Login</a>
+
+
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+    </ul>
+
+
+    <p><
+        Para 1
+<ul>
+    <li>One</li>
+    <li>Two</li>
+</ul>
+    </p>
+
+     <div> 
+
+        <p>P is child of div</p>
+        <p>One more child of div</p>
+        <span>
+            This is content of span
+            <p>I am child of span</p>
+        </span> 
+     </div>
+</body>
+</html> 

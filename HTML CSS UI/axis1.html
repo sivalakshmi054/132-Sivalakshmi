@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Axis Bank</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #parent {
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tohide').hide();
+            $('#showlogin').click(function () {
+                $('#tohide1').hide();
+                $('#tohide2').hide();
+                $('#tohide').show();
+            });
+
+            $('#tohide1').hide();
+            $('#showDebitcard').click(function () {
+                $('#tohide').hide();
+                $('#tohide2').hide();
+                $('#tohide1').show();
+            });
+
+            $('#tohide2').hide();
+            $('#showmpin').click(function () {
+                $('#tohide1').hide();
+                $('#tohide').hide();
+                $('#tohide2').show();
+            });
+        });
+    </script>
+</head>
+
+<body style="background-color: aquamarine;">
+
+
+
+    <div class="container">
+        <h3>AXIS BANK | INTERNET BANKING</h3>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="">Home</a></li>
+            <li>
+                <a id="showlogin">Login ID</a>
+                <div id="parent">
+                    <div id="tohide">
+                        <center>
+
+                            <form>
+                                <fieldset>
+                                    <legend>Login</legend>
+                                    <label for="userid">Enter User ID</label>
+                                    <input type="text" id="userid" name="userid" required />
+                                    <br />
+                                    <label for="pwd">Enter Password</label>
+                                    <input type="password" id="pwd" name="pwd" required />
+                                    <br />
+                                    <br>
+                                    <input type="submit" value="Submit" />
+                                    <br>
+                                    <br>
+
+                                    <a href="#" class="link-warning">First time user?Register | </a>
+                                    <a href="#" class="link-warning">Forgot Password | </a>
+                                    <a href="#" class="link-warning">Enable Login Id</a>
+
+
+                                </fieldset>
+                            </form>
+
+
+                        </center>
+                    </div>
+            </li>
+
+            <li>
+                <a id="showDebitcard">Debit card No.</a>
+                <div id="parent">
+                    <div id="tohide1">
+                        <center>
+
+                            <form>
+                                <fieldset>
+                                    <legend>Debit card</legend>
+                                    <label for="userid">Card No.</label>
+                                    <input type="text" id="cardno" name="cardno" required />
+                                    <br />
+                                    <label for="pwd">PIN No.</label>
+                                    <input type="password" id="pin" name="pin" required />
+                                    <br>
+                                    <h3>2 X D 5 6</h3>
+                                    <!-- <a href="#" class="link-dark">1 c 0 8 d</a> -->
+                                    <label for="text">Type the text shown in the image</label>
+                                    <br>
+                                    <input type="password" id="pin" name="pin" required />
+                                    <br>
+                                    <br>
+                                    <input type="submit" value="Submit" />
+                                    <br>
+                                    <br>
+                                    <a href="#" class="link-warning">First time user?Register| </a>
+                                    <a href="#" class="link-warning">Forgot Password| </a>
+                                    <a href="#" class="link-warning">Enable Login Id</a>
+
+
+
+
+                                </fieldset>
+                            </form>
+
+
+                        </center>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a id="showmpin">mPIN</a>
+                <div id="parent">
+                    <div id="tohide2">
+                        <center>
+
+                            <form>
+                                <fieldset>
+                                    <legend>PIN Details ID</legend>
+                                    <h4>select an option</h4>
+                                    <input type="radio"> Customer ID
+                                    <input type="radio"> Register Mobile No.
+                                    <br>
+                                    <label for="userid">Enter Customer ID</label>
+                                    <input type="text" id="customerid" name="customerid" required />
+                                    <br />
+                                    <label for="mpin">mPIN</label>
+                                    <input type="mpin" id="pin" name="pin" required />
+                                    <br />
+                                    <br>
+                                    <input type="submit" value="Submit" />
+                                    <br>
+                                    <br>
+                                    <a href="#" class="link-warning">First time user?Register| </a>
+                                    <a href="#" class="link-warning">Forgot Password| </a>
+                                    <a href="#" class="link-warning">Enable Login Id</a>
+
+
+                                </fieldset>
+                            </form>
+
+
+                        </center>
+
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+        <p><strong>Note:</strong> This example shows how to create a basic navigation tab. It is not toggleable/dynamic
+            yet (you can't click on the links to display different content)- see the last example in the Bootstrap Tabs
+            and Pills Tutorial to find out how this can be done.</p>
+    </div>
+
+</body>
+
+</html>

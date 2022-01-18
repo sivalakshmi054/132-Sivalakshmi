@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <p id="original"></p>
+    <h1>Using Substr</h1>
+    <p id='l'></p>
+
+    <div style="background-color: aqua;">
+    <p>
+        <mark>Using  var s1=s.substr(7,20); the output is as below: starts counting the str length with 0 </mark>
+
+        </p>
+    <p id="p1"></p>
+    </div>
+
+    <h1>Using Slice</h1>
+
+
+
+    <script>
+        // var s="Jim";
+        // s+="Corbett";
+        // //alert (s);
+        // //alert(s.length);
+        // alert(s.toUpperCase());
+
+        // var s="We are called the pioneers of \"East\" direction";
+        // alert (s);
+
+        //slice/substring/substr
+
+        let s="HelloWorldWelcomeJavascript";
+        // alert(s.slice(7,20));
+       // alert(s.slice(-20,-7));
+        //alert(s.slice(-7));
+        //alert(s.slice(7));
+        document.getElementById("original").innerHTML=s;
+document.getElementById('l').innerHTML=s.length;
+        var s1=s.substr(7,20);
+
+        document.getElementById("p1").innerHTML=s1;
+
+    </script>
+</body>
+</html> 

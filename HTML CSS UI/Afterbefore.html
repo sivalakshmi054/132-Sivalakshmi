@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+
+$("#b1").click(function(){
+   // $("#intro").append("<b>I am BE(Computer Science)</b>");
+   // $("ol").append("<li>Mobiles</li>");
+
+    var prodname=$("#pname").val();
+    if(prodname.length!=0){
+    $('ol').append("<li>" + prodname + "</li>");
+   }
+   else{
+
+    alert("blank input not allowed");
+   }
+});
+$("#b2").click(function(){
+    $("#intro").prepend("<b>I am BE(Computer Science) prepending this.....   </b>");
+
+});
+
+
+
+$("#beforebird").click(function(){
+var name=$('img').attr('src');
+if(name=="bird.jpg")
+{
+
+$('#i1').before('<p><b>This is a bird image</b><p>')
+}
+
+});
+
+$("#beforechess").click(function(){
+var name=$('#i2').attr('src');
+if(name=="chess.jpg")
+{
+
+$('#i2').before('<p><b>This is a chess image</b><p>')
+}
+
+});
+
+
+
+$("#afterbird").click(function(){
+var name=$('img').attr('src');
+if(name=="bird.jpg")
+{
+
+$('#i1').after('<p><b>This is a bird image</b><p>')
+}
+
+});
+
+$("#afterchess").click(function(){
+var name=$('#i2').attr('src');
+if(name=="chess.jpg")
+{
+
+$('#i2').after('<p><b>This is a chess image</b><p>')
+}
+
+});
+
+
+    </script>
+
+</head>
+ <h1>About Myself</h1>
+<button id="b1">Append Text</button>
+<button id="b2">Prepend Text</button>
+ <button id="b3">Create Para</button> 
+<hr/>
+<div style="background-color: burlywood; height: 400px; width: auto;">
+    <img id='i1'  src="bird.jpg"/>
+    <img id='i2' src="chess.jpg" height="100px" width="100px"/>
+    <button id="beforebird">Before bird </button>
+    <button id="beforechess">Before chess image </button>
+
+    <button id="afterbird">After bird </button> 
+    <button id="afterchess">After chess</button> 
+
+
+
+</div>
+
+</body>
+</html>

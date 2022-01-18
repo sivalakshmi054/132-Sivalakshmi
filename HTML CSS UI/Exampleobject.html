@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title> Document </title> 
+    </head>
+    <script>
+        const person={id:" ",fname:"",lname=""};
+        function submitData()
+        {
+            person.id=document.getElementById('pid').value;
+            person.fname=document.getElementById('firstname').value;
+           // localStorage/sessionStorage
+        }
+        function showdate()
+        {
+            window.location.href="persondetails.html";
+            //show data in the textboxes -----localstorage/sessionstorage
+        }
+        </script>
+        <body>
+            <form>
+                <label> enter ID </label>
+                <input type="number" name="pid" id="pid"/>
+            </br>
+                 <label> enter ID</label>
+                 <input type="number" name="firstname" id="firstname"/>
+        </br>
+        <button onclick="submitData()">submit</button>
+        <button onclick="showData()"></button>
+            </form>
+        </body>
+
+    </script>
+</html>

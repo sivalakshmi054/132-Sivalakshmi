@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+
+<script>
+        const arr=[];
+function ShowElementByIndex()
+        {
+        var i=document.getElementById('ind').value;
+        var data=arr[i];
+        alert(data);
+        }
+
+        function popdata()
+        {
+        var data=arr.pop();
+        alert(data);
+        }
+
+        function showArrayElements()
+        {
+        var t='<ol type="a">';
+        for (let index = 0; index < arr.length; index++) {
+        t+='<li>' + arr[index] + '</li>';
+        }
+        t+='</ol>';
+
+        document.getElementById('div1').innerHTML=t;
+        }
+    </script>
+
+    <form>
+        <p>Click on the button to replace the array elements.
+        </p>
+        <button onclick="element_replace()">
+        Replace
+        </button>
+        <p>The Updated Array Elements:</p>
+        <p id="result"></p>
+
+
+        <input type="button" onclick="inserting()" value="inserting"/>
+        <label for="i">Enter Element value</label>
+        <input type="text" name="val1" id="val1" />
+        <input type="button" value="Add" onclick="addElementToArray()"/>
+        <br/>
+        <input type="text" name="ind" id="ind" />
+        <input type="button" value="GetByElement" onclick="ShowElementByIndex()"/>
+        <br/>
+        <input type="button" value="Pop array" onclick="popdata()"/>
+        <br/>
+        <input type="button" value="Show" onclick="showArrayElements()"/>
+        <div id="div1">
+        </div>
+        <hr/>
+
+    </form>
+
+    
+</body>
+
+</html>

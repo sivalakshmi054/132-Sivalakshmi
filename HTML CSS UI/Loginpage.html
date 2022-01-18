@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <body>
+<title>New User</title>
+</head>
+<body>
+    <p>Thsi is the New USer Page/Registration Page</p>
+    <form>
+        <fieldset>
+            <legend>User Registration</legend>
+            <table>
+                <tr>
+                    <td><label for="cname">Enter Company name</label></td>
+                    <td><input type="text" name="cname" id="cname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="fname">Enter Firstname</label></td>
+                    <td><input type="text" name="fname" id="fname" required></td>
+                </tr>
+               <tr>
+                    <td><label for="lname">Enter Lastname</label></td>
+                    <td><input type="text" name="lname" id="lname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Select Gender</label></td>
+                    <td>
+                        <input type="radio" name="gender" id="M" value="Male">Male
+                        <input type="radio" name="gender" id="F" value="Female">Female
+                        <input type="radio" name="gender" id="O" value="Other">Other
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td><label for="useremail">Enter Email</label></td>
+                    <td><input type="email" name="useremail" id="useremail"></td>
+                </tr>
+                <tr>
+                    <td><label for="courl">Enter Url</label></td>
+                    <td><input type="url" name="courl" id="courl"></td>
+                </tr>
+                <tr>
+                    <td><label for="dt">Enter Date</label></td>
+                    <td><input type="date" name="dt" id="dt"></td>
+                </tr>
+                <tr>
+                    <td><label for="t">Enter Time</label></td>
+                    <td><input type="time" name="t" id="t"></td>
+
+                </tr>
+                <tr>
+                    <td><label for="t1">Enter Time</label></td>
+                    <td><input type="datetime-local" name="t1" id="t1"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="m">Select month</label></td>
+                    <td><input type="month" name="m" id="m"></td>
+                </tr>
+                <tr>
+                    <td><label for="file1">Upload File </label></td>
+                    <td><input type="file" id="file1" name="file1" multiple ></td>
+                </tr>
+                <tr>
+                    <td><label for="co1">Select color</label></td>
+                    <td><input type="color" name="co1" id="co1"></td>
+                </tr>
+                <tr>
+                    <td><label for="no1">Enter Number</label></td>
+                    <td><input type="number" name="no1" id="no1"></td>
+                </tr>
+                <tr>
+                    <td><label for="paymentmodes">Payment Modes</label></td>
+                    <td>
+                        <input type="checkbox" name="COD" id="paymentmodes" value="COD">
+                        <label for="COD">Cash On Delivery</label>
+
+                        <input type="checkbox" name="DC" id="paymentmodes" value="Debit Card">
+                        <label for="DC">Pay By Debit Card</label>
+
+                        <input type="checkbox" name="CC" id="paymentmodes" value="Credit Card">
+                        <label for="CC">Pay By Credit Card</label>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                    <label for="comm">Enter your comments</label>
+                    </td>
+                    <td>
+                    <textarea cols="20" rows="10"></textarea>
+                </td>
+                </tr>
+
+                <tr>
+
+                </tr>
+
+                <tr>
+                   
+            </tr>
+            <td><label for="lang">Select Lanaguage</label></td>
+    <td><select name="languages" id="lang">
+         <optgroup label="Select First Group"> 
+            <option value="C">C Programming</option>
+            <option value="C++">C++ Programming</option>
+            <option value="Java">Java Programming</option>
+       </optgroup> 
+       <optgroup label="OS Group">
+        <option value="Linux">Linux</option>
+        <option value="Windows">Windows</option>
+        <option value="Android">Android</option>
+
+       </optgroup>
+
+    </select></td>
+</tr>
+
+<tr><td>Meter Element</td>
+    <td>
+        <meter id="md" value="2" min="0" max="10">2 out of 10</meter>
+    </td>
+    <td>
+        <input  type="submit" value="Submit"/>
+    </td>
+</tr>
+
+            </table>
+        </fieldset>
+    </form>
+</body>
+</html> 

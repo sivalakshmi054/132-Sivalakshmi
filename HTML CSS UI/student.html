@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p id="StudentDetails"></p>
+<p id="AllDetails"></p>
+<script>
+    
+    const Student={
+        rollno:"15P11A0555",
+        firstname:"siva",
+        grade:"A",
+        city:"Anantapur",
+        sub1:"English",
+        sub2:"Java",
+        fullDetails:function(){
+            return this.rollno +this.firstname +this.grade+ this.city + this.vehname + this.sub1+this.sub2;
+        }
+    };
+    document.getElementById("StudentDetails").innerHTML=Student.rollno+" "+Student.firstname+" "+Student.grade+""+Student.city+" "+Student.sub1+ ""+Student.sub2;
+    document.getElementById("AllDetails").innerHTML=student.fullDetails();
+    </script>
+    </body>
+    </html>
