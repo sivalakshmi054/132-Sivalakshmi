@@ -1,0 +1,15 @@
+SELECT * FROM doctor;
+insert into doctor values (1,'DR.harish','optomology');
+insert into doctor values (2,'DR.Swapna','General physician');
+insert into doctor values (3,'DR.Mahalakshmi','physiotherapists');
+alter table doctor drop doctor_consulting;
+alter table doctor drop doctor_attending;
+alter table doctor drop doctor_onduty;
+update doctor set doctor_attended=1 where doctor_id=1;
+update doctor set doctor_attended=2 where doctor_id=2;
+update doctor set doctor_attended=3 where doctor_id=3;
+alter table doctor add doctor_onduty varchar(45) after doctor_department;
+update doctor set doctor_onduty='yes' where doctor_id=1;
+update doctor set doctor_onduty='yes' where doctor_id=2;
+update doctor set doctor_onduty='yes' where doctor_id=3;
+insert into doctor values(4,'DR.Varshini','dermatologists','no',0);
