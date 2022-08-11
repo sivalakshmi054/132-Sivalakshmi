@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64cceff8c1.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" href="gflogo.png" type="image/icon type">
+    <title>Application for Migration</title>
+    <link rel="stylesheet" href="Application for Migration.css">
+</head>
+<body>
+
+    <header>
+        <nav style="padding: 13px 0px;background:#a6a943;">
+            <div class="row" style="width: 75%;margin: 0 auto;color: #fff;">
+                <div class="col-md-6">
+                    <a href="#" class="top_btn"><i class="fa-solid fa-house-chimney"></i> Home</a>
+                </div>
+                <div class="col-md-6" style="display: flex;color: #fff !important; text-align: end;justify-content: end;">
+                   <a class="top_btn" href="#">हिन्दी </a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="#"> English</a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="#"> MPNRC </a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="#"> INSTITUTE</a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="https://www.mpnrcexams.org"> EVALUATION</a>
+                </div>
+            </div>
+        </nav>
+        <div class="header" style="width: 75%;margin: 0 auto;padding: 20px 0px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="mpnrclogo.png" style="width: 350px;" alt="MP Nursing Registration Council">
+                </div>
+                <div class="col-md-6" style="justify-content: end; display: flex; ">
+                    <a href="./home.php"><img src="gflogo.png" style="width: 80px;" alt="Greenfinch Infomedia"></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div style="background:#a6a943;height: 3px;" class="line">
+
+    </div>
+
+    <div class="main">
+
+        
+
+        <div class="main_sub_head">
+            <h3> Application Form For Migration </h3>
+        </div>
+        <tabel>
+            <tr>
+                <td colspan="4">
+                    <span style="color:#FF0000;">
+                        Candidate have to verify their Original Documents.All documents must be attested by principal of the Institute 
+                    </span>
+                    <br>
+                    <span style="color:#FF0000;">
+                        केवल वही छात्र भरे जो दूसरे स्टेट से मध्यप्रदेष मे आना चाहते हो। ऑन लाईन फार्म के साथ अपने समस्त दस्तावेजो की दो प्रति संलग्न करे।
+                    </span>
+                    <br>
+                    <span style="color:#FF0000;">
+                        नोटः- ए.एन.एम से जी.एन.एम एवं जी.एन.एम से पोस्ट बेसिक वाले छात्र यह फार्म न भरे।
+                    </span>
+                </td>  
+             </tr>
+             </tabel>
+             <table>
+        <tr>
+            <td colspan="4" style="text-align: right;"><b>Fields marked with <span style="color:red">*</span> are mandatory</b></td>
+        </tr>
+        </table>
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Registration Details</h3>
+        </div>
+
+        <table>
+            <tr>
+             <td>Migration Required<span style="color:red">*</span></td>
+         <td colspan="3">
+            <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+            <input type="radio" name="anm" id="anm">
+            <label for="anm">A.N.M</label>
+            <input type="radio" name="gnm" id="gnm">
+            <label for="gnm">G.N.M</label>
+            <input type="radio" name="nursing" id="nursing">
+            <label for="nursing">B.Sc. Nursing</label>
+            </span>
+        </td>
+        </tr>
+        </table>
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Personal Details</h3>
+        </div>
+
+        <table>
+            <tr>
+            <td>Applicant's  Name <br>
+                (Don't use Mr./Mrs./Ku.)<span style="color:red">*</span></td>
+            <td colspan="3">
+                <input type="text" name="first" class="form-control" maxlength="20" placeholder="First*" style="text-transform:uppercase ; width:96%">
+            </td>
+            <td colspan="3">
+                <input type="text" name="middle" class="form-control" maxlength="20" placeholder="Middle" style="text-transform:uppercase ; width:96%">
+            </td>
+            <td colspan="3">
+                <input type="text" name="second" class="form-control" maxlength="20" placeholder="Second*" style="text-transform:uppercase ; width:96%">
+            </td>
+            </tr>
+            <tr>
+                <td>Father's / Husband <br> Name<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <input type="text" name="father" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:96%">
+                </td>
+                <td>Mother's Name</td>
+                <td colspan="3">
+                    <input type="text" name="mother" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:96%">
+                </td>
+            </tr>
+            <tr>
+                <td>DOB(DD/MM/YYYY)<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <input type="text" name="date" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:96%">
+                </td>
+                <td>Age(Till Current Date)</td>
+                <td colspan="3">
+                    <input type="text" name="age" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:96%">
+                </td>
+            </tr>
+            <tr>
+                <td>Marital Status<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="single" id="single">
+                        <label for="single">Sinle</label>
+                        <input type="radio" name="marry" id="marry">
+                        <label for="marry">Married</label>
+                        <input type="radio" name="div" id="div">
+                        <label for="div">Divorce</label>
+                        <input type="radio" name="win" id="win">
+                        <label for="win">Widow</label>
+                        </span>
+                </td>
+                <td>Religion<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="hin" id="hin">
+                        <label for="hin">Hindu</label>
+                        <input type="radio" name="mus" id="mus">
+                        <label for="mus">Muslim</label>
+                        <input type="radio" name="sik" id="sik">
+                        <label for="sik">Sikh</label>
+                        <input type="radio" name="chr" id="chr">
+                        <label for="chr">Christian</label>
+                        <input type="radio" name="oth" id="oth">
+                        <label for="oth">Other</label>
+                        </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Caste</td>
+                <td colspan="3">
+                    <input type="text" name="caste" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:96%">
+                </td>
+                <td>Nationality<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="ind" id="ind" checked="checked">
+                        <label for="ind">Indian</label>
+                        <input type="radio" name="othe" id="othe">
+                        <label for="othe">Other</label>
+                        </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="mal" id="mal">
+                        <label for="mal">Male</label>
+                        <input type="radio" name="femal" id="femal">
+                        <label for="femal">Female</label>
+                </td>
+                <td>Category<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="ur" id="ur">
+                        <label for="ur">UR</label>
+                        <input type="radio" name="sc" id="sc">
+                        <label for="sc">SC</label>
+                        <input type="radio" name="st" id="st">
+                        <label for="st">ST</label>
+                        <input type="radio" name="obc" id="obc">
+                        <label for="obc">OBC</label>
+                </td>
+            </tr>
+            <tr>
+                <td>M.P Domocile<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="yes" id="yes">
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="no" id="no">
+                        <label for="no">No</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Mobile Number<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <input type="text" name="num1" class="form-control" maxlength="20" placeholder="Please Enter Mobile No.1" style="text-transform:uppercase ; width:96%">
+                </td>
+                <td colspan="3">
+                    <input type="text" name="num2" class="form-control" maxlength="20" placeholder="Please Enter Mobile No.2" style="text-transform:uppercase ; width:96%">
+                </td>
+                <td colspan="3">
+                    <input type="text" name="num3" class="form-control" maxlength="20" placeholder="Please Enter Mobile No.3" style="text-transform:uppercase ; width:96%">
+                </td>
+            </tr>
+            <tr>
+                <td>Email<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <input type="mail" name="mail" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:96%">
+                </td>
+                <td>Institution Recognized by INC<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="yes1" id="yes1">
+                        <label for="yes1">Yes</label>
+                        <input type="radio" name="no1" id="no1">
+                        <label for="no1">No</label>
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Training Details</h3>
+        </div>
+        <table>
+            <tr>
+                <td>Name of Examination <br> University/Council <br>from which Qualified<span style="color:red">*</span></td>
+                <td colspan="4">
+                    <select name="genname" id="genname" class="form-control" style="text-transform: uppercase; width:100%;">
+                        <option selected="selected" value="0">--Select</option>
+                        <option value="1">Delhi Nursing counsill,New Delhi</option>
+                        <option value="2">Goa Nursing Counsil,Goa</option>
+                        <br>
+                </td>
+                <tr>
+                    <td>Training Center Name <br>
+                        (Govt/Private)<span style="color:red">*</span></td>
+                        <td colspan="4">
+                            <input type="text" name="num1" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:100%">
+                        </td>
+                </tr>
+                <tr>
+                    <td>Training Period From Date <br> (DD/MM/YYYY)<span style="color:red">*</span></td>
+                    <td>
+                        <input type="text" name="date1" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:100%">
+                    </td>
+                    <td>Training Period To Date <br> (DD/MM/YYYY)<span style="color:red">*</span></td>
+                    <td>
+                        <input type="text" name="date2" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:100%">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Training Center <br> Address<span style="color:red">*</span></td>
+                    <td colspan="4">
+                        <textarea name="traincen" type="text" id="traincen" maxlength="250" style="text-transform: uppercase; width: 100%;" ></textarea>
+                    </td>
+                </tr>
+        </table>
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Candidate Address</h3>
+        </div>
+
+        <table>
+            <tr>
+                <td>Current Address<span style="color:red">*</span> </td>
+                <td colspan="4">
+                    <textarea name="traincen" type="text" id="traincen" maxlength="250" style="text-transform: uppercase; width: 100%;" ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Pincode<span style="color:red">*</span></td>
+                <td>
+                    <input type="text" name="pin" class="form-control" maxlength="10"  style="text-transform:uppercase ; width:30%">
+                    <input name="inptcheckbox" type="checkbox" id="inptcheckbox"> &nbsp;Permanent Address(Same as Current Address)
+                </td>
+            </tr>
+            <tr>
+                <td>Permanent Address<span style="color:red">*</span> </td>
+                <td colspan="4">
+                    <textarea name="peradd" type="text" id="peradd" maxlength="250" style="text-transform: uppercase; width: 100%;" ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Pincode<span style="color:red">*</span></td>
+                <td>
+                    <input type="text" name="pin1" class="form-control" maxlength="10"  style="text-transform:uppercase ; width:30%">
+                </td>
+            </tr>
+        </table>
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Educational Qualification Details</h3>
+        </div>
+
+        <table>
+            <tr style="text-align: center; background-color:#a6a943; color: #fff;">
+                <th scope="col1">Sn</th>
+                <th scope="col2">Exam Name</th>
+                <th scope="col3">Board Name</th>
+                <th scope="col4">Subject</th>
+                <th scope="col5">Pass Year</th>
+                <th scope="col6">Percentage</th>
+                <th scope="col7">Roll Number</th>
+            </tr>
+            <tr>
+                <td style="width:10px">1
+                    <input type="hidden" name="sn" id="sn">
+                </td>
+                <td style="text-align: left;">High School<span style="color:red">*</span></td>
+                <td>
+                    <input type="text" name="boa" id="boa" maxlength="100" style="width:150px;">
+                </td>
+                <td>
+                    <input type="text" name="sub" id="sub" maxlength="50" style="width:120px;">
+                </td>
+                <td>
+                    <input type="text" name="pass" id="pass" maxlength="4" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="per" id="per" maxlength="5" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="roll" id="roll" maxlength="20" style="width:100px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:10px">2
+                    <input type="hidden" name="sn" id="sn">
+                </td>
+                <td style="text-align: left;">Higher Secondary(12th)<span style="color:red">*</span></td>
+                <td>
+                    <input type="text" name="boa1" id="boa1" maxlength="100" style="width:150px;">
+                </td>
+                <td>
+                    <input type="text" name="sub1" id="sub1" maxlength="50" style="width:120px;">
+                </td>
+                <td>
+                    <input type="text" name="pass1" id="pass1" maxlength="4" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="per1" id="per1" maxlength="5" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="roll1" id="roll1" maxlength="20" style="width:100px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:10px">3
+                    <input type="hidden" name="sn" id="sn">
+                </td>
+                <td style="text-align: left;">ANM/GNM/B.Sc Nursing <br> (Enter Highest Qualification)<span style="color:red">*</span></td>
+                <td>
+                    <input type="text" name="boa2" id="boa2" maxlength="100" style="width:150px;">
+                </td>
+                <td>
+                    <input type="text" name="sub2" id="sub2" maxlength="50" style="width:120px;">
+                </td>
+                <td>
+                    <input type="text" name="pass2" id="pass2" maxlength="4" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="per2" id="per2" maxlength="5" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="roll2" id="roll2" maxlength="20" style="width:100px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:10px">4
+                    <input type="hidden" name="sn" id="sn">
+                </td>
+                <td style="text-align: left;">Other1 <br>
+                    <input type="text" name="othe" id="othe" maxlength="100" style="width:150px;">
+                </td>
+                <td>
+                    <input type="text" name="boa3" id="boa3" maxlength="100" style="width:150px;">
+                </td>
+                <td>
+                    <input type="text" name="sub3" id="sub3" maxlength="50" style="width:120px;">
+                </td>
+                <td>
+                    <input type="text" name="pass3" id="pass3" maxlength="4" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="per3" id="per3" maxlength="5" style="width:100px;">
+                </td>
+                <td>
+                    <input type="text" name="roll3" id="roll3" maxlength="20" style="width:100px;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div></div>
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Annexure, Testimonials & Particulars Registration MP Nurses Council or Other Council</h3>
+        </div>
+
+        <table>
+            <tr>
+                <td>1. Annexure<span style="color:red">*</span></td>
+                <td colspan="3">
+                    <table id="checkanne" border="0">
+                        <tr>
+                            <td>
+                                <input id="checkanne" type="checkbox" name="check1">
+                                <label for="check1">Diploma in General Nursing</label>
+                            </td>
+                            <td>
+                                <input id="checkanne1" type="checkbox" name="check2">
+                                <label for="check2">Qualification in Certificate of Trained Dai.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="checkanne2" type="checkbox" name="check3">
+                                <label for="check3">Qualification in Certificate of midwifery</label>
+                            </td>
+                            <td>
+                                <input id="checkanne3" type="checkbox" name="check4">
+                                <label for="check4">Qualification in Certificate of B.Sc.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="checkanne4" type="checkbox" name="check5">
+                                <label for="check5">Qualification in Certificate of Auxiliary Nurse-Midwife</label>
+                            </td>
+                            <td>
+                                <input id="checkanne5" type="checkbox" name="check6">
+                                <label for="check6">Additional Qualification in P.B.Bsc.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="checkanne6" type="checkbox" name="check7">
+                                <label for="check7">Qualification in Certificate of Health Visitor</label>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>2. Copies of Testimonials<span style="color:red">*</span></td>
+                <td>(Name, Address & Designation of testifying Persons and date of issue of testimonial)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <table id="terminal" border="0">
+                        <tr>
+                            <td>Testimonials Person 1</td>
+                            <td>Testimonials Person 2</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea name="terminalb" type="text" id="terminal" maxlength="250" style="text-transform: uppercase; width: 100%;" ></textarea>
+                            </td>
+                            <td>
+                                <textarea name="terminalc" type="text" id="trminal" maxlength="250" style="text-transform: uppercase; width: 100%;" ></textarea>
+                        </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" colspan="4">
+                    3. Particular Regarding Registration with the Madhya Pradesh Nurses Registration Council Bhopal or with any other Council.
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr align="center">
+                <td align="left" colspan="7">
+                    <div>
+                        <table>
+                            <tr align="center" style="background-color: #a6a943; color:#fff">
+                                <th scope="row">Sn</th>
+                                <th scope="row1">Nursing Council <br> where<br>
+                                    Previously Registered</th>
+                                <th scope="row2">Reg.No</th>
+                                <th scope="row3">Reg.Date(DD/MM/YYYY)</th>
+                                <th scope="row4">Category in Which Registered Such As</th>
+                                <th scope="row5">Other</th>
+                            </tr>
+                            <tr>
+                                <td style="width:10px">1
+                                    <input type="hidden" name="one" id="one">
+                                </td>
+                                <td>
+                                    <input type="text" name="sn1" id="sn1" class="form-control" maxlength="20" style="width:200px;">
+                                </td>
+                                <td>
+                                    <input type="text" name="sn2" id="sn2" class="form-control" maxlength="20" style="width:200px;">
+                                </td>
+                                <td>
+                                    <input type="text" name="sn3" id="sn3" class="form-control" maxlength="20" style="width:200px;">
+                                </td>
+                                <td>
+                                    <table id="category" border="0">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" id="nurse" name="nurse">
+                                                <label for="nurse">Nurses</label>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" id="mid" name="mid">
+                                                <label for="mid">MidWife</label>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" id="health" name="health">
+                                                <label for="health">Health <br> Visitor</label>
+                                            </td>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="dai" name="dai">
+                                                    <label for="dai">Dai</label>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="aux" name="aux">
+                                                    <label for="aux">Auxiliary <br> Nurses Midwife</label>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="other" name="other">
+                                                    <label for="other">Other</label>
+                                                </td>
+                                            </tr>
+                                         </tr>
+                                         </table>
+                                </td>
+                                <td>
+                                    <input type="text" name="sn3" id="sn3" class="form-control" maxlength="20" style="width:100px;">
+                                </td>
+                </td>
+            <tr>
+                <td style="width:10px">2
+                    <input type="hidden" name="two" id="two">
+                </td>
+                <td>
+                    <input type="text" name="two" id="two" class="form-control" maxlength="20" style="width:200px;">
+                </td>
+                <td>
+                    <input type="text" name="two1" id="two1" class="form-control" maxlength="20" style="width:200px;">
+                </td>
+                <td>
+                    <input type="text" name="two2" id="two2" class="form-control" maxlength="20" style="width:200px;">
+                </td>
+                <td>
+                    <table id="category" border="0">
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="nurse1" name="nurse1">
+                                <label for="nurse1">Nurses</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="mid1" name="mid1">
+                                <label for="mid1">MidWife</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="health1" name="health1">
+                                <label for="health1">Health <br> Visitor</label>
+                            </td>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="dai1" name="dai1">
+                                    <label for="dai1">Dai</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="aux1" name="aux1">
+                                    <label for="aux1">Auxiliary <br> Nurses Midwife</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="other1" name="other1">
+                                    <label for="other1">Other</label>
+                                </td>
+                            </tr>
+
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <input type="text" name="two2" id="two2" class="form-control" maxlength="20" style="width:100px;">
+                </td>
+                
+             </div>
+            </td>
+            </tr>
+            <tr>
+                <td style="width:10px">3
+                    <input type="hidden" name="three" id="three">
+                </td>
+                <td>
+                    <input type="text" name="three1" id="three1" class="form-control" maxlength="20" style="width:200px;">
+                </td>
+                <td>
+                    <input type="text" name="three2" id="three2" class="form-control" maxlength="20" style="width:200px;">
+                </td>
+                <td>
+                    <input type="text" name="three3" id="three3" class="form-control" maxlength="20" style="width:200px;">
+                </td>
+                <td>
+                    <table id="category" border="0">
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="nurse3" name="nurse3">
+                                <label for="nurse3">Nurses</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="mid3" name="mid3">
+                                <label for="mid3">MidWife</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="health3" name="health3">
+                                <label for="health3">Health <br> Visitor</label>
+                            </td>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="dai3" name="dai3">
+                                    <label for="dai3">Dai</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="aux3" name="aux3">
+                                    <label for="aux3">Auxiliary <br> Nurses Midwife</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="other3" name="other3">
+                                    <label for="other3">Other</label>
+                                </td>
+                            </tr>
+
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <input type="text" name="two2" id="two2" class="form-control" maxlength="20" style="width:100px;">
+                </td>
+            </tr>
+            <td style="width:10px">4
+                <input type="hidden" name="four" id="four">
+            </td>
+            <td>
+                <input type="text" name="four1" id="four2" class="form-control" maxlength="20" style="width:200px;">
+            </td>
+            <td>
+                <input type="text" name="four2" id="four2" class="form-control" maxlength="20" style="width:200px;">
+            </td>
+            <td>
+                <input type="text" name="four3" id="four3" class="form-control" maxlength="20" style="width:200px;">
+            </td>
+            <td>
+                    <table id="category" border="0">
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="nurse4" name="nurse4">
+                                <label for="nurse4">Nurses</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="mid4" name="mid4">
+                                <label for="mid4">MidWife</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="health4" name="health4">
+                                <label for="health4">Health <br> Visitor</label>
+                            </td>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="dai4" name="dai4">
+                                    <label for="dai4">Dai</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="aux4" name="aux4">
+                                    <label for="aux4">Auxiliary <br> Nurses Midwife</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="other4" name="other4">
+                                    <label for="other4">Other</label>
+                                </td>
+                            </tr>
+
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <input type="text" name="four5" id="four5" class="form-control" maxlength="20" style="width:100px;">
+                </td>
+            </tr>
+
+        </table>
+            
+            
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Work Experience</h3>
+        </div>
+
+        <table>
+            <tr>
+                <td>Work Exp.(From Date) <br> (DD/MM/YYYY<span style="color:red;">*</span></td>
+                <td colspan="2">
+                    <input type="text" name="dat" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:100%">
+                </td>
+                <td>
+                    Work Exp.(To Date) <br> (DD/MM/YYYY)<span style="color:red;">*</span></td>
+                    <td colspan="2">
+                        <input type="text" name="dat1" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:100%">
+                    </td>
+            </tr>
+            <tr>
+                <td>Name of Work Place<span style="color:red;">*</span></td>
+                <td colspan="2">
+                    <input type="text" name="place" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:100%">
+                </td>
+                <td>Address of Work Place<span style="color:red;">*</span></td>
+                    <td colspan="2">
+                        <input type="text" name="place1" class="form-control" maxlength="20"  style="text-transform:uppercase ; width:100%">
+                    </td>
+            </tr>
+            <tr>
+                <td>Have you ever been <br> penalized by any Court <br> Law ?<span style="color:red;">*</span></td>
+                <td colspan="4">
+                    <span id="rdoreg" class="radio" style="font-family:verdana; font-weight:normal; font-size:12px;">
+                        <input type="radio" name="yes" id="yes">
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="no" id="no">
+                        <label for="no">No</label>
+                </td>
+            </tr>
+        </table>
+
+        <div class="main_sub_head">
+            <h3 style="text-align: left;">Declaration</h3>
+        </div>
+        <table>
+            <tr>
+                <td>Upload Photo<span style="color:red;">*</span></td>
+                <td>
+                    <input type="file" id="file" name="file" class="form-control" style="width:40%;">(Min 15 kb -Max. 50 kb)(Only .Jpg Format is Allowed)
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="checkbox" name="check" id="check">Declaration <span style="color: red;">*</span> I enclose original copies of certificates of qualification as detailed below, which may please be returned to me. I also enclose Two recent testimonials by respectable and well known citizens of my town/village including one by a Medical Officer not below the rank of Assistant Surgeon or a private Medical Practitioner holding registrable medical qualifications. I hereby undertake that if I am admitted to register, I will , in the practice of my profession as a observe and be bound by the provision of the Act and the rules and byelaws made or order and instructions, issued there under so far as they affect me and if the Council shall at any time after due enquiry order my name to be removed from the register. I will return to Registrar the certificate and badge (If any) issued to me by the council.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                   <span style="color:red;">Note:-</span><b>1 </b> <span style="background-color:yellow;"> Candidate have to verify their Original Documents . All documents must be attested by principal of the Institute</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">Captcha</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center;">
+                    <button class="btn">Submit</button>
+                </td>
+            </tr>
+        </table>
+       </div>
+    </table>
+</div>
+
+       <footer>
+        <div class="footer">
+            <h4>Powered by <img src="gflogo.png" style="width: 20px; height:20px;"> Greenfinch Infomedia</a></h4>
+        </div>
+    </footer>
+    
+</body>
+</html>

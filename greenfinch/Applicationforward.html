@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64cceff8c1.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" href="gflogo.png" type="image/icon type">
+    <title>Application for Forwarding</title>
+    <link rel="stylesheet" href="Applicationforward.css">
+</head>
+<body>
+
+    <header>
+        <nav style="padding: 13px 0px;background:#a6a943;">
+            <div class="row" style="width: 75%;margin: 0 auto;color: #fff;">
+                <div class="col-md-6">
+                    <a href="#" class="top_btn"><i class="fa-solid fa-house-chimney"></i> Home</a>
+                </div>
+                <div class="col-md-6" style="display: flex;color: #fff !important; text-align: end;justify-content: end;">
+                   <a class="top_btn" href="#">हिन्दी </a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="#"> English</a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="#"> MPNRC </a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="#"> INSTITUTE</a>
+                   <span>&nbsp; | &nbsp;</span>
+                   <a class="top_btn" href="https://www.mpnrcexams.org"> EVALUATION</a>
+                </div>
+            </div>
+        </nav>
+        <div class="header" style="width: 75%;margin: 0 auto;padding: 20px 0px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="mpnrclogo.png" style="width: 350px;" alt="MP Nursing Registration Council">
+                </div>
+                <div class="col-md-6" style="justify-content: end; display: flex; ">
+                    <a href="./home.php"><img src="gflogo.png" style="width: 80px;" alt="Greenfinch Infomedia"></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div style="background:#a6a943;height: 3px;" class="line">
+
+    </div>
+
+    <div class="main">
+
+        <div class="main_sub_head">
+            <h3> Application For Migration </h3>
+        </div>
+
+        <table>
+            <tr>
+                <td colspan="4" style="text-align: right;">Field's marked with <span style="color: red;">*</span> are mandatory(<span style="color:red;">*</span> से चिह्नित अनिवार्य हैं</td>
+            </tr>
+            <tr>
+                <td>Applying Country Name<span style="color: red;">*</span></td>
+                <td>
+                    <select name="country" type="text" id="country" maxlenght="10" style="text-transform: uppercase; width:100%">
+                        <option selected="selected" value="0">--Select</option>
+                        <option value="1">India</option>
+                        <option value="2">Afganistan</option>
+                    </select>
+                </td>
+                <td>Reference Number(if any)</td>
+                <td>
+                    <input type="text" name="ref" id="ref" maxlength="10" style="width: 100%;">
+                </td>
+                <tr>
+                    <td>Country full Address(where you have to <br> go)<span style="color: red;">*</span></td>
+                    <td colspan="3">
+                        <textarea name="coun" id="coun" type="text" maxlength="20" style="text-transform: uppercase; width:50%;"></textarea>
+                    </td>
+                </tr>
+                </tr>
+                </table>
+
+                <div class="main_sub_head">
+                    <h3 style="text-align: left;">Forwarding Details</h3>
+                </div>
+                <table>
+                    <tr>
+                        <td>Applied Forwarding Course<span style="color: red;">*</span></td>
+                        <td colspan="4">
+                            <input type="radio" id="anm" name="anm">
+                            <label for="anm">A.N.M</label>
+                            <input type="radio" id="gnm" name="gnm">
+                            <label for="gnm">G.N.M</label>
+                            <input type="radio" id="bsc" name="bsc">
+                            <label for="bsc">Bsc Nursing</label>
+                            <input type="radio" id="post" name="post">
+                            <label for="post">Post Basic B.sc</label>
+                            <input type="radio" id="nur" name="nur">
+                            <label for="nur">M.SC Nursing</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Registration Number<span style="color: red;">*</span></td>
+                        <td>
+                            <input type="text" name="reg" id="reg" class="form-control" maxlength="20" style="text-transform: uppercase; width:96%" >
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Registration Date</td>
+                        <td>
+                            <input type="text" name="dte" id="dte" class="form-control" maxlength="20" style="text-transform: uppercase; width:96%" >(dd/mm/yyyy)
+
+                        </td>
+                        <td>Previous Registration Renewal /<br> Registration Expiry Date</td>
+                        <td>
+                            <input type="text" name="dte" id="dte" class="form-control" maxlength="20" style="text-transform: uppercase; width:96%" >(dd/mm/yyyy)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="radio" id="act" name="act">
+                            <label for="act">Active</label>
+                            <input type="radio" id="exe" name="exe">
+                            <label for="exe">Expired</label>
+                            <input type="radio" id="ina" name="ina">
+                            <label for="ina">Inactive</label>
+                            <input type="radio" id="res" name="res">
+                            <label for="res">Restricted</label>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="main_sub_head">
+                    <h3 style="text-align: left;">Forwarding Details</h3>
+                </div>
+
+
+        
+            
+
+
+    </div>
+
+    </body>
+    </html>

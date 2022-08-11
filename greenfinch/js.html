@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   
+</head>
+<body>
+
+    
+    <button type="button" onclick="myFunction()">click me</button>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+
+
+
+
+
+    <script>
+        function myFunction(){
+            document.getElementById("demo").innerHTML="hello dolly";
+            document.getElementById("demo2").innerHTML = "How are you?";
+
+            let x= 17+18+"audi";
+            document.getElementById("demo3").innerHTML = x;
+
+            let a=4;
+            let b=5;
+            let c=4;
+            document.getElementById("demo4").innerHTML = (a==b) + "<br>" + (a==c) ;
+
+            const cars = ["audi , BMW , Benz"];
+            document.getElementById("demo5").innerHTML = cars;
+
+            const person = {firstName:"john", lastName:"Doe" ,age:23 }
+            document.getElementById("demo6").innerHTML = person.firstName + person.age;
+
+            document.getElementById("demo8").innerHTML = 100/"apple";
+
+            const fruits = [];        //const fruits = ["Apple","Kiwi","Orange","Banana","Mango"];
+            fruits [0] ="Apple";
+            fruits [1] ="Kiwi";
+            fruits [2] ="Orange";
+            fruits [3] ="Banana";
+            fruits [4] ="Mango"  ;                                 
+            let flen = fruits.length;
+
+            let text = "<ul>";
+                for (let i=0 ; i<flen ; i++)
+                {
+                    text += "<li>" + fruits[i] + "</li>";
+                }
+                text += "</ul>";
+
+                document.getElementById("demo9").innerHTML = text;
+               // fruits.push = "Papaya";  for adding element into an array
+            }
+        //    function myFunction1(p1,p2)
+        //    {
+        //     return p1 * p2;
+        //    }
+        //    document.getElementById("demo7").innerHTML = myFunction1(12,5);
+
+        
+    </script>
+    
+    
+</body>
+</html>

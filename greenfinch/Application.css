@@ -1,0 +1,63 @@
+.main {
+    width: 75%;
+    margin: 0 auto;
+    padding: 30px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.main_head {
+    margin-bottom: 20px;
+}
+
+table, td, th {
+    border: 1px solid rgb(200, 200, 248);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    text-align: left;
+    font-style: italic;
+    font-weight: 500;
+    color:rgb(247, 37, 37) ;
+    background-color:cornsilk; 
+}
+.line {
+    margin-top:auto;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+#side {
+    font-size:13px; 
+    font-weight: 500;
+    color: gray;
+}
+.mainhead {
+    text-align: center; 
+    padding-bottom: 30px; 
+    padding-top: 20px; 
+    font-size: 15px;
+    font-weight: 600;
+    color:rgb(6, 56, 56);
+}
+
+table {
+    width: 98%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    
+}
+table  td {
+    font-size: 14px;
+    padding: 7px;
+    font-weight: 550; 
+}
+footer {
+
+    margin-top: 40px;
+    padding: 10px 0px;
+}
+.footer {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
