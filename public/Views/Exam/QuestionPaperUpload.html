@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row" >
+        <div class="col-md-12">
+            <p class="page-title nopadding">QuestionPaper Upload</p>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                            <tr>
+                             
+                                    <td width="10%">
+                                      <div class="form-group row">
+                                        <div class="image-upload">
+                                            
+                                          <label for="DocumentID" class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" title="Click to Upload QuestionPaper">
+                                            <h4> Select the Question Paper to Upload  &nbsp;  &nbsp; <i class="fa fa-upload" style="color: #024da0; font-size:35px"></i></h4>
+                                          </label>
+                                          <input id="DocumentID" type="file" style="display: none;" fileread="QuestionPaperDoc"
+                                          onchange="angular.element(this).scope().photoChange(this)" accept="application/pdf" multiple/>
+                                          {{File_Name}}
+                                        </div>
+                                      </div>
+                                    
+                                     
+                                    </td>
+                                </tr>
+                                   <tr>
+                                    <td>
+                                        <button type="button" class="btn  btn-save" ng-click="uploadvalidation()"  title="Click to Upload Question Paper">Upload</button>
+                                      </td>
+                                      
+                      
+                            </tr>
+                        </table>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+  <script>
+      function QRCodelistfunction() {
+          var x = document.getElementById("QRCodeid");
+          window.QRCodelistfunctionFun(x.value);
+      }
+  </script>

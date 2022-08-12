@@ -1,0 +1,125 @@
+
+<div class="container">
+<div class="row">
+        <div class="col-md-12">
+            <p class="page-title">Student Route Wise Report</p>            
+        </div>   
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td width="10%">
+                                <label>Course</label>
+                            </td>
+                            <td width="10%">
+                                <select ng-model="CourseId" class="form-control" ng-required="true">
+                                    <option value="">All</option>
+                                    <option ng-repeat="sel in Courselist" ng-selected="CourseId==sel.Id" value="{{sel.Id}}">{{sel.Course}}</option>
+                                </select>
+                            </td>   
+                            <td width="10%">
+                                <label>Student ID</label>
+                            </td>
+                            
+                            <td width="10%">
+                                <select ng-model="StudentId" class="form-control" ng-required="true">
+                                    <option value="">All</option>
+                                    <option ng-repeat="sel in StudentIdList" ng-selected="StudentId==sel.Id" value="{{sel.Id}}">{{sel.StudentId}}</option>
+                                </select>
+                            </td>  
+                            <td width="10%">
+                                <label>Student Name</label>
+                            </td>
+                            <td width="20%">
+                                <div angucomplete-alt id="StudentName"
+                                placeholder=""
+                                maxlength="50"
+                                pause="100"
+                                selected-object="StudentSelected"
+                                local-data="StudentNameList"
+                                search-fields="StudentName"
+                                title-field="StudentName"
+                                minlength="1"
+                                input-class="form-control"
+                                match-class="highlight"
+                                
+                                >
+                                </div>
+                        </td>
+                        </tr>
+                        <tr>                            
+                            <td>
+                                <label>Student Mobile</label>
+                            </td>
+                            <td width="10%">
+                                <select ng-model="SMobileNumber" class="form-control" ng-required="true">
+                                    <option value="">All</option>
+                                    <option ng-repeat="sel in StudentMobileNumberList" ng-selected="SMobileNumber==sel.id" value="{{sel.id}}">{{sel.smobilenumber}}</option>
+                                </select>
+                            </td>  
+                            <td width="10%">
+                                <label>Route Name</label>
+                            </td>
+                            <td width="20%">
+                                <select ng-model="RouteId" class="form-control" ng-required="true">
+                                    <option value="">All</option>
+                                    <option ng-repeat="sel in RouteList" ng-selected="RouteId==sel.id" value="{{sel.id}}">{{sel.routename}}</option>
+                                </select> 
+                            </td>   
+                            <td width="10%"> <button type="button" class="btn btn-small"  ng-click="StudentReportList()">Go</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form> 
+                </div>
+            </div>
+           
+        </div>        
+</div>
+    <div class="row">
+<div class="col-md-12">
+            <table st-table="emptydata" style="width: 100%" st-safe-src="StudentRouteReportList" class="table table-striped table-bordered">
+                <thead>
+                    <tr style="text-align: center">
+                        <th st-ratio="5">Sl No.</th>
+                        <th st-ratio="10">StudentId</th>
+                        <th st-ratio="10">Student Name</th>
+                        <th st-ratio="10">Gender</th>
+                        <th st-ratio="10">Course</th>
+                        <th st-ratio="15">Mobile</th>
+                        <th st-ratio="10">Vehicle No</th>
+                        <th st-ratio="10">Driver Name</th>
+                        <th st-ratio="5">Amount</th>
+                        <th st-ratio="8">Action</th>                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="flag==0 && StudentRouteReportList.length==0">
+                        <td colspan=10 style="text-align: center">
+                            No Records Found
+                        </td>
+                        </tr>
+                        <tr ng-repeat="row in StudentRouteReportList">
+                            <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>                  <td style="text-align: left">{{row.studentid}}</td>
+                            <td style="text-align: left">{{row.studentname}}</td>
+                            <td style="text-align: left">{{row.gender}}</td>
+                            <td style="text-align: left">{{row.course}}</td>
+                            <td style="text-align: left">{{row.smobilenumber}}</td>
+                            <td style="text-align: left">{{row.registrationnumber}}</td>
+                            <td style="text-align: left">{{row.employeename}}</td>
+                            <td style="text-align: right">
+                            <input type="textbox"ng-model="row.Amount"   style="text-align: right" maxlength="10" ng-maxlength="10"></td>
+                            <!-- <td style="text-align: left">{{row.Amount}}</td> -->
+                        <td style="text-align: center">{{row.id}}
+                                <button type="button" class="btn btn-small"  ng-click="StudentTransportSave(row.studentnameid)">S</button>
+                             <button type="button" class="btn btn-small"  ng-click="StudentTransportDelete(row.id)">D</button>
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div></div>
+
+     
+

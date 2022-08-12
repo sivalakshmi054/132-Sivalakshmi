@@ -1,0 +1,125 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+<div class="mainbody container-fluid">
+    <h1 class="page-title">Question Bank Details</h1>  
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default" id="Basic1">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" name="patientform" id="patientform">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">                            
+                             <tr>
+                            <td width="20%">
+                                <label>Academic Year<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td width="20%">
+                                <select ng-model="QBAcademicYear"  class="form-control" ng-required="true" ng-change="AcademicYearBasedCourseForAddmodal();CourseClearFun()">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in AcademicYearList" ng-selected="QBAcademicYear==sel.id" value="{{sel.id}}">{{sel.academicyear}}</option>
+                                </select>
+                            </td>
+                            <td width="12%">
+                                <label>Course<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td width="20%">
+                                <select ng-model="QBCourse" class="form-control" ng-required="true" ng-change="CourseBasedExamNameForAddmodal();ExamNameClearFun()"> 
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in Courselist" ng-selected="QBCourse==sel.id" value="{{sel.id}}">{{sel.course}}</option>
+                                </select>
+                            </td> 
+                            <td width="10%">
+                                <label>Medium<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td>
+                                <select ng-model="QBMedium"  class="form-control" ng-required="true">
+                                    <option value="">Select</option>
+                                    <option ng-repeat="sel in Mediumlist" ng-selected="QBMedium==sel.id" value="{{sel.id}}">{{sel.mediumname}}</option>
+                                </select>
+                            </td>   
+                            </tr>
+                            <tr>          
+                         
+                            <td>
+                                    <label>
+                                            Exam Name<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td>
+                                <select ng-model="QBExamName"  class="form-control" ng-required="true"ng-change="ExamBasedSubjectforAddmodal()">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in ExamNameList" ng-selected="QBExamName==sel.id" value="{{sel.examnameid}}">{{sel.examname}}</option>
+                                </select>
+                            </td>     
+                            <td>
+                                    <label>
+                                            Subject<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td>
+                                <select ng-model="QBSubject"  class="form-control" ng-required="true" ng-change="FiltersBased_QuestionSectionList()">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in SubjectList" ng-selected="QBSubject==sel.id" value="{{sel.id}}">{{sel.subjectname}}</option>
+                                </select>
+                            </td>
+                            <td width="10%">
+                                <label>
+                                        Paper Type<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td>
+                                    <select ng-model="PaperType"  class="form-control" ng-required="true">
+                                    <option value="">Select</option>
+                                    <option ng-repeat="sel in PaperTypeList" ng-selected="PaperType==sel.id" value="{{sel.id}}">{{sel.papertype}}</option>
+                                    </select>
+                            </td>
+                
+                            </tr>
+                              
+                    <tr>
+                            <td>
+                                    <label>
+                                        Question Paper Section<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td>
+                                <select ng-model="QBQuestionPaperSection"  class="form-control" ng-required="true">
+                                <option value="">Select</option>
+                                <option ng-repeat="sel in QuestionSectionList" ng-selected="QBQuestionPaperSection==sel.id" value="{{sel.id}}">{{sel.questionpapersection}}</option>
+                                </select>
+                            </td>
+                        
+                    </tr>
+                    <tr>
+                            <td valign="top" >
+                                    <label>Questions<font class="mandatory-field" style="color: red;">*</font></label>
+                            </td>
+                            <td colspan="5">
+                                    <div cols="15" id="editor1" name="editor1" rows="10"  contenteditable="true" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    </div>
+                            </td>
+                                          
+                                            
+                        </tr>
+                </table>
+
+                    </form>
+                </div>
+            </div>
+            <div>
+                <div style="text-align: center;">
+                    <button type="button" class="btn  btn-save" ng-click="QuestionBank_AddEdit()">Save</button>
+        <button type="button" class="btn  btn-save" ng-click="CancelPopup()">Cancel</button>
+                </div> 
+            </div>      
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+  CKEDITOR.replace( 'editor1', {
+        toolbarLocation: 'top',
+        // Remove some plugins that would conflict with the bottom
+        // toolbar position.
+        removePlugins: 'elementspath,resize'
+    } );
+</script>
+

@@ -1,0 +1,492 @@
+
+
+<head>
+    <style type="text/css">
+        input[type='file'] {
+            opacity: 0;
+        }
+
+        .btn-hide {
+            display: none;
+        }
+    </style>
+    <script>
+
+        $('#btndocfile').click(function () {
+            $("#documentfile").trigger('click');
+        })
+    </script>
+</head>
+<div class="mainbody container-fluid">
+    <h1 class="page-title">Role Mapping </h1>
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="lineTab nopadding">
+
+                <a href="javascript:" onclick="TabClick('Role')" id="A1" class="lineActive linetags">System Role Mapping</a>
+                <a href="javascript:" onclick="TabClick('App')" id="A2" class="linetags" ng-click="EmployeeMappingTabClick()">Application Role Mapping </a>
+                <a href="javascript:" onclick="TabClick('Emp')" id="A3" class="linetags">Employee Mapping</a>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default" id="Role">
+                <div class="panel-body" ng-init="EmployeeMappingListGo()">
+                    <form class="form-horizontal" role="form">
+                        <table cellpadding="0" cellspacing="0" border="0" width="80%" class="formControlGroup">
+                            <tr>
+                                <td width="10%">
+                                    <label>User Role Name</label>
+                                </td>
+                                <td width="15%">
+                                    <input type="text" class="form-control" id="Text1" ng-model="UserRollName" onkeypress="varifychar(this.UserRoleName)" />
+                                </td>
+                                <td width="40%">
+                                    <button type="button" class="btn btn-small" ng-click="EmployeeMappingListGo()">Go</button>
+                                </td>
+                            </tr>
+
+                         </table>
+                        <a href="javascript:" id="A4" ng-click="AddUser()" class="btn btn-autosize pull-right mb-15">Add New</a>
+                    </form>
+                </div>
+                <div class="col-lg-12 tabpage">
+                    
+                </div>
+                <div class="col-md-12 tablepage">
+                    <table st-table="emptydatas" style="width: 100%" st-safe-src="rowCollections" class="table table-striped table-bordered">
+                        <thead>
+                            <tr style="text-align: center">
+                                <th st-ratio="5" st-sort="Id">Sl No.</th>
+                                <th st-ratio="90" st-sort="UserRollName">User Role Name</th>
+                                <th st-ratio="5">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="flag2==0 && rowCollections.length==0">
+                                <td colspan="3" class="text-center">
+                                    No Records Found
+                                </td>
+                            </tr>
+                            <tr ng-repeat="row in emptydatas">
+                                <td style="text-align: right">{{((current_pages-1)*page_sizes)+$index+1}}</td>
+                                <td style="text-align: left">{{row.UserRollName}} </td>
+                                <td style="text-align: center">
+                                    <!--<a href="javascript:" id="btnR g" ng-click="ViewopUP(row.Id)" class="btn btn-autosize pull-right mb-15">Map</a>-->
+                                    <!--<a href="javascript:" ng-click="ViewEmployee(row.Id)" class="btn btn-autosize pull-right mb-15">Map1</a>-->
+                                    <a href="javascript:" id="btnEmpMapping" ng-click="ViewEmployee(row.Id)" class="btn btn-autosize">Map</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <!-- <tfoot ng-show="rowCollections.length >30">
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    <div st-items-by-page="30" st-page-change="rembemberCurrentPages(newPage)" st-pagination="" st-template="Masters/Views/pagination.custom.html"></div>
+
+                                </td>
+                            </tr>
+                        </tfoot> -->
+                        <tfoot ng-show="rowCollections.length >10">
+                            <tr>
+                                <td colspan="10" class="text-center">
+                                    <items-page items-On-Page ="itemsOnPage" total-Items="rowCollections.length"></items-page> items per page
+                                    <div st-items-by-page="itemsOnPage" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+                                    <!--<items-page items-On-Page ="itemsOnPage" total-Items="pagetotalSize"></items-page>-->
+                    
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- For Application Mapping Tab -->
+            <div class="panel panel-default" id="App">
+                <div class="panel-body" ng-init="RoleMappingList()">
+                    <form class="form-horizontal" role="form">
+                        <table cellpadding="0" border="0" width="100%" class="formControlGroup">
+                            <tr>
+                                <td width="10%">
+                                    <label>Employee Name</label>
+                                </td>
+                                <td width="15%">
+                                    <input type="text" class="form-control" id="Text3" ng-model="EmployeeName" onkeypress="ParticularSpecNumber(this.EmployeeName)">
+                                </td>
+                                <td width="8%">
+                                    <label>Employee No.</label>
+                                </td>
+                                <td width="15%">
+                                    <input type="text" class="form-control" id="Text2" ng-model="EmployeeNumber" onkeypress="NoSpecChar(this.EmployeeNumber)" />
+                                </td>
+                                <td width="8%">
+                                    <label>Department</label>
+                                </td>
+                                <td width="15%">
+                                    <select class="form-control" ng-model="DepartmentName" id="Select2">
+                                        <option value="">All</option>
+                                        <option ng-repeat="sel in DepartmentNameList" ng-selected="DepartmentName==sel.Id" value="{{sel.Id}}">{{sel.DepartmentName}}</option>
+                                    </select>
+                                </td>
+                                <td style="width:10%;text-align:left;">
+                                    <button type="button" class="btn btn-small" ng-click="RoleMappingListGo()">Go</button>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </form>
+                </div>
+
+                <div class="col-md-12 tablepages">
+                    <table st-table="emptydata" style="width: 100%" st-safe-src="rowCollection" class="table table-striped table-bordered">
+                        <thead>
+                            <tr style="text-align: center">
+                                <th st-ratio="5" st-sort="Id">Sl No.</th>
+                                <th st-ratio="20" st-sort="EmployeeNumber">Employee No.</th>
+                                <th st-ratio="25" st-sort="EmployeeName">Employee Name</th>
+                                <th st-ratio="25" st-sort="DepartmentName">Department</th>
+                                <th st-ratio="20" st-sort="DepartmentName">Designation</th>
+                                <th st-ratio="5">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="flag==0 && rowCollection.length==0">
+                                <td colspan="12" class="text-center">
+                                    No Records Found
+                                </td>
+                            </tr>
+                            <tr>
+                            <tr ng-repeat="row in emptydata">
+                                <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+                                <td style="text-align: left">{{row.EmployeeNumber}} </td>
+                                <td style="text-align: left">{{row.EmployeeName}} </td>
+                                <td style="text-align: left">{{row.Department_Name}}</td>
+                                <td style="text-align: left">{{row.Designation}} </td>
+
+                                <td>
+
+                                    <a href="javascript:" ng-click="ViewRMPopUP(row.Id)" class="btn btn-autosize">Map</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <!-- <tfoot ng-show="rowCollection.length >30">
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div st-items-by-page="30" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Masters/Views/pagination.custom.html"></div>
+
+                                </td>
+                            </tr>
+                        </tfoot> -->
+                        <tfoot ng-show="rowCollection.length >10">
+                            <tr>
+                                <td colspan="10" class="text-center">
+                                    <items-page items-On-Page ="itemsOnPage" total-Items="rowCollection.length"></items-page> items per page
+                                    <div st-items-by-page="itemsOnPage" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+                                    <!--<items-page items-On-Page ="itemsOnPage" total-Items="pagetotalSize"></items-page>-->
+                    
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- For Employee Mapping Tab -->
+            <div class="panel panel-default" id="Emp">
+                <div class="panel-body" ng-init="EmployeeMappingList()">
+                    <form class="form-horizontal" role="form">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                            <tr>
+
+                                <td width="8%">
+                                    <label>User Role Name</label>
+                                </td>
+
+                                <td width="15%">
+                                    <input type="text" class="form-control" id="Text4" ng-model="UserRole_Name" onkeypress="NoSpecChar(this.UserRoleName)" />
+                                </td>
+
+                                <td width="40%">
+                                    <button type="button" class="btn btn-small" ng-click="EmployeeMappingList()">Go</button>
+                                </td>
+                                <!--</tr>
+                                <tr>-->
+                                <!--<td style="width:20%">
+                                    <a href="javascript:"  id="btnEmpMapping" ng-click="AddUser()" class="btn btn-autosize pull-right mb-15">Add New</a>
+                                </td>-->
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="col-md-12 tablepages">
+                    <table st-table="Empemptydatas" style="width: 100%" st-safe-src="EmprowCollections" class="table table-striped table-bordered">
+                        <thead>
+                            <tr style="text-align: center">
+                                <th st-ratio="5" st-sort="Id">Sl No.</th>
+                                <th st-ratio="90" st-sort="UserRollName">User Role Name</th>
+                                <th st-ratio="5">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="flags==0 && EmprowCollections.length==0">
+                                <td colspan="3" class="text-center">
+                                    No Records Found
+                                </td>
+                            </tr>
+                            <tr>
+                            <tr ng-repeat="row in Empemptydatas">
+                                <td style="text-align: right">{{((current_pages-1)*page_sizes)+$index+1}}</td>
+                                <td style="text-align: left">{{row.UserRollName}}</td>
+                                <td style="text-align:center;">
+                                    <a href="javascript:" id="btnR g" ng-click="ViewEmpPopUP(row.Id)" class="btn btn-autosize">Map</a>
+                                    <!--<a href="javascript:" ng-click="ViewEmployee(row.Id)" class="btn btn-autosize pull-right mb-15">Map1</a>-->
+                                    <!--<a href="javascript:" id="btnEmpMapping" ng-click="ViewEmployee(row.Id)"  class="btn btn-autosize pull-right mb-15">Map</a>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot ng-show="EmprowCollections.length >30">
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    <div st-items-by-page="30" st-page-change="rembemberCurrentPages(newPage)" st-pagination="" st-template="Masters/Views/pagination.custom.html"></div>
+
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Role Modal-->
+<div class="modal fade" id="MapView" role="dialog">
+    <div class="modal-dialog" style="width: 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="CancellPopup()" title="Close" style="color:#8B0000;">&times;</button>
+                <h4 class="modal-title">System Role Mapping</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" style="font-size:small">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td>
+                                <label>User Role  <font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="Text5" ng-model="UserRollName" ng-init="UserRollName=''"  maxlength="100" placeholder="" onkeypress="varifychar(this.UserRoleName)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>System Roles  <font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td>
+                                <select class="form-control" ng-model="SystemRole" name="SystemRole_DualList[]" ng-options="av as av.SystemRollName for av in SystemRoleList track by av.Id" multiple bs-duallistbox></select>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="modal-footer" style="text-align:center;">
+                        <button type="button" class="btn  btn-save" ng-click="SaveMapping()">Save</button>
+                        <button type="button" class="btn  btn-save" ng-click="CancellPopup()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!----Application Modal---->
+<div id="RoleMapView" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="CancelPopUp()" title="Close" style="color:#8B0000;">&times;</button>
+                <h4 class="modal-title">Application Role Mapping </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" style="font-size:small">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td style="width: 5%">
+                                <label>Employee Code</label>
+                            </td>
+                            <td style="width: 20%">
+                                <!--<input type="text" class="form-control" id="Text3" name="Employee_Name" ng-model="Employee_Name" ng-init="Employee_Name=''" placeholder="" ng-required="true" ng-maxlength="100" maxlength="100" />-->
+                                <!--<input type="text" class="form-control" id="Text8" ng-model="Employee_No" ng-init="Employee_No =''" readonly="true"/>-->
+                                <span>{{Employee_No}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Employee Name</label>
+                            </td>
+                            <td>
+                                <!--<input type="text" class="form-control" id="Text5" ng-model="FullName" ng-init="FullName =''" readonly="true"/>-->
+                                <span>{{Employee_Name}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Department</label>
+                            </td>
+                            <td>
+                                <!--<input type="text" class="form-control" id="Text6" ng-model="Department_Name" ng-init="Department_Name=''" readonly="true" />-->
+                                <span>{{ViewDepartment_Name}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Designation</label>
+                            </td>
+                            <td>
+                                <!--<input type="text" class="form-control" id="Text7" ng-model="Designation_Name" ng-init="Designation_Name=''"  readonly="true"/>-->
+                                <span>{{ViewDesignation}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Application Role</label>
+                            </td>
+                            <td>
+                                <select class="form-control" ng-model="ApplicationRole" name="Application_DualList[]" ng-options="av as av.UserRollName for av in getUserRole track by av.Id" multiple bs-duallistbox></select>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <div class="modal-footer" style="text-align:center;">
+                        <button type="submit" class="btn btn-save" ng-click="RoleMapAddEdit()">Save</button>
+                        <button type="button" class="btn btn-save" ng-click="CancelPopup()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Employee Modal-->
+<div id="EmployeeMapView" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 70%" ng-init="Remarks()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="CancelsPopup()" title="Close" style="color:#8B0000;">&times;</button>
+                <h4 class="modal-title">Employee Mapping </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" style="font-size:small">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td>
+                                <label>User Role Name</label>
+                            </td>
+                            <td>
+
+                                <span>{{UserRollName}}</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>Employee</label>
+                            </td>
+                            <td>
+                                <select class="form-control" ng-model="EmployeeNameList" name="Application_DualList[]" ng-options="av as av.Name for av in EmployeeList track by av.Id" multiple bs-duallistbox></select>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <div class="modal-footer" style="text-align:center;">
+                        <button type="submit" class="btn btn-save" ng-click="EmployeeMappingAddEdit()">Save</button>
+                        <button type="button" class="btn btn-save" ng-click="CancelsPopup()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+                    $('.panel').addClass('collapse');
+                    $('#Role').removeClass('collapse');
+
+                    $(function () {
+                        $('.linetags').click(function () {
+                            $('.linetags').removeClass('lineActive');
+                            $(this).addClass('lineActive');
+                        });
+                    });
+
+                    function TabClick(item) {
+                        $('.panel').addClass('collapse');
+                        $('#' + item).removeClass('collapse');
+                    }
+
+
+                    /* function TabClick(item, flag) {
+
+                         $('.panel').addClass('collapse');
+                         $('#' + item).removeClass('collapse');
+                         if (flag == 'Role')
+                         {
+                             $("[id*=btnRoleMapping ]").each(function () {
+                                 this.style.display = "none";
+                             });
+                             $("[id*=btnEmpMapping ]").each(function () {
+                                 this.style.display = "";
+                             });
+                         }
+                         if (flag == 'Emp') {
+                             $("[id*=btnEmpMapping ]").each(function () {
+                                 this.style.display = "none";
+                             });
+                             $("[id*=btnRoleMapping ]").each(function () {
+                                 this.style.display = "";
+                             });
+                         }
+                     } */
+
+                    $('.input-group.date').datepicker({
+                        format: "dd/M/yyyy",
+                        forceParse: false,
+                        autoclose: true,
+                        todayHighlight: true,
+                        toggleActive: true,
+                        todayBtn: true
+
+                    });
+
+                    //var demo1 = $('select[name="SystemRole_DualList[]"]').bootstrapDualListbox({
+                    //    nonSelectedListLabel: 'Listed System Roles',
+                    //    selectedListLabel: 'Selected System Roles',
+                    //    preserveSelectionOnMove: 'moved',
+                    //    moveOnSelect: false,
+                    //    nonSelectedFilter: ''
+                    //});
+</script>
+<style>
+    .tabpage {
+        padding-top: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .tablepage {
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .tablepages {
+        padding-top: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+</style>

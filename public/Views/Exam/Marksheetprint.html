@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    
+</head>
+<style>
+    @page {
+      size: A4;
+      margin: 0;  
+    }
+.page {
+    min-height: 29.7cm;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 0 auto;
+    border: 6px dotted #000;
+    /* border: 1px solid green; */
+}
+.marksheet_header {
+    width: 95%;
+    margin: 0 auto;
+    font-size: 25px;
+    font-weight: 600;
+    /* line-height: 6px; */
+    text-align: center;
+}
+.marksheet_header h3 {
+	text-shadow: 1px 2px 3px rgb(158, 158, 158);
+}
+.marksheet-deatils {
+    width: 50%;
+    /* text-align: center; */
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.marksheet-deatils table {
+    width: 95%;
+    margin: 0 auto;
+}
+.marksheet-deatils table tr th {
+    text-align: left;
+}
+.subjectwise_details table, .marksheet_notes table,.marksheet_rules table {
+    width: 95%;
+    margin: 0 auto;
+}
+td th {
+    max-width: 200px;
+}
+.marksheet_rules {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.subjectwise_details table, .subjectwise_details th, .subjectwise_details td {
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.marksheet_notes table, .marksheet_notes th, .marksheet_notes td {
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.marksheet_rules table, .marksheet_rules th, .marksheet_rules td {
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.marksheet_notes {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.marksheet_final_result {
+    width: 300px;
+    margin-top: 30px;
+}
+.marksheet_result {
+    font-size: 14px;
+    line-height: 5px;
+    margin-left: 50px;
+}
+.marksheet_footer {
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px 6px;
+    border: 1px solid #000;
+    margin-bottom: 30px;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.marksheet_registrar_sign {
+    padding-top: 37px;
+    /* line-height: 5px; */
+    text-align: center;
+}
+.row .col-md-4 {
+    font-size: 16px;
+    max-width: 300px;
+}
+</style>
+
+<body>
+
+    <div class="page">
+        <div class="marksheet_header">
+            <h3>MADHYA PRADESH NURSES REGISTRATION COUNCIL BHOPAL (M.P.)</h3>
+            <h5>Exam Date : 17th to 20th February 2021</h5>
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    <div class="marksheeet_hologram_header">
+                        <img src="logo.jpg" width="160px" alt="MPNRC Hologram">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="marksheeet_student_image">
+                        <img src="Uploads/{{StudentPhoto}}" width="150px" alt="Student Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="marksheet-deatils" ng-init="printtest()" >
+            <!-- {{marksheetList}} -->
+            <h4>General Nursing & Midwifery (G.N.M) Third Year (Regular)</h4>
+            <table st-safe-src="marksheetList">
+            <!-- @for($i = 0; $i < count($StudentName); $i++) -->
+                <tr>
+                    <th>Name of the Candidate :</th>
+                    <td>{{ StudentName }}</td>
+                </tr>
+                <!-- @endfor -->
+                <tr>
+                    <th>Father/Husband Name : </th>
+                    <td>{{FatherName}}</td>
+                </tr>
+                <tr>
+                    <th>Enrollment Number :</th>
+                    <td>{{EnrollmentNumber}}</td>
+                </tr>
+                <tr>
+                    <th>Roll Number :</th>
+                    <td>{{RollNumber}}</td>
+                </tr>
+                <tr>
+                    <th>Institute Name :</th>
+                    <td>Ramdev College Of Nursing Chhatarpur [09110]</td>
+                </tr>
+                <tr>
+                    <th>Name of the Examination Centre :</th>
+                    <td>Naveen College, Chhatpur</td>
+                </tr>
+            </table>
+        </div>
+        <div class="subjectwise_details">
+            <table>
+                <tr>
+                    <th rowspan="2">Paper</th>
+                    <th rowspan="2">Subject Name</th>
+                    <th colspan="3">
+                        Maximum Marks
+                    </th>   
+                    <th rowspan="2">Minimum Marks Required</th>
+
+                    <th colspan="3">Marks Obtained
+                    </th>  
+                    
+                </tr>
+                <tr>
+                    <th>Internal Assesment</th>
+                    <th>External Council Exam Marks</th>
+                    <th>Total</th>
+                    <th>Internal Assesment</th>
+                    <th>External Council Exam Marks</th>
+                    <th>Total</th>
+                    
+                </tr>    
+                <tr ng-repeat="SubjectName in marksheetList">
+                    <td>{{$index + 1}}</td>
+                    <td>{{SubjectName.SubjectName}}</td>
+                    <td>25</td>
+                    <td>75</td>
+                    <td>{{SubjectName.Total}}</td>
+                    <td>{{SubjectName.pass}}</td>
+                    <td>23</td>
+                    <td>59</td>
+                    <td>{{SubjectName.MarksObtained}}</td>
+                </tr>
+                <!-- <tr>
+                    <td>2</td>
+                    <td>BEHAVIOURAL SCIENCE</td>
+                    <td>25</td>
+                    <td>75</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>23</td>
+                    <td>59</td>
+                    <td>82</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>NURSING FOUNDATION</td>
+                    <td>25</td>
+                    <td>75</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>23</td>
+                    <td>59</td>
+                    <td>82</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>COMMUNITY HEALTH NURSING-I</td>
+                    <td>25</td>
+                    <td>75</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>23</td>
+                    <td>59</td>
+                    <td>82</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>FUNDAMENTAL OF NURSING-PRACTICAL-1</td>
+                    <td>25</td>
+                    <td>75</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>23</td>
+                    <td>59</td>
+                    <td>82</td>
+                </tr> -->
+                <tfoot>
+                    <tr>
+                        <!-- <td></td> -->
+                        <th colspan="2">Total</th>
+                        <th>150</th>
+                        <th>350</th>
+                        <th>500</th>
+                        <th>250</th>
+                        <th>136</th>
+                        <th>234</th>
+                        <th>370</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="marksheet_notes">
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>First</th>
+                    <th>Second</th>
+                    <th>Third</th>
+                    <th>Grand Total</th>
+                    <th colspan="2">Total = (Obtained marks/Out of marks)</th>
+                </tr>
+                <tr>
+                    <th>Session</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Result</td>
+                    <td>Division</td>
+                </tr>
+                <tr>
+                    <th>Total Marks Obtained</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Pass</td>
+                    <td>First</td>
+                </tr>
+                <tr>
+                    <th>Max Marks </th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">Percentage : 80%</td>
+
+                </tr>
+            </table>
+            
+        </div>
+
+
+        <div class="marksheet_footer">
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Prepared By .............................</p>
+                    <p>Checked By .........................</p>
+                    <p>Date ...................</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="marksheeet_hologram_footer">
+                        <img src="logo.jpg" width="120px" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4 marksheet_registrar_sign">
+                    <p>REGISTRAR</p>
+                    <p>Madhya Pradesh Nurses Registration Council, Bhopal (M.P.)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="marksheet_rules">
+            <h3>Rules-</h3>
+            <ol>
+                <li>
+                    No Change in this statement of marks shall be made except by the authority 
+issuing it. Any infringement of this requirement will result in the cancellation of the statement in question and may also involve composition of other appropriate penalty as may be decided by the Council. 
+</li>
+<li>
+    Total three consecutive chances will be given to the candidate to appear for 
+    the examination and after failing in third attempt she/he will be disqualified to appear for the Council's examination 
+</li> 
+<li>
+     “F” adjacent to Marks denotes failure 
+</li>
+
+<li>
+C'adjacent to marks denotes marks carried forward from previous exam 
+
+                </li>
+            </ol>
+            <div class="marksheet_result">
+                <table>
+                    <tr>
+                        <th>Distinction </th>
+                        <td>80% and above</td>
+                    </tr>
+                    <tr>
+                        <th>First Division</th>
+                        <td>70% and 79.99%</td>
+                    </tr>
+                    <tr>
+                        <th>Second Division </th>
+                        <td>60% and 69.99%</td>
+                    </tr>
+                    <tr>
+                        <th>Pass</th>
+                        <td>50% and 59.99%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+    // console.log($data);
+</script>
+</body>
+</html>

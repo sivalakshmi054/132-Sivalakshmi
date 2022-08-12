@@ -1,0 +1,311 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mainbody container-fluid">
+                <p class="page-title">Master Setting</p>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+
+                        <div class="lineTab">
+                            <a href="javascript:" id="A1" class="linetags" ng-click="AcademicYearRedirect()">Academic
+                                Year</a>
+                            <a href="javascript:" id="A9" class="lineActive linetags" ng-click="CourseSecRedirect()">Course/Sec</a>
+                            <a href="javascript:" id="A9" class="linetags" ng-click="GradeRedirect()">Grade</a>
+                            <a href="javascript:" id="A9" class="linetags" ng-click="ExamMenuRedirect()">Exam</a>
+                            <a href="javascript:" id="A9" class="linetags" ng-click="SubjectRedirect()">Subject</a>
+                            <a href="javascript:" id="A9" class="linetags" ng-click="ExamSubjectRedirect()">Exam/Subject</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                        <div class="panel panel-default" id="CourseSection">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td width="12%">
+                                                <label>AcademicYear<font class='mandatory-field'
+                                                        style="color: red" ;>*</font></label>
+                                            </td>
+                                            <td width="20%">
+                                                <select ng-model="AcademicYearId" class="form-control" ng-required="true"
+                                                    ng-click="AcademicYearListFunction()">
+                                                    <option value="0">Select</option>
+                                                    <option ng-repeat="sel in AcademicYearList" ng-selected="AcademicYearId==sel.id"
+                                                        value="{{sel.id}}">{{sel.academicyear}}</option>
+                                                </select>
+                                            </td>
+                                            <td width="10%">
+                                                <label>Course</label>
+                                            </td>
+                                            <td width="20%">
+                                                <select ng-model="CourseFilter" class="form-control" ng-required="true">
+                                                    <option value="0">Select</option>
+                                                    <option ng-repeat="sel in Courselist" ng-selected="CourseFilter==sel.id"
+                                                        value="{{sel.id}}">{{sel.course}}</option>
+                                                </select>
+                                            </td>
+                                            <td width="10%">
+
+                                                <label>Status</label>
+                                            </td>
+                                            <td width="20%">
+                                                <select class="form-control" ng-model="IsActive">
+                                                    <option value="-1">All</option>
+                                                    <option value="0">InActive</option>
+                                                    <option value="1">Active</option>
+                                                </select>
+                                            </td>
+
+                                            <td width="50%">
+                                                <button type="button" class="btn btn-small" ng-click="CourseSectionsearch()">Go</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                            <div class="col-lg-12 tabpage">
+                                <a href="javascript:" ng-click="AddCourseSectionModal(CourseSectionClearPopup())" class="btn btn-autosize pull-right mb-15">Add
+                                    New</a>
+
+                            </div>
+
+                            <form class="form-horizontal" role="form" name="patientform" id="patientform">
+                                <table st-table="emptydatag" style="width: 100%" st-safe-src="CourseSectionList" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr style="text-align: center">
+                                            <th st-ratio="5">#</th>
+
+                                            <th st-ratio="35" st-sort="Course">Course</th>
+                                            <th st-ratio="35" st-sort="Section">Section</th>
+                                            <th st-ratio="8">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-if="flag==0 && CourseSectionList.length==0">
+                                            <td colspan="5" class="text-center">
+                                                No Records Found
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat="Cour in emptydatag">
+                                            <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+
+                                            <td style="text-align: left">{{Cour.course}}</td>
+                                            <td style="text-align: left">{{Cour.sectionname}}</td>
+
+                                            <td style="text-align: center">
+                                                <a href="javascript:" ng-click="CourseSectionViewModal(Cour.id)" title="View">
+                                                    <img src="/img/ViewIcon.png" />
+                                                </a>
+                                                <a href="javascript:" ng-click="Cour.isactive == 0 ||CourseSectionEditModal(Cour.id)"
+                                                    title="Edit">
+                                                    <img src="/img/EditIcon.png" ng-if="Cour.isactive==1" />
+                                                </a>
+                                                <a href="javascript:" ng-click="ErrorFunction()" title="Edit">
+                                                    <img src="/img/EditIcon.png" ng-if="Cour.isactive==0" />
+                                                </a>
+                                                <a href="javascript:" ng-click="InActiveCourseSection(Cour.academicyearid,Cour.courseid)" title="Active">
+                                                    <img src="/img/ActiveIcon.png" ng-if="Cour.isactive==1" />
+                                                </a>
+                                                <a href="javascript:" ng-click="ActiveCourseSection(Cour.academicyearid,Cour.courseid)" title="Inactive">
+                                                    <img src="/img/InActiveIcon.png" ng-if="Cour.isactive==0" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot ng-show="CourseSectionList.length >10">
+                                        <tr>
+                                            <td colspan="10" class="text-center">
+                                                <items-page items-On-Page="itemsOnPage" total-Items="CourseSectionList.length"></items-page>
+                                                items per page
+                                                <div st-items-by-page="itemsOnPage" st-page-change="rembemberCurrentPage(newPage)"
+                                                    st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+
+
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="CourseSectionAddModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:40%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h1 class="page-title">Course Section</h1>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" style="font-size:small">
+                    <table cellpadding="" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr ng-hide="Id>0">
+                            <td width="25%">
+                                <label>AcademicYear
+                                    <font class='mandatory-field' style="color: red" ;>*</font>
+                                </label>
+                            </td>
+                            <td width="50%">
+                                <select ng-model="AcademicYear" class="form-control" ng-required="true" ng-click="AcademicYearListFunction()">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in AcademicYearList" ng-selected="AcademicYear==sel.id"
+                                        value="{{sel.id}}">{{sel.academicyear}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr ng-hide="Id>0">
+                            <td>
+                                <label>Course
+                                    <font class='mandatory-field' style="color: red" ;>*</font>
+                                </label>
+                            </td>
+                            <td>
+                                <select ng-model="Course" multiple="multiple" ng-options="item1.id as item1.course for item1 in Courselist"
+                                    multiselect-dropdown></select>
+                            </td>
+                        </tr>
+                        <tr ng-show="Id>0">
+                            <td>
+                                <label>AcademicYear</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewAcademicYear}}</span>
+                            </td>
+                        </tr>
+                        <tr ng-show="Id>0">
+                            <td style="width: 20%">
+                                <label>Course</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewCourseName}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="10%">
+                                <label>Section
+                                    <font class='mandatory-field' style="color: red" ;>*</font>
+                                </label>
+                            </td>
+                            <td>
+
+
+                                <select ng-model="SectionName" multiple="multiple" ng-options="item.id as item.sectionname for item in SectionList"
+                                    multiselect-dropdown></select>
+                            </td>
+
+                        </tr>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align:center;">
+                <button type="button" class="btn  btn-save" ng-hide="Id>0" ng-click="CourseSection_AddEdit()">Save</button>
+                <button type="button" class="btn  btn-save" ng-show="Id>0" ng-click="CourseSection_Edit()">Save</button>
+                <button type="button" class="btn  btn-save" ng-click="CourseSectionCancelPopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="CourseSectionViewModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:40%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h1 class="page-title">Add Course Section</h1>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" style="font-size:small">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td>
+                                <label>AcademicYear</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewAcademicYear}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">
+                                <label>Course</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewCourseName}}</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>Section</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>
+                                    {{Section}}
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+            </div>
+            <div>
+                </table>
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align:center;">
+                <button type="button" class="btn  btn-save" ng-click="CourseSectionCancelPopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    #tag.li {
+        border-top: 1px solid black;
+        padding: .3em 0;
+    }
+
+    #tag2.ul {
+        margin-left: 40px;
+        padding-left: 0px;
+        border-bottom: 1px solid black;
+        list-style: none;
+        width: 36%;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        $('.linetags').click(function () {
+            $('.linetags').removeClass('lineActive');
+            $(this).addClass('lineActive');
+
+        });
+    });
+
+    function TabClick(item) {
+        $('.panel').addClass('collapse');
+        $('#' + item).removeClass('collapse');
+    }
+</script>
+<style>
+    .addnew {
+        margin-top: 10px;
+    }
+</style>
+<style>
+    .tabpage {
+        padding-top: 10px;
+        padding-right: 0px;
+    }
+</style>

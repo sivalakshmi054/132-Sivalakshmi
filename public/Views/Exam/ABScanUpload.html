@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row" >
+      <div class="col-md-12">
+          <p class="page-title nopadding">Answer Book Scan</p>
+      </div>
+      <div class="col-md-12">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <form class="form-horizontal" role="form">
+                      <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                          <tr>
+                              <td width="15%">
+                                    <label>Scan Answer Book
+                                            <font class='mandatory-field' style="color: red";>*</font>
+                                    </label>
+                                </td>
+                                <td width="15%">
+                                    <input type="text" class="form-control" id="QRCodeid" ng-change="ClearPhotoList();" ng-model="QRCode" ng-init="MinLength=''"  ng-maxlength="100" maxlength="100" ng-blur="QRCodelistfunctionFun()" />
+                                </td>
+                                  <td width="15%">
+                                    <span style="background-color:green;padding: 0.9rem 0.75rem;border-radius: 50%;" ng-if="Uploaddata==1">&nbsp;&nbsp;&nbsp;Found&nbsp;&nbsp;&nbsp;</span>
+                                    <span style="background-color:red;padding: 0.9rem 0.75rem;border-radius: 50%;" ng-if="Uploaddata==0">&nbsp;&nbsp;&nbsp;Not Found&nbsp;&nbsp;&nbsp;</span>
+                                  </td>
+                                  <td width="10%">
+                                    <div class="form-group row">
+                                      <div class="image-upload">
+                                        <label for="UploadPhoto" class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" title="Click to Upload Logo">
+                                          <h1><i class="fa fa-upload" style="color: #024da0;"></i></h1>
+                                        </label>
+                                        <input id="UploadPhoto" type="file" style="display: none;" fileread="UploadPhoto1"
+                                        onchange="angular.element(this).scope().photoChange(this)" accept="image/jpeg" multiple/>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn  btn-save" ng-click="UploadPhotoAdd()" ng-disabled="Uploaddata==0" title="Click to upload the scanned copies">Upload</button>
+                                  </td>
+                          </tr>
+                      </table>
+                      <div>
+                        <br>
+                        Total uploaded files are <b>{{pictureList.length}}</b>
+                        <br>&nbsp;
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<script>
+    function QRCodelistfunction() {
+        var x = document.getElementById("QRCodeid");
+        window.QRCodelistfunctionFun(x.value);
+    }
+</script>

@@ -1,0 +1,523 @@
+<style>
+ @page {
+        size: a4;
+            margin: 0px;
+    }
+    @media print {
+        .heading,#sidebar,.header,.header_container,.marksheetliststudent {
+            display: none !important;
+            overflow: hidden;
+            visibility: hidden;
+
+            /* position: absolute; */
+            /* z-index: -2; */
+            /* position: relative; */
+        
+        }
+        .page {
+            /* width: 100%; */
+            display: inline-block;
+            margin: 0;
+      border: initial;
+      border-radius: initial;
+      width: initial;
+      min-height: initial;
+      box-shadow: initial;
+      background: initial;
+      page-break-after: always;
+            /* border: 1px solid #000; */
+            /* transform: translate(10%, 10%); */
+            /* position: absolute; */
+            
+            width: 21cm;
+            min-height: 29.7cm;
+            margin-left: -207.5px;
+            margin-top: 0px;
+            z-index: 1;
+        }
+        body {
+
+              overflow-y: hidden;    
+              overflow: hidden;        
+              /* position: relative; */
+              z-index: -2;
+        }
+    }
+.page {
+    min-height: 29.7cm;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 0 auto;
+    border: 6px dotted #000;
+    /* border: 1px solid green; */
+}
+.marksheet_header {
+    width: 95%;
+    margin: 0 auto;
+    font-size: 25px;
+    font-weight: 600;
+    /* line-height: 6px; */
+    text-align: center;
+}
+.marksheet_header h3 {
+	text-shadow: 1px 2px 3px rgb(158, 158, 158);
+}
+.marksheet-deatils {
+    width: 50%;
+    /* text-align: center; */
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.marksheet-deatils table {
+    width: 95%;
+    margin: 0 auto;
+}
+.marksheet-deatils table tr th {
+    text-align: left;
+}
+.subjectwise_details table, .marksheet_notes table,.marksheet_rules table {
+    width: 95%;
+    margin: 0 auto;
+}
+td th {
+    max-width: 200px;
+}
+.marksheet_rules {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.subjectwise_details table, .subjectwise_details th, .subjectwise_details td {
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.marksheet_notes table, .marksheet_notes th, .marksheet_notes td {
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.marksheet_rules table, .marksheet_rules th, .marksheet_rules td {
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.marksheet_notes {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.marksheet_final_result {
+    width: 300px;
+    margin-top: 30px;
+}
+.marksheet_result {
+    font-size: 14px;
+    line-height: 5px;
+    margin-left: 50px;
+}
+.marksheet_footer {
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px 6px;
+    border: 1px solid #000;
+    margin-bottom: 30px;
+}
+
+.marksheet_registrar_sign {
+    padding-top: 37px;
+    /* line-height: 5px; */
+    text-align: center;
+}
+.row .col-md-4 {
+    font-size: 16px;
+    max-width: 300px;
+}
+</style>
+<div class="container header_container">
+    <div class="row" ng-init="CourseBasedSectionFunction();CourseBasedExamNameFunction();ExamBasedSubject()" >
+        <div class="col-md-12">
+            <!-- <p class="page-title nopadding">Generate Hall Ticket</p> -->
+        </div>
+        <div class="col-md-12">
+              <div><p class="page-title">Marksheet<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('tableid', 'tableid_img')" style="width: 20px;" id="tableid_img"></sub></p></div>
+                        <div class="panel panel-default" id="tableid"> 
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                <tr> 
+                                    <td width="16%">
+                                                <label>Academic Year<font class='mandatory-field' style="color: red";>*</font></label>
+                                            </td>
+                                            <td width="16%">
+                                               <select ng-model="AcademicYearId" class="form-control" ng-required="true" style="width:190px;" ng-change="AcademicYearBasedCourseFunction();CourseClearFunction()">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in AcademicYearList" ng-selected="AcademicYearId==sel.id" value="{{sel.id}}">{{sel.academicyear}}</option>
+                                                </select>   
+                                            </td>
+                                            <td width="16%">
+                                                    <label>Course<font class='mandatory-field' style="color: red";>*</font></label>
+                                                </td>
+                                                <td width="16%">
+                                                   <select ng-model="CourseId" class="form-control" ng-required="true" ng-change="CourseBasedSectionFunction();CourseBasedExamNameFunction();ExamNameClearFunction()">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in Courselist" ng-selected="CourseId==sel.id" value="{{sel.id}}">{{sel.course}}</option>
+                                                    </select>   
+                                                </td>
+                                                <td width="16%">
+                                                        <label>Medium</label>
+                                                    </td>
+                                                    <td width="16%">
+                                                       <select ng-model="MediumId"  class="form-control" ng-required="true" style="width:190px;">
+                                                            <option value="">Select</option>
+                                                            <option ng-repeat="sel in Mediumlist" ng-selected="MediumId==sel.id" value="{{sel.id}}">{{sel.mediumname}}</option>
+                                                        </select>   
+                                                    </td>
+                                                </tr>
+                                                <tr> 
+                                                    <td><label>Section</label>
+                                                            </td>                                                              
+                                                            <td>
+                                                               <select ng-model="SectionId" class="form-control" ng-required="true" style="width:190px;">
+                                                                    <option value="0">Select</option>
+                                                                    <option ng-repeat="sel in CourseBasedSectionList" ng-selected="SectionId==sel.id" value="{{sel.id}}">{{sel.sectionname}}</option>
+                                                                </select>   
+                                                            </td>
+                                                        <td>
+                                                                <label>Exam Name<font class='mandatory-field' style="color: red";>*</font></label>
+                                                            </td>
+                                                            <td>
+                                                               <select ng-model="ExamNameId"  class="form-control" ng-required="true" style="width:190px;" ng-change="ExamBasedSubject();SubjectClearfunction()">
+                                                                    <option value="0">Select</option>
+                                                                    <!-- <option ng-if="CourseId>0" ng-repeat="sel in CourseExamList  | filter:{ CourseId:CourseId }" ng-selected="ExamNameId==sel.Id" value="{{sel.Id}}">{{sel.ExamName}}</option> -->
+                                                                    <option ng-repeat="sel in ExamNameList" ng-selected="ExamNameId==sel.id"
+                                                                    value="{{sel.examnameid}}">{{sel.examname}}</option>
+                                                                </select>   
+                                                            </td>
+                                                         
+                                <td >
+                                    <button type="button" class="btn btn-small" title="Click to List the Records" ng-click="examlistsearch()">Go</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 marksheetliststudent">
+            <!-- {{marksheetList}} -->
+            <table st-table="emptydata" style="width: 100%" st-safe-src="marksheetList" class="table table-striped table-bordered">
+                <thead>
+                    <tr style="text-align: center">
+                        <!-- <th st-ratio="5">Select
+                            <input type="checkbox"  id="CheckAll" ng-model="master" ng-click="isSelectAll()"/>
+                        </th> -->
+                        <th st-ratio="10" st-sort="StudentId">Student Id</th>
+                        <th st-ratio="15" st-sort="StudentName">Student Name</th>
+                        <th st-ratio="10" st-sort="RollNumber">Roll Number</th>
+                        <!-- <th st-ratio="10" st-sort="Gender">Gender</th> -->
+                        <th st-ratio="10" st-sort="FatherName">Father Name</th>
+                        <!-- <th st-ratio="10" st-sort="SMobileNumber">Mobile Number</th> -->
+                        <th st-ratio="10" st-sort="">Action</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="flag==0" && "marksheetList.length==0">
+                        <td colspan="10" class="text-center">
+                            No Records Found
+                        </td>
+                    </tr>
+                   
+                    <tr ng-repeat="Marksheet in emptydata">
+                            <!-- <td style="text-align: center">                               
+                                <input type="checkbox" ng-model="Marksheet.selectedstudent"/>
+                            </td>                       -->
+                            <td style="text-align: left">{{Marksheet.studentid}}</td>
+                            <td style="text-align: left">{{Marksheet.studentname}}</td>
+                            <td style="text-align: left">{{Marksheet.rollnumber}}</td>
+                            <!-- <td style="text-align: left">{{Marksheet.Gender}}</td> -->
+                            <td style="text-align: left">{{Marksheet.fathername}}</td>                               
+                            <!-- <td style="text-align: left">{{Marksheet.SMobileNumber}}</td> -->
+                            <td style="text-align: center">
+                                <a class="btn btn-autosize" title="Print" ng-click="previewMarksheet(Marksheet.Id)" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                    <a onclick="window.print();" title="Click to Print the Marksheet" class="btn btn-autosize">Print</a>
+                 
+                </div> 
+        </div>
+    </div>
+</div><script>
+    $(document).ready(function () {     
+        $("#radio_1").attr('checked', 'checked');  
+        });
+
+        $('#CheckAll').click(function () {
+        ($(this).is(":checked") ? $('.checkboxes').prop("checked", true): $('.checkboxes').prop("checked", false))
+            });
+
+    </script>
+
+<div class="row">
+    <div class="col-md-12" ng-init="PrintMarksheet();">
+        <div class="page" ng-repeat="StudentName in MarksheetStudentList">
+            <div class="marksheet_header">
+                <h3>MADHYA PRADESH NURSES REGISTRATION COUNCIL BHOPAL (M.P.)</h3>
+                <h5>Exam Date : 17th to 20th February 2021</h5>
+                <div class="row">
+                    <div class="col-md-4">
+    
+                    </div>
+                    <div class="col-md-4">
+                        <div class="marksheeet_hologram_header">
+                            <img src="logo.jpg" width="160px" alt="MPNRC Hologram">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="marksheeet_student_image">
+                            <img src="Uploads/{{StudentName.StudentPhoto}}" width="150px" height="180px" alt="Student Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="marksheet-deatils" >
+                <!-- {{marksheetList}} -->
+                <h4>General Nursing & Midwifery (G.N.M) Third Year (Regular)</h4>
+                <table st-safe-src="marksheetList">
+                <!-- @for($i = 0; $i < count($StudentName); $i++) -->
+                    <tr>
+                        <th>Name of the Candidate :</th>
+                        <td>{{ StudentName.studentname }}</td>
+                    </tr>
+                    <!-- @endfor -->
+                    <tr>
+                        <th>Father/Husband Name : </th>
+                        <td>{{FatherName}}</td>
+                    </tr>
+                    <tr>
+                        <th>Enrollment Number :</th>
+                        <td>{{EnrollmentNumber}}</td>
+                    </tr>
+                    <tr>
+                        <th>Roll Number :</th>
+                        <td>{{RollNumber}}</td>
+                    </tr>
+                    <tr>
+                        <th>Institute Name :</th>
+                        <td>Ramdev College Of Nursing Chhatarpur [09110]</td>
+                    </tr>
+                    <tr>
+                        <th>Name of the Examination Centre :</th>
+                        <td>Naveen College, Chhatpur</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="subjectwise_details">
+                <table>
+                    <tr>
+                        <th rowspan="2">Paper</th>
+                        <th rowspan="2">Subject Name</th>
+                        <th colspan="3">
+                            Maximum Marks
+                        </th>   
+                        <th rowspan="2">Minimum Marks Required</th>
+    
+                        <th colspan="3">Marks Obtained
+                        </th>  
+                        
+                    </tr>
+                    <tr>
+                        <th>Internal Assesment</th>
+                        <th>External Council Exam Marks</th>
+                        <th>Total</th>
+                        <th>Internal Assesment</th>
+                        <th>External Council Exam Marks</th>
+                        <th>Total</th>
+                        
+                    </tr>    
+                    <tr ng-repeat="SubjectName in MarksheetStudentSubjectList">
+                        <td>{{$index + 1}}</td>
+                        <td>{{SubjectName.subjectname}}</td>
+                        <td>25</td>
+                        <td>75</td>
+                        <td>{{SubjectName.total}}</td>
+                        <td>{{SubjectName.pass}}</td>
+                        <td>23</td>
+                        <td>59</td>
+                        <td>{{SubjectName.marksobtained}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td>2</td>
+                        <td>BEHAVIOURAL SCIENCE</td>
+                        <td>25</td>
+                        <td>75</td>
+                        <td>100</td>
+                        <td>50</td>
+                        <td>23</td>
+                        <td>59</td>
+                        <td>82</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>NURSING FOUNDATION</td>
+                        <td>25</td>
+                        <td>75</td>
+                        <td>100</td>
+                        <td>50</td>
+                        <td>23</td>
+                        <td>59</td>
+                        <td>82</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>COMMUNITY HEALTH NURSING-I</td>
+                        <td>25</td>
+                        <td>75</td>
+                        <td>100</td>
+                        <td>50</td>
+                        <td>23</td>
+                        <td>59</td>
+                        <td>82</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>FUNDAMENTAL OF NURSING-PRACTICAL-1</td>
+                        <td>25</td>
+                        <td>75</td>
+                        <td>100</td>
+                        <td>50</td>
+                        <td>23</td>
+                        <td>59</td>
+                        <td>82</td>
+                    </tr> -->
+                    <tfoot>
+                        <tr>
+                            <!-- <td></td> -->
+                            <th colspan="2">Total</th>
+                            <th>150</th>
+                            <th>350</th>
+                            <th>500</th>
+                            <th>250</th>
+                            <th>136</th>
+                            <th>234</th>
+                            <th>370</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+    
+            <div class="marksheet_notes">
+                <table>
+                    <tr>
+                        <th>Year</th>
+                        <th>First</th>
+                        <th>Second</th>
+                        <th>Third</th>
+                        <th>Grand Total</th>
+                        <th colspan="2">Total = (Obtained marks/Out of marks)</th>
+                    </tr>
+                    <tr>
+                        <th>Session</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Result</td>
+                        <td>Division</td>
+                    </tr>
+                    <tr>
+                        <th>Total Marks Obtained</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Pass</td>
+                        <td>First</td>
+                    </tr>
+                    <tr>
+                        <th>Max Marks </th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colspan="2">Percentage : 80%</td>
+    
+                    </tr>
+                </table>
+                
+            </div>
+    
+    
+            <div class="marksheet_footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Prepared By .............................</p>
+                        <p>Checked By .........................</p>
+                        <p>Date ...................</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="marksheeet_hologram_footer">
+                            <img src="logo.jpg" width="120px" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-4 marksheet_registrar_sign">
+                        <p>REGISTRAR</p>
+                        <p>Madhya Pradesh Nurses Registration Council, Bhopal (M.P.)</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="marksheet_rules">
+                <h3>Rules-</h3>
+                <ol>
+                    <li>
+                        No Change in this statement of marks shall be made except by the authority 
+    issuing it. Any infringement of this requirement will result in the cancellation of the statement in question and may also involve composition of other appropriate penalty as may be decided by the Council. 
+    </li>
+    <li>
+        Total three consecutive chances will be given to the candidate to appear for 
+        the examination and after failing in third attempt she/he will be disqualified to appear for the Council's examination 
+    </li> 
+    <li>
+         “F” adjacent to Marks denotes failure 
+    </li>
+    
+    <li>
+    C'adjacent to marks denotes marks carried forward from previous exam 
+    
+                    </li>
+                </ol>
+                <div class="marksheet_result">
+                    <table>
+                        <tr>
+                            <th>Distinction </th>
+                            <td>80% and above</td>
+                        </tr>
+                        <tr>
+                            <th>First Division</th>
+                            <td>70% and 79.99%</td>
+                        </tr>
+                        <tr>
+                            <th>Second Division </th>
+                            <td>60% and 69.99%</td>
+                        </tr>
+                        <tr>
+                            <th>Pass</th>
+                            <td>50% and 59.99%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

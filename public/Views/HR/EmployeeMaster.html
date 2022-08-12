@@ -1,0 +1,936 @@
+<!-- Candidate Resume Create Page -->
+<head>
+</head>
+<div class="mainbody container-fluid" ng-init="EmployeeMaster_View()">
+    <h1 class="page-title">Employee Master</h1>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  ng-init="Commontransaction_DetailsList()">
+        
+            <div><h1 class="page-title">BasicDetails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('tableid', 'tableid_img')" style="width: 20px;" id="tableid_img"></sub></h1></div>
+            <div class="panel panel-default" id="tableid">    
+            <div class="panel-body" id="tableid1">
+                <form class="form-horizontal" role="form" name="patientform" id="basicform">
+                   
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td>
+                                <label>EnquiryNumber<font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td ng-hide="Id>0">
+                                    <div angucomplete-alt id="ex1"
+                                        placeholder=""
+                                        maxlength="50"
+                                        pause="100"
+                                        selected-object="enquiryselected"
+                                        local-data="EnquiryList"
+                                        search-fields="EnquiryNumber"
+                                        title-field="EnquiryNumber"
+                                        minlength="1"
+                                        input-class="form-control"
+                                        match-class="highlight"
+                                        ng-click="AttendanceEnquiryList()"
+                                        onkeypress=" NoSpecChar(this.EnquiryNumber)">    
+                                    </div>  
+
+                            <td ng-show="Id>0">      
+                            <input type="text" class="form-control" ng-show="Id>0"  id="Textarea2" ng-model="EmployeeNumber"  ng-init="EmployeeNumber=''" placeholder="" ng-maxlength="20" maxlength="20" onkeypress=" NoSpecChar(this.EmployeeNumber)" ng-disabled="Id>0" />
+                            </td>
+                            <td width="15%" valign="top" rowspan="6">
+                                    <label>Photo</label>
+                            </td>
+                            <td width="35%" valign="top" rowspan="6">
+                                <div>
+                                    <input type="file" id="companyphoto" fileread="uploadphoto" onchange="angular.element(this).scope().logoChange(this)" name="FileName" title=" " style="height:0px !important" accept="image/x-png,image/gif,image/jpeg" />
+                                    <span id='btnLogo' class="fa fa-arrow-circle-o-up" style="font-size: 20px;"></span>
+                                </div>
+                                
+                                <img src="{{uploadphoto}}" width="120" height="150" class="mtb-7" ng-if="uploadphoto!='/storage/null'" ng-show="uploadphoto!=''" />
+
+                                <img src="/img/NoPhoto.jpg " width="120" height="150" ng-if="uploadphoto=='/storage/null' || uploadphoto=='' " />&nbsp &nbsp &nbsp
+                                <a href="javascript: " ng-click="imageclear() " title="Clear ">
+                                    <u>Clear</u>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>EmployeeNumber<font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Emp_EmployeeNumber" ng-init="Emp_EmployeeNumber=''" placeholder="" ng-maxlength="30" maxlength="30" onkeypress=" NoSpecChar(this.EmployeeNumber)"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:20%">
+                                <label>Title<font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td style="width:30%">
+                                <select ng-model="Title"  ng-required="true"  class="form-control">
+                                    <option value="">Select</option>
+                                    <option ng-repeat="sel in TitleList" ng-selected="Title==sel.id" value="{{sel.id}}">{{sel.title}}</option>
+                                </select> 
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>FirstName<font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="Textarea2" ng-model="FirstName" ng-init="FirstName=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress="ParticularSpecNumber(this.FirstName)"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>MiddleName</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="Textarea2" ng-model="MiddleName" ng-init="MiddleName=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress="ParticularSpecNumber(this.MiddleName)"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>LastName<font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="Textarea2" ng-model="LastName" ng-init="LastName=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress="ParticularSpecNumber(this.LastName)"/>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <label>ReportingTo</label>
+                                </td>
+                                <td>
+                                    <div angucomplete-alt id="ex1"
+                                    placeholder=""
+                                    maxlength="50"
+                                    pause="100"
+                                    selected-object="employeeselected"
+                                    local-data="EmployeeNameList"
+                                    search-fields="Name"
+                                    title-field="Name"
+                                    minlength="1"
+                                    input-class="form-control"
+                                    match-class="highlight"
+                                    >    
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>FatherName</label>
+                                </td>
+                                <td>
+    
+                                    <input type="text"  class="form-control" id="Textarea2" ng-model="FatherName" ng-init="FatherName=''" placeholder="" ng-maxlength="100" maxlength="100" onkeypress="ParticularSpecNumber(this.FatherName)"/>
+                                   
+                                </td>
+                            
+                                <td>
+                                    <label>MotherName</label>
+                                </td>
+                                <td>
+    
+                                    <input type="text"  class="form-control" id="Textarea2" ng-model="MotherName" ng-init="MotherName=''" placeholder="" ng-maxlength="100" maxlength="100" onkeypress="ParticularSpecNumber(this.MotherName)"/>
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%">
+                                    <label>Gender<font class='mandatory-field' style="color: red";>*</font></label>
+                                </td>
+                                <td style="width:30%">
+                                    <select ng-model="Gender"  class="form-control" ng-required="true">
+                                        <option value="">Select</option>
+                                        <option ng-repeat="sel in GenderList" ng-selected="Gender==sel.id" value="{{sel.id}}">{{sel.gender}}</option>
+                                    </select> 
+                                </td>
+                            
+                                <td width="20%">
+                                        <label>DOB<font class='mandatory-field' style="color: red";>*</font></label>
+                                    </td>
+                                    <td width="30%">
+                                        <div class="input-group date" id="DOB" >
+                                            <input type="text" class="form-control" ng-model="DOB" ng-init="DOB=''" ng-required="true" style="width:230px"/>
+                                            <span class="input-group-addon" enddate='+0d'><i class="fa fa-th"></i></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                        <td width="20%">
+                                                <label>DOJ<font class='mandatory-field' style="color: red";>*</font></label>
+                                            </td>
+                                            <td width="30%">
+                                                <div class="input-group date" id="DOJ">
+                                                    <input type="text" class="form-control" ng-model="DOJ" ng-init="DOJ=''" ng-required="true" style="width:230px"/>
+                                                    <span class="input-group-addon" enddate='+0d'><i class="fa fa-th"></i></span>
+                                                </div>
+                                            </td>
+                                         
+                                            <td style="width: 20%">
+                                                <label>Grade</label>
+                                            </td>
+                                            <td style="width:30%">
+                                                <select ng-model="GradeName"  class="form-control"  ng-required="true">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in GradeList" ng-selected="GradeName==sel.id" value="{{sel.id}}">{{sel.gradename}}</option>
+                                                </select> 
+                                            </td>
+                                   </tr>
+                                   <tr>
+                                   <td>
+                                        <label>TotalExperience</label>
+                                    </td>
+                                    <td class="nopadding">
+                                            <table cellpadding="0" cellspacing="0" border="0" class="formControlGroup" width="68%">
+                                                <tr>
+                                                    <td width="30%" class="align-left">
+                                                        <input type="text" class="form-control" id="Experience_Years" name="Experience_Years" ng-model="Experience_Years" ng-init="Experience_Years=''" onkeypress="varifyNumberPositive(this.Experience_Years)" placeholder="" ng-maxlength="2" maxlength="2" />
+                                                    </td>
+                                                    <td width="20%" class="nopadding">
+                                                        Years
+                                                    </td>
+                                                    <td width="30%" class="align-middle">
+                                                        <input type="text" class="form-control" id="Experience_Months" name="Experience_Months" ng-model="Experience_Months" ng-init="Experience_Months=''" onkeypress="varifyNumberPositive(this.Experience_Months)" placeholder="" ng-maxlength="2" maxlength="2" />
+                                                    </td>
+                                                    <td width="20%" class="nopadding">
+                                                        Months
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                    </td>
+                            
+                                    <td style="width: 20%">
+                                        <label>EmployeeType<font class='mandatory-field' style="color: red";>*</font></label>
+                                    </td>
+                                    <td style="width:30%">
+                                        <select ng-model="EmployeeType"  class="form-control" ng-required="true">
+                                            <option value="">Select</option>
+                                            <option ng-repeat="sel in EmployeeTypeList" ng-selected="EmployeeType==sel.id" value="{{sel.id}}">{{sel.employeetype}}</option>
+                                        </select> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">
+                                            <label>Specification</label>
+                                        </td>
+                                        <td style="width:30%">
+                                            <select ng-model="Specification"  class="form-control" ng-required="true">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="sel in SpecificationList" ng-selected="Specification==sel.id" value="{{sel.id}}">{{sel.specification}}</option>
+                                            </select> 
+                                    </td>
+                               
+                                    <td style="width: 20%">
+                                        <label>Designation<font class='mandatory-field' style="color: red";>*</font></label>
+                                    </td>
+                                    <td style="width:30%">
+                                        <select ng-model="Designation"  class="form-control" ng-required="true">
+                                            <option value="">Select</option>
+                                            <option ng-repeat="sel in DesignationList" ng-selected="Designation==sel.id" value="{{sel.id}}">{{sel.designation}}</option>
+                                        </select> 
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td style="width: 20%">
+                                            <label>Department<font class='mandatory-field' style="color: red";>*</font></label>
+                                        </td>
+                                        <td style="width:30%">
+                                            <select ng-model="DepartmentName"  class="form-control"  ng-required="true">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="sel in DepartmentList" ng-selected="DepartmentName==sel.id" value="{{sel.id}}">{{sel.departmentname}}</option>
+                                            </select> 
+                                        </td>
+                                        <td style="width: 20%" ng-show="loginid == -1">
+                                            <label>Institution<font class='mandatory-field' style="color: red";>*</font></label>
+                                        </td>
+                                        <td style="width:30%" ng-show="loginid == -1">
+                                            <select ng-model="admininstitutionid"  class="form-control"  ng-required="true">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="sel in admininstitutionlist" ng-selected="admininstitutionid==sel.id" value="{{sel.id}}">{{sel.institutionname}}</option>
+                                            </select> 
+                                        </td>
+                                </tr>
+                                
+                                <tr>
+                                  
+                                        <td style="width: 20%">
+                                            <label>College/Institution<font class='mandatory-field' style="color: red";>*</font></label>
+                                        </td>
+                                        <td style="width:30%">
+                                            <select ng-model="collegeinstitutionid"  class="form-control"  ng-required="true">
+                                                <option value="">Select</option>
+                                                <option ng-repeat="sel in collegeinstitutionlist" ng-selected="collegeinstitutionid==sel.id" value="{{sel.id}}">{{sel.institutionname}}</option>
+                                            </select> 
+                                        </td>
+                                </tr>
+                                <tr>
+
+                                    <td valign="top">
+                                        
+                                        <label>PreviousWorkDetails</label>
+    
+                                    </td>
+    
+                                    <td colspan="3">
+    
+    
+    
+                                        <form class="form-horizontal" role="form">
+    
+                                            <table class="table table-striped table-bordered" template-pagination="custom/pager" style="width: 100%; margin-bottom:0px !important">
+    
+                                                <thead>
+                                                        <tr style="text-align: center">
+                                                                <th width="5%" style="text-align: center">#</th>
+                                                                <th width="20%">Institution Name</th>
+                                                                <th width="20%">Address</th>
+                                                                <th width="7%">Start Date</th>
+                                                                <th width="7%">End Date</th>
+                                                                <th width="9%">Specification</th>
+                                                                <th width="15%">Primary Responsibilities</th>
+                                                                <th width="5%">Action</th>
+                                                            </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-if="AddPrevious.length==0">
+                                                        <td colspan="8" style="text-align: center">
+                                                            No Records Found
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="text-align: center" ng-repeat="row in AddPrevious">
+    
+                                                        <td width="5%" style="text-align: center">{{$index+1}}</td>
+    
+                                                        <td width="25%">
+    
+                                                            <input type="text" class="form-control" name="Days" ng-model="row.CompanyName" ng-init="CompanyName=''" id="inputDays" placeholder="" ng-maxlength="100" maxlength="100">
+    
+                                                        </td>
+                                                        <td width="25%">
+    
+                                                            <input type="text" class="form-control" name="CompanyAddress" ng-model="row.CompanyAddress" ng-init="CompanyAddress=''" id="Text6" placeholder="" ng-maxlength="100" maxlength="100">
+    
+                                                        </td>
+                                                        <td width="5%">
+                                                            <input type="text" datepicker ng-model="row.StartDate" ng-init="StartDate=''" />
+                                                        </td>
+                                                        <td width="5%">
+                                                            <input type="text" datepicker ng-model="row.EndDate" ng-init="EndDate=''" />
+                                                        </td>
+                                                        <td width="15%">
+    
+                                                            <input type="text" class="form-control" name="Skills_Utilized" ng-model="row.Skills_Utilized" ng-init="Skills_Utilized=''" id="Text14" placeholder="" onkeypress="varifychar(this.Skills_utilized)" ng-maxlength="100" maxlength="100">
+    
+                                                        </td>
+                                                        <td width="15%">
+    
+                                                            <input type="text" class="form-control" name="Days" ng-model="row.PrimaryResponsibility" ng-init="PrimaryResponsibility=''" id="Text16" onkeypress="varifychar(this.Primary_Resposibilities)" ng-maxlength="100" maxlength="100">
+    
+                                                        </td>
+                                                        <td style="text-align: center" ><input type="image" src="/img/deleteIcon.png" title='Click to delete'
+                                                            ng-click="RemovePrevious_Item($index)" ng-model="row.selectedPre"
+                                                            style="width: 20px;" id="Image4" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <a href="javascript:" ng-click="PreviousSave()">|Add|</a>
+                                            
+                                            <!-- <a href="javascript:" ng-click="RemovePrevious_Item()">|Remove|</a> -->
+    
+                                        </form>
+                                    </td>
+                                </tr>
+                                <td valign="top">
+                                        
+                                    <label>Educational Details</label>
+
+                                </td>
+                                    <td colspan="3">
+    
+                                        <form class="form-horizontal" role="form">
+    
+                                            <table class="table table-striped table-bordered" template-pagination="custom/pager" style="width: 100%; margin-bottom:0px !important">
+    
+                                                <thead>
+                                                        <tr style="text-align: center">
+                                                                <th width="5%" style="text-align: center">#</th>
+                                                                <th width="20%">Qualification</th>
+                                                                <th width="20%">Year Of Passed Out</th>
+                                                                <th width="7%">Colleged University</th>
+                                                                <th width="7%">Percentage</th>
+                                                               
+                                                                <th width="5%">Action</th>
+                                                            </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-if="AddEducationalDetails.length==0">
+                                                        <td colspan="8" style="text-align: center">
+                                                            No Records Found
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="text-align: center" ng-repeat="EducationalDetails in AddEducationalDetails">
+    
+                                                        <td width="5%" style="text-align: center">{{$index+1}}</td>
+    
+                                                        <td width="25%">
+                                                            <select class="form-control" ng-model="EducationalDetails.QualificationId"
+                                                            ng-options="sel.Id as sel.Qualification for sel in QualificationList">
+                                                            <option value="">Select</option>
+                                                        </select>
+
+    
+                                                        </td>
+                                                        <td width="25%">
+    
+                                                            <input type="text" class="form-control" id="Text1" ng-model="EducationalDetails.YearOfPassedOut" ng-init="YearOfPassedOut=''"  ng-maxlength="4" maxlength="4" onkeypress="varifyNumberPositive(this.YearOfPassedOut)"/>
+    
+                                                        </td>
+                                                        <td width="5%">
+                                                            <input type="text" class="form-control"  id="Textarea2" ng-model="EducationalDetails.CollegedUnivercity" ng-init="CollegedUniv=''" placeholder="" ng-maxlength="50" maxlength="50"/>
+                                                        </td>
+                                                        <td width="5%">
+                                                            <input type="text" class="form-control"  id="Textarea2" ng-model="EducationalDetails.Percentage" ng-init="Percentage=''" placeholder=""  ng-maxlength="5" maxlength="5" onkeypress="OnlySpecCharNum(this.Percentage)"/>
+                                                        </td>
+                                                      
+                                                        <td style="text-align: center" ><input type="image" src="/img/deleteIcon.png" title='Click to delete'
+                                                            ng-click="RemoveEducationalDetails($index)" ng-model="row.selectedPre"
+                                                            style="width: 20px;" id="Image4" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <a href="javascript:" ng-click="EducationalDetailsSave()">|Add|</a>
+                                            
+                                            <!-- <a href="javascript:" ng-click="RemovePrevious_Item()">|Remove|</a> -->
+    
+                                        </form>
+                                    </td>
+                                </tr>
+                </form>
+
+                </table>
+            </div>
+            </div>
+
+            <div><h1 class="page-title">Personal    Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div2', 'tableid2_img')" style="width: 20px;" id="tableid2_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div2">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                    <!-- </tr> -->
+                    <tr>
+                            <td style="width: 20%">
+                                <label>Marital Status<font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td style="width:30%">
+                                <select ng-model="MaritalStatus"  class="form-control" ng-required="true">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in MaritalStatusList" ng-selected="MaritalStatus==sel.id" value="{{sel.id}}">{{sel.maritalstatus}}</option>
+                                </select> 
+                            </td>
+                            <td style="width: 20%">
+                                <label>Religion</label>
+                            </td>
+                            <td style="width:30%">
+                                <select ng-model="Religion"  class="form-control" ng-required="true">
+                                    <option value="">Select</option>
+                                    <option ng-repeat="sel in ReligionList" ng-selected="Religion==sel.id" value="{{sel.id}}">{{sel.religion}}</option>
+                                </select> 
+                            </td>
+                        </tr>
+                       
+                                    <tr>
+                                            <td style="width: 20%">
+                                                <label>Blood Group</label>
+                                            </td>
+                                            <td style="width:30%">
+                                                <select ng-model="BloodGroup"  ng-required="true"  class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in BloodGroupList" ng-selected="BloodGroup==sel.id" value="{{sel.id}}">{{sel.bloodgroup}}</option>
+                                                </select> 
+                                            </td>
+                                        
+                    <td>
+                        <label>SSN UID Number</label>
+                    </td>
+                    <td>
+
+                        <input type="text"  class="form-control" id="Textarea2" ng-model="SSN_UID_No" ng-init="SSN_UID_No=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress=" NoSpecChar(this.SSN_UID_No)"/>
+                       </td>
+                </tr>
+
+                <tr>
+                        <td>
+                            <label>Email</label>
+                        </td>
+                        <td>
+
+                            <input type="text"  class="form-control" id="Textarea2" ng-model="Email" ng-init="Email=''" placeholder="" ng-maxlength="30" maxlength="30" onkeypress="EmailFormate(this.Email)" onkeypress=" NoSpecChar(this.Email)"/>
+                           </td>
+                    
+                            <td>
+                                <label>Contact Number<font class='mandatory-field' style="color: red";>*</font></label>
+                            </td>
+                            <td>
+
+                                <input type="text" class="form-control"  id="Textarea2" ng-model="Mobile" ng-init="Mobile=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress="OnlySpecCharNum(this.Mobile)"/>
+                               </td>
+                               
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Alternate Contact Number</label>
+                            </td>
+                            <td>
+
+                                <input type="text" class="form-control"  id="contact1" ng-model="Mobile1" ng-init="Mobile1=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress="OnlySpecCharNum(this.Mobile)"/>
+                               </td>
+                        </tr>
+            
+                </table>
+                </td>
+            </div>
+                </div>
+                
+            <div><h1 class="page-title">Address Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div4', 'tableid4_img')" style="width: 20px;" id="tableid4_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div4">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+
+                    
+                        <tr>
+                                <td width="20%">
+                                    <label>Address1
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td width="30%">
+                                    <input type="text" class="form-control" id="Textarea2" ng-model="Address1" ng-init="Address1=''" placeholder="" ng-maxlength="50"
+                                        maxlength="50" />
+                                </td>
+                               
+                                <td width="20%">
+                                    <label>Address2
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td width="30%">
+                                    <input type="text" class="form-control" id="Textarea2" ng-model="Address2" ng-init="Address2=''" placeholder="" ng-maxlength="50"
+                                        maxlength="50" />
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td width="20%">
+                                    <label>Country
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td width="30%">
+                                    <select ng-model="CountryName" ng-required="true" class="form-control">                                       
+                                        <option value="">Select</option>
+                                        <option ng-repeat="sel in CountryList" ng-selected="CountryName==sel.id" value="{{sel.id}}">{{sel.countryname}}</option>
+                                    </select>
+                                </td>
+                               
+                                <td width="20%">
+                                    <label>State
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td width="30%">
+                                    <select ng-model="StateName" ng-required="true" class="form-control">
+                                        <option value="">Select</option>
+                                        <option ng-repeat="sel in StateList" ng-selected="StateName==sel.id" value="{{sel.id}}">{{sel.statename}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                               
+                                <td width="20%">
+                                    <label>Location
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td width="30%">
+                                    <select ng-model="LocationName" ng-required="true" class="form-control">
+                                        <option value="">Select</option>
+                                        <option ng-repeat="sel in LocationList" ng-selected="LocationName==sel.id" value="{{sel.id}}">{{sel.locationname}}</option>
+                                    </select>
+                                </td>
+                                
+                                <td valign="top">
+                                        <label>Pincode<font class='mandatory-field' style="color: red" ;>*</font></label>
+                                    </td>
+                                    <td valign="top">
+                                        <input type="text" class="form-control" id="Textarea2" ng-model="PinCode" ng-init="PinCode=''" onkeypress="varifyNumberPositive(this.PinCode)"
+                                            placeholder="" ng-maxlength="20" maxlength="20" />
+                                    </td>
+                            </tr>
+                        </table>
+            </div>
+            </div>
+
+            <div><h1 class="page-title">Statutory Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div5', 'tableid5_img')" style="width: 20px;" id="tableid5_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div5">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+
+                    
+                        <tr>
+                                <td style="width: 20%">
+                                    <label>PF AccNumber</label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="PF_ACCNo" ng-init="PF_ACCNo=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress=" NoSpecChar(this.PF_ACCNo)"/>
+                                </td>
+                                <td style="width: 20%">
+                                    <label>Pan Number</label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="PAN_No" ng-init="PAN_No=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress=" NoSpecChar(this.PAN_No)"/>
+                                </td>
+                                
+                            </tr>
+  
+                            <tr>
+                                <td width="20%">
+                                    <label>Acc Number </label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="BankACCNo" ng-init="BankACCNo=''" placeholder="" ng-maxlength="20" maxlength="20" onkeypress="varifyNumberPositive(this.BankACCNo)"/>
+                                </td>
+                                <td width="20%">
+                                    <label>Bank Name</label>
+                                </td>
+                                <td style="width:30%">
+                                        <select ng-model="BankName"  ng-required="true"  class="form-control">
+                                            <option value="">Select</option>
+                                            <option ng-repeat="sel in BankNameList" ng-selected="BankName==sel.id" value="{{sel.id}}">{{sel.bankname}}</option>
+                                        </select> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <label>Branch Name</label>
+                                </td>
+                                <td style="width:30%">
+                                    <input type="text" class="form-control"  id="Textarea2" ng-model="BranchName" ng-init="BranchName=''" placeholder="" ng-maxlength="100" maxlength="100"/>
+                                </td>
+                                <td width="20%">
+                                        <label>IFSC Code</label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="IFSC_Code" ng-init="IFSC_Code=''" placeholder="" ng-maxlength="20" maxlength="20" onkeypress=" NoSpecChar(this.IFSC_Code)"/>
+                                </td>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <label>MICR Number</label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="MICR_No" ng-init="MICR_No=''" placeholder="" ng-maxlength="20" maxlength="20" onkeypress=" NoSpecChar(this.MICR_No)"/>
+                                </td>
+                                <td width="20%">
+                                    <label>ESI Acc Number</label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="ESI_ACCNo" ng-init="ESI_ACCNo=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress=" NoSpecChar(this.ESI_ACCNo)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <label>Aadhar Number</label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="AadharNo" ng-init="AadharNo=''" placeholder="" ng-maxlength="20" maxlength="20" onkeypress="varifyNumberPositive(this.AadharNo)"/>
+                                </td>
+                                <td width="20%">
+                                    <label>Passport Number</label>
+                                </td>
+                                <td width="30%">
+                                        <input type="text" class="form-control"  id="Textarea2" ng-model="PassportNumber" ng-init="PassportNumber=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress=" NoSpecChar(this.PassportNumber)"/>
+                                </td>
+                                
+                            </tr>
+                             <tr>
+                                <td width="20%">
+                                    <label>Driving Licence Number</label>
+                                </td>
+                                <td width="30%">
+                                  <input type="text" class="form-control"  id="Textarea2" ng-model="DrivingLicenseNo" ng-init="DrivingLicenseNo=''" placeholder="" ng-maxlength="50" maxlength="50" onkeypress=" NoSpecChar(this.DrivingLicenseNo)"/>
+                                </td>
+                            </tr>
+                        </table>
+            </div>
+            </div>
+
+            <div><h1 class="page-title">Social Network<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div6', 'tableid6_img')" style="width: 20px;" id="tableid6_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div6">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+
+                    
+                        <tr>
+                                <td width="20%">
+                                    <label>Face Book</label>
+                                </td>
+                                <td width="30%">
+                                    <input type="text" class="form-control" id="Facebook_AC" name="Facebook_AC" ng-model="FB_AC" ng-init="FB_AC=''" placeholder="" ng-maxlength="50" maxlength="50" />
+                                </td>
+                                <td width="20%">
+                                    <label>Linked In</label>
+                                </td>
+                                <td width="30%">
+                                    <input type="text" class="form-control" id="Linked_In" name="Linked_In" ng-model="Linked_In" ng-init="Linked_In=''" placeholder="" ng-maxlength="50" maxlength="50" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Google plus</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="Google_Plus" name="Google_Plus" ng-model="Googleplus" ng-init="Googleplus=''" placeholder="" ng-maxlength="50" maxlength="50" />
+                                </td>
+                                <td>
+                                    <label>GTalk</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="GTalk" name="GTalk" ng-model="GTalk" ng-init="GTalk=''" placeholder="" ng-maxlength="50" maxlength="50" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Whatsapp</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="Whatsapp" name="Whatsapp" ng-model="Whatsapp" ng-init="Whatsapp=''" placeholder="" onkeypress="OnlySpecCharNum(this.Whatsapp)" ng-maxlength="20" maxlength="20" />
+                                </td>
+                                <td>
+                                    <label>Twitter</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="Twitter_AC" name="Twitter_AC" ng-model="Twitter" ng-init="Twitter=''" placeholder="" ng-maxlength="50" maxlength="50" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Others1</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="Others_1" name="Others_1" ng-model="Others1" ng-init="Others1=''" placeholder="" ng-maxlength="50" maxlength="50" />
+                                </td>
+                                <td>
+                                    <label>Others2</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="Others_2" name="Others_2" ng-model="Others2" ng-init="Others2=''" placeholder="" ng-maxlength="50" maxlength="50" />
+                                </td>
+                            </tr>
+                        </table>
+            </div>
+            </div>
+            <div style="text-align: center;">
+                    <button type="button" class="btn  btn-save" ng-click="ManageEmployee_AddEdit()" title="Save">Save</button>
+                   <button type="button" class="btn  btn-save" ng-click="EmployeeListRedirect()" title="Cancel">Cancel</button>
+                </div>
+
+
+     </div>
+
+     <script>
+            $("#EnquiryDate").datepicker({
+                format: "dd-M-yyyy",
+                endDate: '+0d',
+                startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+
+            $("#DOB").datepicker({
+                format: "dd-M-yyyy",
+                endDate: '+0d',
+                //startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+    
+            $("#DOJ").datepicker({
+                format: "dd-M-yyyy",
+                // endDate: '+0d',
+                 //startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+        </script>
+        <script>
+              $("#DOJ").datepicker({
+            format: "dd-M-yyyy",
+            // endDate: '+0d',
+            startDate: new Date(),
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            todayBtn: true
+    
+        });
+        $("#DOB").datepicker({
+            format: "dd-M-yyyy",
+            endDate: '+0d',
+            //startDate: new Date(),
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            todayBtn: true
+    
+        });
+      
+         
+   $(document).ready(function() {
+      $('#t1').find('tr:gt(0)').hide();;
+     $('#heading1').addClass('hCollapsed');
+   
+   
+     $("#heading1").click(function() {
+       $(this).parent().siblings().toggle();
+       if ($(this).hasClass('hCollapsed')) {
+         $(this).removeClass('hCollapsed').addClass('hExpanded');
+       } else {
+         $(this).removeClass('hExpanded').addClass('hCollapsed');
+       }
+   
+     });
+   });
+
+    $(document).ready(function() {
+      $('#t2').find('tr:gt(0)').hide();;
+     $('#heading2').addClass('hCollapsed');
+   
+   
+     $("#heading2").click(function() {
+       $(this).parent().siblings().toggle();
+       if ($(this).hasClass('hCollapsed')) {
+         $(this).removeClass('hCollapsed').addClass('hExpanded');
+       } else {
+         $(this).removeClass('hExpanded').addClass('hCollapsed');
+       }
+   
+     });
+   });
+
+    $(document).ready(function() {
+      $('#t3').find('tr:gt(0)').hide();;
+     $('#heading3').addClass('hCollapsed');
+   
+   
+     $("#heading3").click(function() {
+       $(this).parent().siblings().toggle();
+       if ($(this).hasClass('hCollapsed')) {
+         $(this).removeClass('hCollapsed').addClass('hExpanded');
+       } else {
+         $(this).removeClass('hExpanded').addClass('hCollapsed');
+       }
+   
+     });
+   });
+
+   $(document).ready(function() {
+      $('#t4').find('tr:gt(0)').hide();;
+     $('#heading4').addClass('hCollapsed');
+   
+   
+     $("#heading4").click(function() {
+       $(this).parent().siblings().toggle();
+       if ($(this).hasClass('hCollapsed')) {
+         $(this).removeClass('hCollapsed').addClass('hExpanded');
+       } else {
+         $(this).removeClass('hExpanded').addClass('hCollapsed');
+       }
+   
+     });
+   });
+
+    $(document).ready(function() {
+      $('#t5').find('tr:gt(0)').hide();;
+     $('#heading5').addClass('hCollapsed');
+   
+   
+     $("#heading5").click(function() {
+       $(this).parent().siblings().toggle();
+       if ($(this).hasClass('hCollapsed')) {
+         $(this).removeClass('hCollapsed').addClass('hExpanded');
+       } else {
+         $(this).removeClass('hExpanded').addClass('hCollapsed');
+       }
+   
+       });
+    });
+
+//     $(document).ready(function() {
+//       $('#t6').find('tr:gt(0)').hide();;
+//      $('#heading6').addClass('hCollapsed');
+   
+   
+//      $("#heading6").click(function() {
+//        $(this).parent().siblings().toggle();
+//        if ($(this).hasClass('hCollapsed')) {
+//          $(this).removeClass('hCollapsed').addClass('hExpanded');
+//        } else {
+//          $(this).removeClass('hExpanded').addClass('hCollapsed');
+//        }
+   
+//      });
+//    });
+ 
+   
+  
+   
+
+   $('.input-group.date').datepicker({
+        format: "dd/M/yyyy",
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        toggleActive: true,
+        todayBtn: true
+
+    });  
+
+        $('#btnLogo').click(function () {
+                $("#EmployeePhoto").trigger('click');
+            })
+
+     //Photo upload
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+   
+ 
+
+       </script>

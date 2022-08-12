@@ -1,0 +1,352 @@
+<div class="container" ng-init="EmployeeSaveToList()">
+    <div class="row">
+        <div class="lds-ripple" id="chatLoaderPV" style="display: none;z-index:10000"><div></div><div></div></div>
+            <div class="col-md-12">
+                <p class="page-title">Manage Employee</p>            
+            </div>   
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                            <tr>
+                                <td width="10%">
+                                    <label>Department</label>
+                                </td>
+                                <!-- {{Department}} -->
+                                <td style="width:15%">
+                                        <select ng-model="Department"  class="form-control"  ng-required="true">
+                                            <option value="">All</option>
+                                            <option ng-repeat="sel in DepartmentList" ng-selected="Department==sel.id" value="{{sel.id}}">{{sel.departmentname}}</option>
+                                        </select> 
+                                    </td>   
+                                    <td width="10%">
+                               
+                                    <label>Status</label>
+                                </td>
+                                <td width="15%">
+                                    <select class="form-control" ng-model="IsActive">
+                                        <option value="-1">All</option>
+                                        <option value="0">Inactive</option>
+                                        <option value="1">Active</option>
+                                    </select>
+                                </td>
+                                <td width="50%"> <button type="button" class="btn btn-small"  ng-click="manageemployeelist()" title="{{(ButtonListList|filter : {Name:'Go'})[0].Tooltip}}">Go</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form> 
+                    </div>
+                </div>
+                <a class="btn btn-small pull-right mb-15" ng-click="AddModal()" title="{{(ButtonListList|filter : {Name:'AddNew'})[0].Tooltip}}">Add New</a>
+            </div>        
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+                <table st-table="emptydata" style="width: 100%" st-safe-src="Employeelist" class="table table-striped table-bordered">
+                    <thead>
+                        <tr style="text-align: center">
+                            <th style="width:5%">#</th>
+                            <th style="width:12%" st-ratio="Emp_EmployeeNumber">Employee No.</th>
+                            <th style="width:15%" st-ratio="EmployeeName">Employee Name</th>
+                            <th style="width:6%" st-ratio="Gender">Gender</th>
+                            <th style="width:10%" st-ratio="EmployeeType">Employee Type</th>
+                            <th style="width:8%" st-ratio="Designation">Designation</th>
+                            <th style="width:8%" st-ratio="DepartmentName">Department</th>                         
+                            <th style="width:8%" st-ratio="Mobile">Contact Number</th>
+                            <th style="width:8%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-if= "flag==0 && Employeelist.length==0">
+                            <td colspan="11" class="text-center">
+                                No Records Found
+                            </td>
+                        </tr>
+                        <tr ng-repeat="ManageEmployee in emptydata">
+                                <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+                                <td style="text-align: left">{{ManageEmployee.emp_employeenumber}}</td>
+                                <td style="text-align: left"><div class="textwrap">{{ManageEmployee.employeename}}</div></td>
+                                <td style="text-align: left">{{ManageEmployee.gender}}</td>
+                                <td style="text-align: left">{{ManageEmployee.employeetype}}</div></td>
+                                <td style="text-align: left">{{ManageEmployee.designation}}</div></td>
+                                <td style="text-align: left">{{ManageEmployee.departmentname}}</td>
+                                <!-- <td style="text-align: left">{{ManageEmployee.Specification}}</td> -->
+                            
+                                <td style="text-align: left">{{ManageEmployee.mobile}}</td>
+                             
+                               
+                                <td style="text-align: center">
+                                    <a href="javascript:" ng-click="ViewModal(ManageEmployee.id)" title="View" ><img src="/img/ViewIcon.png" /></a>
+                                    <a href="javascript:" ng-click="ManageEmployee.isactive == 0 || EditModal(ManageEmployee.id)" title="Edit"><img src="/img/EditIcon.png" ng-if="ManageEmployee.isactive==1" /></a>
+                                    <a href="javascript:" ng-click="ErrorFunction()" title="Edit"><img src="/img/EditIcon.png" ng-if="ManageEmployee.isactive==0" /></a>
+                                    <a href="javascript:" ng-click="AddEmployeeReleivePopUP(ManageEmployee.id)" title="Employee Exit"><img src="/img/ActiveIcon.png" ng-if="ManageEmployee.isactive==1" /></a>
+                                    <a href="javascript:" ng-click="Active(ManageEmployee.id)" title="Inactive"><img src="/img/InActiveIcon.png" ng-if="ManageEmployee.isactive==0 && ManageEmployee.resignationdate==null" /></a>
+                                    <a href="javascript:" ng-click="Active_ErrorFunction()" title="Inactive"><img src="/img/InActiveIcon.png" ng-show="ManageEmployee.resignationdate!==null" /></a>
+                                    <a href="javascript:" ng-click="Employee_Delete(ManageEmployee.id)" title="Delete">
+                                            <img src="/img/deleteIcon.png"/>
+                                        </a>
+                                </td>
+                            </tr>
+                    </tbody>
+                   <!-- <tfoot ng-show="rowCollection.length >30">
+                        <tr>
+                            <td colspan="9" class="text-center">                     
+                              <div st-items-by-page="30" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+                            </td>
+                        </tr>
+                    </tfoot> -->
+                    <tfoot ng-show="Employeelist.length >10">
+                        <tr>
+                            <td colspan="11" class="text-center">
+                                <items-page items-On-Page ="itemsOnPage" total-Items="Employeelist.length"></items-page> items per page
+                                <div st-items-by-page="itemsOnPage" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+                                <!--<items-page items-On-Page ="itemsOnPage" total-Items="pagetotalSize"></items-page>-->
+             
+                            </td>
+                        </tr>
+                    </tfoot> 
+                </table>
+            </div></div>
+    
+    </div>
+
+
+    <div id="EmployeeReleiveModal" class="modal fade" role="dialog">
+        <div class="modal-dialog" style="width:900px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="color : red" title="close" ng-click="CancelPopup()">&times;</button>
+                    <h1 class="page-title">Employee Exit Details</h1>
+                </div>
+                <div class="overlay" show-on-load>
+                    <div id="loading-img"></div>
+                </div>
+                <div class="modal-body" id="parentElement">
+                    <form class="form-horizontal" role="form" style="font-size:small" id="AttendanceModalform">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                            <tr>
+                                
+                                <td width="20%">
+                                    <label>Employee </label>
+                                </td>
+                             
+                                <td>
+                                   {{EmployeeName}}
+                                </td>
+                                <td width="15%">
+                                    <label>Department</label>
+                                </td>
+                                <td width="30%">
+                                 {{ViewDepartment}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>
+                                        Designation
+                                    </label>
+                                </td>
+                                <td>
+                                 {{ViewDesignation}}
+                                </td>
+    
+                                <td>
+                                    <label>Resignation Date<sup><font class='mandatory-field'>*</font></sup></label>
+                                </td>
+                                <td>
+                                    <div class="col-md-11 input-group date" id="Resignation_Date" style="margin-left:-15px;">
+                                        <input type="text" class="form-control" id="Resignation_Date" ng-model="ResignationDate" name="Resignation_Date"  ng-change="calculateRelievingDate()" ng-init="ResignationDate=''"style="width:130px"  />
+                                        <span class="input-group-addon">
+                                                <i class="fa fa-th"></i>
+                                            </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Reason for Leaving Type<sup><font class='mandatory-field'>*</font></sup></label>
+                                </td>
+                                <td>
+                                   <select class="form-control" ng-model="ReasonLeaving_Type" id="Select1">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in RelieveReasonList" ng-selected="ReasonLeaving_Type==sel.Id" value="{{sel.Id}}">{{sel.Name}}</option>
+                                </select>
+                                </td>
+    
+                                <td>
+                                    <label>Notice Period<sup><font class='mandatory-field'>*</font></sup></label>
+                                </td>
+                                <td class="nopadding">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="formControlGroup" width="68%">
+                                        <tr>
+                                            <td width="40%" class="align-Middle">
+                                                <input type="text" class="form-control" id="Notice_Period" name="Notice_Period" ng-model="Notice_Period" ng-init="Notice_Period=''" onkeypress="varifyNumberPositive(this.Notice_Period)" ng-change="calculateRelievingDate()" placeholder="" ng-maxlength="3" maxlength="3">
+                                            </td>
+                                            <td width="50%" class="nopadding">
+                                                Days
+                                            </td>
+                                            
+                                        </tr>
+                                    </table>
+                                </td>
+    
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Leaving Reason<sup><font class='mandatory-field'>*</font></sup></label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="Leaving_Reason" name="Leaving_Reason" ng-model="Leaving_Reason" ng-init="Leaving_Reason=''"  onkeypress="varifychar(this.Leaving_Reason)" placeholder=""  ng-maxlength="50" maxlength="50" />
+                                </td>
+    
+    
+                                <td>
+    
+                                    <label>Last Working Day<sup><font class='mandatory-field'>*</font></sup></label>
+                                </td>
+                                <td>
+                                    
+                                    <!--{{lastworkingday()}}-->
+                                    <div class="col-md-10 input-group date" id="Last_Working_Day" style="margin-left:-15px;">
+                                        <input type="text" class="form-control" id="Text26" ng-model="LastWorkingDay" id="Last_Working_Day" name="Last_Working_Day" ng-init="LastWorkingDay=''"style="width:130px"  />
+                                        <span class="input-group-addon">
+                                                <i class="fa fa-th"></i>
+                                            </span>
+                                    </div>
+                                </td>
+                            </tr>
+    
+    
+                            <tr>
+                                <td>
+                                    <label>Payment Date</label>
+                                </td>
+                                <td>
+                                    <div class="col-md-10 input-group date" id="Payment_Date" style="margin-left:-15px;">
+                                        <input type="text" class="form-control" id="Payment_Date" ng-model="Payment_Date" name="Payment_Date" style="width:130px" ng-init="Payment_Date=''" />
+                                        <span class="input-group-addon">
+                                                <i class="fa fa-th"></i>
+                                            </span>
+                                    </div>
+                                </td>
+    
+                                <td>
+                                    <label>Remarks</label>
+                                </td>
+                                <td>
+                                    <textarea rows="4" class="form-control" id="Textarea2" ng-model="Remarks" ng-init="Remarks=''" placeholder="" ng-maxlength="250" maxlength="250"></textarea>
+                                </td>
+    
+                            </tr>
+                        </table>
+    
+                        <div class="modal-footer" style="text-align:center;">
+                            <button type="submit" class="btn  btn-save" id="save" ng-click="EmployeeDetails_Relieve()">Save</button>
+                            <button type="button" class="btn  btn-save" ng-click="ClearRelieveEmp_Popup()">Reset</button>
+                            <button type="button" class="btn  btn-save" ng-click="RelievePopup_Close()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <script>
+        $('#Resignation_Date').datepicker({
+            format: "dd-M-yyyy",
+            //startDate: new Date(),
+            autoclose: true,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            todayBtn: true
+    
+        });
+        $("#DOB").datepicker({
+                format: "dd-M-yyyy",
+                endDate: '+0d',
+                //startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+        
+            });
+    
+        $('#Last_Working_Day').datepicker({
+            format: "dd-M-yyyy",
+            startDate: new Date(),
+            autoclose: true,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            todayBtn: true
+    
+        });
+    
+        $('#Payment_Date').datepicker({
+            format: "dd-M-yyyy",
+            startDate: new Date(),
+            autoclose: true,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            todayBtn: true
+    
+        });
+        $(".btn").click(function () {
+    
+            $(".overlay").show();
+            $('#loading-img').show();
+            //$('.form-control').hide();
+            //$('.input-group').hide();
+            //$('.mandatory-field').hide();
+            //$('.text-center').hide();
+            //$('.table').hide();
+            //$('.btn').hide();
+            setTimeout(function () {
+                $('.overlay').hide();
+                $('#loading-img').hide();
+                //$('.form-control').show();
+                //$('.input-group').show();
+                //$('.mandatory-field').show();
+                //$('.text-center').show();
+                //$('.table').show();
+                //$('.btn').show();
+            }, 300);
+    
+        });
+    
+        $(document).ready(function () {
+            $(window).on('load', function () {
+                $(".overlay").show();
+                $('#loading-img').show();
+                //$('.form-control').hide();
+                //$('.input-group').hide();
+                //$('.mandatory-field').hide();
+                //$('.text-center').hide();
+                //$('.table').hide();
+                //$('.btn').hide();
+                setTimeout(function () {
+                    $('.overlay').hide();
+                    $('#loading-img').hide();
+                    //$('.form-control').show();
+                    //$('.input-group').show();
+                    //$('.mandatory-field').show();
+                    //$('.text-center').show();
+                    //$('.table').show();
+                    //$('.btn').show();
+                }, 300);
+            });
+        });
+    </script>
+    
+    
+    
+    

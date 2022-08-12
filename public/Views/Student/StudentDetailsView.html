@@ -1,0 +1,1221 @@
+<!-- Candidate Resume Create Page -->
+<head>
+        <style type="text/css">
+            input[type='file'] {
+                opacity: 0;
+            }
+        </style>
+        <script>
+                $('#btnLogo').click(function () {
+                      $("#EmployeePhoto").trigger('click');
+                  })
+          
+          </script>
+    </head>
+    <div class="mainbody container-fluid" ng-init="ViewStudentDetails()">
+            <h1 class="page-title">{{CommonTransaction_Title}}</h1>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        
+            <div><h1 class="page-title">StudentDetails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('tableid', 'tableid_img')" style="width: 20px;" id="tableid_img"></sub></h1></div>
+            <div class="panel panel-default" id="tableid">    
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" name="patientform" id="basicform">
+                   
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                     
+                        <tr>
+                            <td width="20%">
+                                <label>ApplicationNumber</label>
+                            </td>
+                            <td width="30%">
+                                <span>{{ApplicationNumber}}</span>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td >
+                                <label>StudentId</label>
+                            </td>
+                            <td>
+                                <span>{{StudentId}}</span>
+                            </td>
+                            <td rowspan="4" valign="top">
+                                <label>Photo</label>
+                            </td>
+                            <td rowspan="6">
+    
+                                <span> <img src="{{StudentPhoto1}}" width="120" height="150" class="mtb-7"
+                                        ng-if="StudentPhoto1!='/storage/null'" /><img src="/img/NoPhoto.jpg"
+                                        ng-if="StudentPhoto1=='/storage/null'" /></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>AdmissionNumber</label>
+                            </td>
+                            <td>
+                                <span>{{AdmissionNumber}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>AdmissionDate</label>
+                            </td>
+                            <td>
+                                <span>{{AdmissionDate}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <label>FirstName</label>
+                            </td>
+                            <td>
+                                <span> <div class="textwrap">{{FirstName}}</div></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  valign="top">
+                                <label>Middle Name</label>
+                            </td>
+                            <td>
+                                <span> <div class="textwrap">{{MiddleName}}</div></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  valign="top">
+                                <label>LastName</label>
+                            </td>
+                            <td>
+                                <span> <div class="textwrap">{{LastName}}</div></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <label>NameOfTheStudent</label>
+                            </td>
+                            <td>
+                                <span>
+                                    <div class="textwrap">{{StudentName}}
+                                </span>
+                                <td width="20%" valign="top">
+                                    <label>DOB</label>
+                                </td>
+                                <td  width="30%" valign="top">
+                                    <span>{{DOB}}</span>
+                                </td>
+            </div>
+            </tr>
+                 <tr>
+                <td valign="top" widht="20%">
+                    <label>Father Name</label>
+                </td>
+                <td  width="30%">
+                    <span>
+                        <div class="textwrap">{{FatherName}}
+                    </span>
+        </div>
+        </td>
+        <td valign="top">
+            <label>Mother Name</label>
+        </td>
+        <td>
+            <span>
+                <div class="textwrap">{{MotherName}}
+            </span>
+    </div>
+    </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <label>Guardian Name</label>
+        </td>
+        <td>
+            <span>
+                <div class="textwrap">{{GuardianName}}
+            </span>
+    </div>
+    </td>
+    <td valign="top">
+    <label>Gender</label>
+    </td>
+    <td valign="top">
+    <span>{{ViewGender}}</span>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <label>Religion</label>
+    </td>
+    <td>
+        <span>{{ViewReligion}}</span>
+    </td>
+    <td>
+            <label>Community</label>
+        </td>
+        <td>
+            <span>{{ViewCommunity}}</span>
+        </td>
+       
+    
+    </tr>
+    <tr>
+        <td>
+                <label>Caste</label>
+            </td>
+            
+            <td>
+                <span>{{ViewCaste}}</span>
+            </td>
+        <td>
+                <label>Mother Tongue</label>
+            </td>
+    <td>
+        <span>{{ViewMotherTongue}}</span>
+    </td>
+    </tr>
+    <tr>
+    <td valign="top">
+        <label>Blood Group</label>
+    </td>
+    <td valign="top">
+        <span>{{ViewBloodGroup}}</span>
+    </td>
+    <td valign="top">
+            <label>Email</label>
+        </td>
+        <td >
+            <span>
+                <div class="textwrap">{{SEmail}}</div>
+            </span>
+        </td>
+        </tr>
+        <tr>
+    <td valign="top">
+        <label>Identity Mark1</label>
+    </td>
+    <td>
+        <span>
+            <div class="textwrap">{{IdentityMark}}
+        </span>
+    </div>
+    </td>
+    <td valign="top">
+    <label>Identity Mark2</label>
+    </td>
+    <td>
+    <span>
+        <div class="textwrap">{{IdentityMark2}}
+    </span>
+          
+        </tr>
+        <tr>
+                <td>
+                        <label>Register Roll Number</label>
+                    </td>
+                    <td>
+    
+                  {{RegisterNumber}}
+                    </td>
+                  
+                    <td>
+                        <label>Aadhar Number</label>  
+                    </td>
+                    <td>
+                    {{SSN_UID_Number}}
+                    </td>
+                </tr>
+                <tr>
+               
+                    <td>
+                        <label>Mobile Number
+                        
+                        </label>
+                    </td>
+                    <td>
+                    {{SMobileNumber}}
+                    </td> 
+                    <td>
+                        <label>Category
+                        
+                        </label>
+                    </td>
+                    <td>
+                    {{CategoryName}}
+                    </td>
+        </tr>
+                </form>
+    
+                </table>
+            </div>
+            </div>
+    
+             <div><h1 class="page-title">AdmissionDetails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div2', 'tableid2_img')" style="width: 20px;" id="tableid2_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div2">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                    
+        <tr>
+            <td width="20%">
+                <label>Academic Year</label>
+            </td>
+            
+            <td width="30%">
+                <span>{{ViewAcademicYear}}</span>
+            </td>
+             <td width="20%">
+                <label>Course</label>
+            </td>
+            <td width="30%">
+                <span>{{ViewCourse}}</span>
+            </td>
+            <tr>
+            <td>
+                <label>Medium</label>
+            </td>
+            <td>
+                <span>{{ViewMediumName}}</span>
+            </td>
+              <td>
+                <label>Section</label>
+            </td>
+            <td>
+                <span>{{ViewSection}}</span>
+            </td>
+      </tr>
+      <tr>
+            <td valign="top">
+                <label>
+                    Remarks
+                </label>
+            </td>
+            <td>
+                <span> <div class="textwrap">{{Remarks2}}</div></span>
+            </td>
+        </tr>
+                </table>
+               
+            </div>
+                </div>
+                <div><h1 class="page-title">FatherDetails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div3', 'tableid3_img')" style="width: 20px;" id="tableid3_img"></sub></h1></div>
+                <div class="panel panel-default" id="Div3">    
+                <div class="panel-body">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+         
+            <tr>
+                <td valign="top" width="20%">
+                    <label>Father Name</label>
+                </td>
+                <td width="30%">
+                    <span>
+                        <div class="textwrap">{{FatherName}}</div>
+                    </span>
+    </div>
+    </td>
+    <td width="20%" valign="top">
+    <label>Occupation</label>
+    </td>
+    <td width="30%" valign="top">
+    <span> <div class="textwrap">{{FOccupation}}</div></span>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <label>Qualification</label>
+    </td>
+    <td>
+        <span>{{ViewFather_Qualification}}</span>
+    </td>
+    <td>
+        <label>Aadhar Number</label>
+    </td>
+    <td>
+        <span>{{FSSN_UID_Number}}</span>
+    </td>
+    </tr>
+    <tr>
+    <td valign="top">
+        <label>Mobile Number</label>
+    </td>
+    <td valign="top">
+        <span>{{FMobileNumber}}</span>
+    </td>
+    <td valign="top">
+        <label>Email</label>
+    </td>
+    <td>
+        <span> <div class="textwrap">{{FEmail}}</div></span>
+    </td>
+    </tr>
+    <tr>
+    <td valign="top">
+        <label>Communication Mobile Number</label>
+    </td>
+    <td valign="top">
+        <span>{{Father_CommunicationNumber}}</span>
+    </td>
+    <td valign="top"> 
+        <label>Communication Email</label>
+    </td>
+    <td>
+        <span> <div class="textwrap">{{Father_CommunicationEmail}}</div></span>
+    </td>
+    </tr>
+    <tr>
+    <td valign="top">
+        <label>Organisation Name</label>
+    </td>
+    <td>
+        <span><div class="textwrap">{{Father_OrganisationName}}</div></span>
+    </td>
+    <td valign="top">
+        <label>Organisation Contact Number</label>
+    </td>
+    <td valign="top">
+        <span>{{Father_OrganisationNumber}}</span>
+    </td>
+    </tr>
+    </tr>
+    <tr>
+    <td valign="top">
+        <label>Organisation Address</label>
+    </td>
+    <td>
+        <span><div class="textwrap">{{Father_OrganisationAddress}}</div></span>
+    </td>
+    
+            </tr>
+                    </table>
+                   
+                </div>
+                    </div>
+                    <div><h1 class="page-title">Mother Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div4', 'tableid4_img')" style="width: 20px;" id="tableid4_img"></sub></h1></div>
+                    <div class="panel panel-default" id="Div4">    
+                    <div class="panel-body">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+             
+                <tr>
+                    <td valign="top" width="20%">
+                        <label>Mother Name</label>
+                    </td>
+                    <td  width="30%"> 
+                        <span>
+                            <div class="textwrap">{{MotherName}}
+                        </span>
+            </div>
+            </td>
+            <td  width="20%" valign="top">
+                <label>Occupation</label>
+            </td>
+            <td  width="30%" valign="top">
+                <span>   <div class="textwrap">{{MOccupation}}</span>
+            </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <label>Qualification</label>
+                </td>
+                <td valign="top">
+                    <span>{{ViewMother_Qualification}}</span>
+                </td>
+                <td valign="top">
+                    <label>Aadhar Number</label>
+                </td>
+                <td>
+                    <span>  <div class="textwrap">{{MSSN_UID_Number}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <label>Mobile Number</label>
+                </td>
+                <td valign="top">
+                    <span>{{MMobileNumber}}</span>
+                </td>
+                <td valign="top">
+                    <label>Email</label>
+                </td>
+                <td>
+                    <span>  <div class="textwrap">{{MEmail}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <label>Communication Mobile Number</label>
+                </td>
+                <td valign="top">
+                    <span>{{Mother_CommunicationNumber}}</span>
+                </td>
+                <td valign="top">
+                    <label>Communication Email</label>
+                </td>
+                <td>
+                    <span>  <div class="textwrap">{{Mother_CommunicationEmail}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <label>Organisation Name</label>
+                </td>
+                <td>
+                    <span>  <div class="textwrap">{{Mother_OrganisationName}}</span>
+                </td>
+                <td valign="top">
+                    <label>Organisation Contact Number</label>
+                </td>
+                <td valign="top">
+                    <span>  <div class="textwrap">{{Mother_OrganisationNumber}}</span>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <label>Organisation Address</label>
+                </td>
+                <td>
+                    <span>  <div class="textwrap">{{Mother_OrganisationAddress}}</span>
+                </td>
+                </tr>
+                        </table>
+                       
+                    </div>
+                        </div>           
+                        <div><h1 class="page-title">GuardianDetails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div5', 'tableid5_img')" style="width: 20px;" id="tableid5_img"></sub></h1></div>
+                        <div class="panel panel-default" id="Div5">    
+                        <div class="panel-body">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                 
+                    <tr>
+                        <td valign="top" width="20%">
+                            <label>Guardian Name</label>
+                        </td>
+                        <td width="30%">
+                            <span>
+                                <div class="textwrap">{{GuardianName}}
+                            </span></div>
+                        </td>
+                        <td width="20%" valign="top">
+                            <label>Occupation</label>
+                        </td>
+                        <td width="30%" valign="top">
+                            <span> <div class="textwrap">{{GOccupation}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Qualification</label>
+                        </td>
+                        <td valign="top">
+                            <span>{{ViewGuardian_Qualification}}</span>
+                        </td>
+                        <td valign="top">
+                            <label>Aadhar Number</label>
+                        </td>
+                        <td >
+                            <span> <div class="textwrap">{{GSSN_UID_Number}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Mobile Number</label>
+                        </td>
+                        <td valign="top">
+                            <span>{{GMobileNumber}}</span>
+                        </td>
+                        <td valign="top">
+                            <label>Email</label>
+                        </td>
+                        <td>
+                            <span> <div class="textwrap">{{GEmail}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Communication Mobile Number</label>
+                        </td>
+                        <td valign="top">
+                            <span>{{Guardian_CommunicationNumber}}</span>
+                        </td>
+                        <td valign="top">
+                            <label>Communication Email</label>
+                        </td>
+                        <td>
+                            <span> <div class="textwrap">{{Guardian_CommunicationEmail}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Organisation Name</label>
+                        </td>
+                        <td>
+                            <span> <div class="textwrap">{{Guardian_OrganisationName}}</span>
+                        </td>
+                        <td valign="top"> 
+                            <label>Organisation Contact Number</label>
+                        </td>
+                        <td valign="top">
+                            <span>{{Guardian_OrganisationNumber}}</span>
+                        </td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Organisation Address</label>
+                        </td>
+                        <td>
+                            <span> <div class="textwrap">{{Guardian_OrganisationAddress}}</span>
+                        </td>
+                    </tr>
+                            </table>
+                           
+                        </div>
+                            </div>      
+                            
+                            <div><h1 class="page-title">Present Address<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div6', 'tableid6_img')" style="width: 20px;" id="tableid6_img"></sub></h1></div>
+                            <div class="panel panel-default" id="Div6">    
+                            <div class="panel-body">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                     
+                        <tr>
+                            <td width="20%" valign="top">
+                                <label>Address1</label>
+                            </td>
+                            <td width="30%">
+                                <span><div class="textwrap">{{RAddress1}}</div></span>
+                            </td>
+                            <td width="20%" valign="top">
+                                <label>Address2</label>
+                            </td>
+                            <td width="30%">
+                                <span> <div class="textwrap">{{RAddress2}}</div></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Country</label>
+                            </td>
+                            <td>
+                                <span>{{ViewCountryName}}</span>
+                            </td>
+                            <td>
+                                <label>State</label>
+                            </td>
+                            <td>
+                                <span>{{ViewStateName}}</span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <label>Location</label>
+                            </td>
+                            <td>
+                                <span>{{ViewLocationName}}</span>
+                            </td>
+                            <td>
+                                <label>Pincode</label>
+                            </td>
+                            <td>
+                                <span>{{RPinCode}}</span>
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <label>LandMark</label>
+                            </td>
+                            <td>
+                                <span><div class="textwrap">{{RLandmark}}</div></span>
+                            </td>
+                           
+                        </tr>
+                                </table>
+                               
+                            </div>
+                                </div>   
+                                <div><h1 class="page-title">Permanent Address<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div7', 'tableid7_img')" style="width: 20px;" id="tableid7_img"></sub></h1> <td width="80%">
+                                        <input type="checkbox" value="checked" ng-model="CommunicationAddress" ng-disabled="true" />Same as Present Address
+                                    
+                                    </td></div>
+                                <div class="panel panel-default" id="Div7">    
+                                <div class="panel-body">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                         
+                            <tr>
+                                <td width="20%" valign="top">
+                                    <label>Address1</label>
+                                </td>
+                                <td width="30%" >
+                                    <span><div class="textwrap">{{PAddress1}}</span>
+                                </td>
+                                <td width="20%" valign="top"> 
+                                    <label>Address2</label>
+                                </td>
+                                <td width="30%">
+                                    <span><div class="textwrap">{{PAddress2}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Country</label>
+                                </td>
+                                <td>
+                                    <span>{{ViewPermanentCountryName}}</span>
+                                </td>
+                                <td>
+                                    <label>State</label>
+                                </td>
+                                <td>
+                                    <span>{{ViewPermanentStateName}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Location</label>
+                                </td>
+                                <td>
+                                    <span>{{ViewPermanentCityName}}</span>
+                                </td>
+                                <td>
+                                    <label>Pincode</label>
+                                </td>
+                                <td>
+                                    <span>{{PPinCode}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <label>LandMark</label>
+                                </td>
+                                <td>
+                                    <span><div class="textwrap">{{PLandmark}}</span>
+                                </td>
+                            </tr>
+                                    </table>
+                                   
+                                </div>
+                                    </div>   
+                                    <div><h1 class="page-title">IncomeD etails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div8', 'tableid8_img')" style="width: 20px;" id="tableid8_img"></sub></h1></div>
+                                    <div class="panel panel-default" id="Div8">    
+                                    <div class="panel-body">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                             
+                                <tr>
+                                    <td width="20%">
+                                        <label>Annual Income</label>
+                                    </td>
+                                    <td width="80%">
+                                        <span>{{AnnualIncome}}</span>
+                                    </td>
+                                </tr>
+                                        </table>
+                                       
+                                    </div>
+                                        </div>  
+                        <div><h1 class="page-title">Bank Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div9', 'tableid9_img')" style="width: 20px;" id="tableid9_img"></sub></h1></div>
+                        <div class="panel panel-default" id="Div9">    
+                        <div class="panel-body">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                    
+                    <tr>
+                        <td width="20%" valign="top">
+                            <label> Acc. Holder Name</label>
+                        </td>
+                        <td width="30%" valign="top">
+                            <span><div class="textwrap">{{AccountName}}</div></span>
+                        </td>
+                        <td width="20%" valign="top">
+                                <label>Acc. Number</label>
+                            </td>
+                            <td width="30%" valign="top">
+                                <span>{{AccountNumber}}</span>
+                            </td>
+                    <tr>
+                        <td>
+                            <label>Bank Name</label>
+                        </td>
+                        <td>
+                            <span>{{ViewBankName}}</span>
+    
+                        </td>
+                        <td>
+                            <label>Branch Name</label>
+                        </td>
+                        <td>
+                            <span>{{ViewBranchName}}</span>
+                        </td>
+                    <tr>
+                        <td>
+                            <label>IFSC Code</label>
+                        </td>
+                        <td>
+                            <span>{{IFSC_Code}}</span>
+    
+                        </td>
+                        <td>
+                            <label>MICR Number</label>
+                        </td>
+                        <td>
+                            <span>{{MICR_Number}}</span>
+                        </td>
+                    </tr>
+                            </table>
+                            
+                        </div>
+                            </div>   
+                            <div><h1 class="page-title">Previous Academic Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div10', 'tableid10_img')" style="width: 20px;" id="tableid10_img"></sub></h1></div>
+                            <div class="panel panel-default" id="Div10">    
+                            <div class="panel-body">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        
+                        <tr>
+                            <td width="20%">
+                                <label>Course</label>
+                            </td>
+                            <td width="30%">
+                                <!-- <div style="display:inline-block;padding-right:5px;" ng-repeat="d in StudentChildList"><span>{{d.Course}}
+                                    </span></div> -->
+                                    <span>{{ViewCoursePrevious}}</span>
+        
+                            </td>
+                    <td  width="20%">
+                        <label>Medium </label>
+                    </td>
+                    <td width="30%">
+                        <span>{{ViewMediumPrevious}}</span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                                <label>Academic Year</label>
+                            </td>
+                            <td>
+                                <span>{{ViewYear}}</span>
+                            </td>
+                    <td>
+                        <label>Previous Marks</label>
+                    </td>
+                    <td>
+                        <span>{{MarksObtained}}%</span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                        <td>
+                                <label>TC Number</label>
+                            </td>
+                            <td>
+                                <span>{{TC_Number}}</span>
+        
+                            </td>
+                    <td>
+                        <label>InstituteName </label>
+                    </td>
+                    <td>
+                        <span>{{InstituteName}}</span>
+                    </td>
+                </tr>
+                <tr>
+                        <td valign="top">
+                                <label>Address</label>
+                            </td>
+                            <td valign="top">
+                                <div class="textwrap">{{Address}}</div>
+                            </td>
+                    <td valign="top">
+                        <label>Remarks</label>
+                    </td>
+                    <td>
+                        <div class="textwrap">{{Remarks}}</div>
+                    </td>
+    
+            </tr>
+                    </table>
+                    
+                </div>
+                    </div>
+                    <div><h1 class="page-title">Health Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div11', 'tableid11_img')" style="width: 20px;" id="tableid11_img"></sub></h1></div>
+                    <div class="panel panel-default" id="Div11">    
+                    <div class="panel-body">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                
+                <tr>
+                    <td width="20%">
+                        <label>Any Health Related Issue</label>
+                    </td>
+                    <td width="80%">
+                        <input type="checkbox" value="checked" ng-model="HealthIssue" ng-disabled="true" />
+                        <span>{{HealthIssueType}}</span>
+                    </td>
+                    <td >
+                    
+                    </td>
+                            </tr>
+                                    </table>
+                                    
+                                </div>
+                                    </div>  
+        <div><h1 class="page-title">Family Doctor Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div12', 'tableid12_img')" style="width: 20px;" id="tableid12_img"></sub></h1></div>
+        <div class="panel panel-default" id="Div12">    
+        <div class="panel-body">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+    <tr>
+            <td width="20%" valign="top"> 
+                    <label>Doctor Name</label>
+                </td>
+                <td width="30%" valign="top">
+                    <span><div class="textwrap">{{FamilyDoctorName}}</div></span>
+                </td>
+    
+                <td width="20%" valign="top">
+                    <label>Mobile Number</label>
+                </td>
+                <td width="30%" valign="top">
+                    <span>{{FamilyDoctorNumber}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <label>Address</label>
+                </td>
+                <td>
+                    <span><div class="textwrap">{{FamilyDoctorAddress}}</div></span>
+                </td>
+                </tr>
+                        </table>
+                        
+                    </div>
+                        </div>         
+                    <div><h1 class="page-title">Scholarship Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div13', 'tableid13_img')" style="width: 20px;" id="tableid13_img"></sub></h1></div>
+                    <div class="panel panel-default" id="Div13">    
+                    <div class="panel-body">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                
+                <tr>
+                        <td width="20%"> 
+                                <label>Eligibility</label>
+                            </td>
+                            <td width="80%">
+                                <span>{{EligibilityView}}</span>
+                                <input type="radio" ng-model="Eligibility" value="1" ng-disabled="true"> Yes
+                                <input type="radio" ng-model="Eligibility" value="2" ng-disabled="true"> No
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" valign="top"> 
+                                <label>Description</label>
+                            </td>
+                            <td width="80%">
+                                <span><div class="textwrap">{{Description}}</div></span>
+                            </td>
+                            </tr>
+                                    </table>
+                                    
+                                </div>
+                                    </div> 
+                                                      
+            <div><h1 class="page-title">Reference Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div14', 'tableid14_img')" style="width: 20px;" id="tableid14_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div14">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                    <tr>
+                            <td valign="top" width="20%" >
+                                
+                                    <label>Reference Source</label>
+                                </td>
+                                <td  ng-show="ReferenceType == '1' " width="80%">
+                                    {{ViewReferenceType}}
+                                        
+                                     </td>
+                                     <td  ng-show="ReferenceType != '1' " width="30%">
+                                            {{ViewReferenceType}}
+                                                
+                                             </td>
+                                     <td ng-show="ReferenceType == '3' " width="20%">
+                                         <label>Student Name</label>
+                                         </td>
+                                     <td ng-show="ReferenceType == '3' " width="20%">
+                                 
+                                           {{ViewStudentName}}
+                                     </td>
+                                 <td ng-show="ReferenceType == '2' ">
+                                         <label>Employee Name</label>
+                                     </td>
+                                   <td ng-show="ReferenceType == '2' ">
+                                       {{ViewEmployeeName}}
+                                   </td>
+                                     <!-- {{EmployeesNameList}} -->
+                                    
+                                     </td>
+                                     <td  width="20%" ng-show="ReferenceType =='4' || ReferenceType =='5' ||  ReferenceType =='6'">
+                                             <label>Name</label>
+                                         </td>
+                                        <td  width="30%"ng-show="ReferenceType =='4' || ReferenceType =='5' ||  ReferenceType =='6'">
+                                            {{OthersId}}
+                                        </td>
+                                 </table>
+            </div>
+            </div>
+            <h1 class="page-title">DocumentDetails</h1>
+            <tr>
+                     
+                    <table st-table="emptydatas" style="width: 100%" st-safe-src="SiblingList" class="table table-striped table-bordered">
+    
+                         <thead>
+                             <tr style="text-align: center">
+                                 <th st-ratio="5">Sl No.</th>
+                                 <th st-ratio="15" st-sort="LicenseFullPath">Document Type</th>
+                                 <th st-ratio="15" st-sort="LicenseFullPath">Document Name</th>
+    
+                             </tr>
+                         </thead>
+    
+                         <tbody>
+    
+                             <tr style="text-align: center" ng-if="(ViewDocument.length==0)">
+                                 <td colspan="3" class="text-center" style="text-align:center;">
+                                     No Records Found
+                                 </td>
+                             </tr>
+                             <tr ng-repeat="row in ViewDocument">
+                                 <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+                                 <td>{{row.Document}} </td>
+                                 <td>{{row.DocumentFileName}} </td>
+    
+    
+                             </tr>
+                         </tbody>
+    
+                     </table>
+                 </td>
+             </tr>
+    
+                 </table>
+     </div>
+     </div>
+    
+     <div style="text-align: center;">
+         <button type="button" class="btn btn-save" title="Click to Cancel"  ng-click="ListRedirect()">Cancel</button>
+     </div>
+    
+    
+    </div>
+    
+    
+    <script>
+     
+    
+    
+    
+     $('#btnLogo').click(function () {
+         $("#EmployeePhoto").trigger('click');
+     })
+    
+     //Photo upload
+     function readURL(input) {
+         if (input.files && input.files[0]) {
+             var reader = new FileReader();
+    
+             reader.onload = function (e) {
+                 $('#blah')
+                     .attr('src', e.target.result)
+                     .width(150)
+                     .height(200);
+             };
+             reader.readAsDataURL(input.files[0]);
+         }
+     }
+    </script>
+    <style>
+     .nav2 {
+         float: left;
+         margin-right: 3px;
+     }
+    
+     li.nav2.active .linetags {
+         border-top: 1px solid #0066bb;
+         border-left: 1px solid #0066bb;
+         border-right: 1px solid #0066bb;
+         border-radius: 5px 5px 0px 0px;
+         background-color: #0066bb;
+         color: #fff !important;
+         text-decoration: none;
+     }
+    
+    
+    
+     .pointer {
+         cursor: pointer;
+     }
+    
+     .nav1 {
+         padding-bottom: 31px !important;
+     }
+    </style>
+    <style>
+     .document {
+         /* border: 1px solid black; */
+         border: 1px solid #C7C7CC;
+         border-collapse: collapse;
+     }
+    </style>
+    
+    <script>
+     $('#btndocfile').click(function () {
+         $("#DocumentID").trigger('click');
+     })
+    </script>
+    
+    
+    <script>
+     $('#AdmissionDate').datepicker({
+         format: "dd-M-yyyy",
+         //endDate: '+0d',
+         startDate: new Date(),
+         forceParse: false,
+         autoclose: true,
+         todayHighlight: true,
+         toggleActive: true,
+         todayBtn: true
+    
+     });
+    
+     $("#DOB").datepicker({
+         format: "dd-M-yyyy",
+         endDate: '+0d',
+         // startDate: new Date(),
+         forceParse: false,
+         autoclose: true,
+         todayHighlight: true,
+         toggleActive: true,
+         todayBtn: true
+    
+     });
+    </script>
+        </script>
+        <style>
+            .nav2 {
+                float: left;
+                margin-right: 3px;
+            }
+        
+            li.nav2.active .linetags {
+                border-top: 1px solid #0066bb;
+                border-left: 1px solid #0066bb;
+                border-right: 1px solid #0066bb;
+                border-radius: 5px 5px 0px 0px;
+                background-color: #0066bb;
+                color: #fff !important;
+                text-decoration: none;
+            }
+        
+        
+        
+            .pointer {
+                cursor: pointer;
+            }
+        
+            .nav1 {
+                padding-bottom: 31px !important;
+            }
+        </style>
+        <style>
+            .document {
+                /* border: 1px solid black; */
+                border: 1px solid #C7C7CC;
+                border-collapse: collapse;
+            }
+        </style>
+        
+        <script>
+            $('#btndocfile').click(function () {
+                $("#DocumentID").trigger('click');
+            })
+        </script>
+    
+    <script>
+            $("#EnquiryDate").datepicker({
+                format: "dd-M-yyyy",
+                endDate: '+0d',
+                startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+    
+            $("#DOB").datepicker({
+                format: "dd-M-yyyy",
+                endDate: '+0d',
+                //startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+    
+            $("#DOJ").datepicker({
+                format: "dd-M-yyyy",
+                // endDate: '+0d',
+                 //startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+        </script>
+        <script>
+              $("#DOJ").datepicker({
+            format: "dd-M-yyyy",
+            // endDate: '+0d',
+            startDate: new Date(),
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            todayBtn: true
+    
+        });
+        $("#DOB").datepicker({
+            format: "dd-M-yyyy",
+            endDate: '+0d',
+            //startDate: new Date(),
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            todayBtn: true
+    
+        });
+      
+     
+    
+    
+        $('#btnLogo').click(function () {
+                $("#EmployeePhoto").trigger('click');
+            })
+    
+    //Photo upload
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+    
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    
+         
+       </script>
+    

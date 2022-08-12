@@ -1,0 +1,373 @@
+<div class="container">
+        <div class="row" >
+            
+            <div class="col-md-12">
+                    <div><p class="page-title" >Answer Book<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('tableid', 'tableid_img')" style="width: 20px;" id="tableid_img"></sub></p></div>
+
+                      <div class="panel panel-default" id="tableid">  
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                    <tr> 
+                                        <td width="5%">
+                                            Scanning
+                                        </td>
+                                        <td width="25%">
+                                            <button type="button" class="btn btn-small"  title="Click to List the Records" ng-click="ScanCodefunction()">Scan</button> 
+                                        </td>
+                                    </tr> 
+                            </table>    
+                        </form>
+                    </div>
+                </div>
+            </div><div class="panel panel-default" id="tableid" ng-show="QRVar==1">  
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>                                         
+                                        <td width="16%">
+                                            <button type="button" class="button1"  title="Exam is started" value="1" ng-click="cardfunction(1)" >Started</button>  
+                                        </td>
+                                        <td width="16%">
+                                            <button type="button" class="button2"  title="Exam is un-initiated" value="2" ng-click="cardfunction(2)" >Un-Initiated</button>  
+                                            </td>
+                                            <td width="16%">
+                                                <button type="button" class="button4"  title="Exam is Ended" value="3" ng-click="cardfunction(3)" >Ended</button>   
+                                            </td>
+                                            <td width="16%">
+                                                <button type="button" class="button3"  title="Exam paper Handed over" value="4" ng-click="cardfunction(4)" >Handed Over</button>  
+                                                </td>
+                                                
+                                            </tr>
+                                            <tr> 
+                                                <td>
+                                                    <label>Subject of Question Paper<font class='mandatory-field' style="color: red";>*</font></label>
+                                                </td>
+                                                
+                                                <td>   
+                                                    <input type="text" name="No_of_Students" id="QPSubject" ng-model="QPSubject" disabled style="width: 50%;">  
+                                                   
+                                                </td>
+                                                <td>
+                                                    <label>No. of Students Entered<font class='mandatory-field' style="color: red";>*</font></label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="button1" name="No_of_Students" id="No_of_Students" ng-model="No_of_Students" disabled style="width: 50%;">  
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr> 
+                                                <td>
+                                                        <label>No. of Students Remaining/Absent<font class='mandatory-field' style="color: red";>*</font></label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="button2" name="No_of_Students_Absent" id="No_of_Students_Absent" ng-model="No_of_Students_Absent" disabled style="width: 50%">   
+                                                    </td>
+                                                    <td>
+                                                        <label>No. of Students Submitted <font class='mandatory-field' style="color: red";>*</font></label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="button4" name="No_of_Students_Submitted" id="No_of_Students_Submitted" ng-model="No_of_Students_Submitted" disabled style="width: 50%">   
+                                                    </td>
+                                                    <td>
+                                                        <td><button type="button" class="btn btn-small"  title="Click to AbsentDetails" ng-click="AbsentDetails()">AbsentDetails</button> </td>                                                                                                    
+                                                    </td>
+                                                    <!-- <td width="12%" ng-show="listPage==1">
+                                                            <label>{{(CommontransactionList|filter :
+                                                                    {Name:'SubjectName'})[0].Value}}</label>
+                                                        </td>
+                                                        <td width="20%" ng-show="listPage==1">
+                                                            <select ng-model="SubjectNameId" class="form-control" ng-required="true">
+                                                                <option value="0">Select</option>
+                                                                <option ng-repeat="sel in SubjectList| filter:{SubjectParentId:0}" ng-selected="SubjectNameId==sel.Id" value="{{sel.Id}}">{{sel.SubjectName}}</option>
+                                                            </select>   
+                                                        </td> -->
+                                             </tr> 
+                                            
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="tableid" ng-show="cardval ==1">  
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                       
+                                             <tr >
+                                                 <tr>
+                                                    <td>
+                                                        <label>No. of Students</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" ng-model="Total_No_of_Students_from" disabled style="width: 50;">
+                                                    </td>
+                                                    <td><label>To</label></td>
+                                                    <td>
+                                                        <input type="text" ng-model="Total_No_of_Students_to" disabled style="width: 50;">
+                                                    </td>                                                
+                                                                                                        
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>No. of Absents</label>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{20}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <label>Exam Duration</label>
+                                                    </td>
+                                                    <td>
+                                                        <span>
+                                                            {{'10:00 - 12:00'}}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    
+                                                    <td>
+                                                        <label>
+                                                            Question Paper Details
+                                                        </label>
+                                                        <td>
+                                                            <button type="button" class="button1"  title="Exam is started" value="1" ng-click="QuestionPaperDetails()" >Scan</button>  
+                                                        </td>
+                                                    </td>
+                                                </tr>
+                                                <tr ng-show="questionpaperval ==1">
+                                                    <td>
+                                                        <label>
+                                                            Total No. of Questions
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{10}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <label>
+                                                            Subject
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{'English'}}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            Center Name
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{'school'}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <label>
+                                                            Room No.
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{10}}</span>
+                                                    </td>
+                                                    <td width="25%">
+                                                        <button type="button" class="btn btn-small"  title="Click to Edit the Records" ng-click="">Edit</button> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" class="btn btn-small"  title="Click to Start the Session" ng-click="">Start session</button> </td>
+                                                    <td><button type="button" class="btn btn-small"  title="Click to End the Session" ng-click="">End Session</button> </td>
+                                                    <td><button type="button" class="btn btn-small"  title="Click to Hand Over" ng-click="HandOverfunction()">Hand Over</button> </td>
+                                                </tr>                                              
+
+                                             </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default" id="tableid" ng-show="apsentval ==1">  
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                       
+                                             <tr >
+                                                 <tr>
+                                                    <td>
+                                                        <label>Students Name</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" ng-model="StudentName">
+                                                    </td>
+                                                    <td><label>Student Class</label></td>
+                                                    <td>
+                                                        <input type="text" ng-model="ClassName">
+                                                    </td>                                                
+                                                                                                        
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>Subject</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" ng-model="Subject">
+                                                    </td>
+                                                    <td>
+                                                        <label>Reason</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" ng-model="Reason">
+                                                    </td>
+                                                </tr>  
+                                                <tr>
+                                                    <button type="button" class="btn btn-small"  title="Click to Submit the Records" ng-click="">Submit</button> 
+                                                </tr>                                 
+
+                                             </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="tableid" ng-show="handoverval ==1">  
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                       
+                                             <tr>
+                                                 <tr>
+                                                    <td>
+                                                        <label>Submit</label>
+                                                    </td>
+                                                    <td><button type="button" class="btn btn-small"  title="Click to Start the Session" ng-click="">Start session</button> </td>                                                                                                    
+                                                    <td><button type="button" class="btn btn-small"  title="Click to Start the Session" ng-click="CompletedSessionval()">Finished</button> </td>                                                                                                    
+                                                                                                        
+                                                </tr>                                     
+
+                                             </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    
+    <!-- Examination Marks View Modal -->
+    <div id="ExaminationMarksViewModal" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width:60%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Examination Marks Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" style="font-size:small">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                <tr>
+                                 <td>
+                                  <label>Gender</label>
+                                   </td>
+                                   <td style="width:30%">
+                                        <span>{{ViewGender}}</span>                                   
+                                    </td> 
+                                    <td style="width: 20%">
+                                        <label>Total</label>
+                                    </td>
+                                    <td style="width:30%">
+                                    <span>{{Total}}</span>                                  
+                                    </td> 
+                                </tr>
+                                <tr>                       
+                                    <td style="width: 20%">
+                                        <label>PassMark</label>
+                                    </td>
+                                    <td style="width:30%">
+                                    <span>{{Pass}}</span>
+                                    </td>
+                                    <td style="width: 20%">
+                                        <label>Course</label>
+                                    </td>
+                                    <td style="width:30%">
+                                    <span>{{ViewCourse}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                     <label>Subject</label>
+                                      </td>
+                                      <td style="width:30%">
+                                           <span>{{SubjectName}}</span>                                   
+                                       </td> 
+                                       
+                            </table>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="text-align:center;">
+                        
+                        <button type="button" class="btn  btn-save" ng-click="CancelPopup()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+        <div id="ExaminationMarkEditModal" class="modal fade" role="dialog">
+                <div class="modal-dialog" style="width:30%">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Question Bank Details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" style="font-size:small">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td>
+                                                <label>MarksObtained</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" ng-model="MarksObtained">
+                                            </td>
+                                            </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <div class="modal-footer" style="text-align:center;">
+                            <button type="button" class="btn  btn-save" ng-click="QuestionBank_AddEdit()">Save</button>
+                            <button type="button" class="btn  btn-save" ng-click="CancelPopup()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+           <script>
+            $(document).ready(function () {     
+                $("#radio_1").attr('checked', 'checked');  
+             });
+    
+             $('#CheckAll').click(function () {
+               ($(this).is(":checked") ? $('.checkboxes').prop("checked", true): $('.checkboxes').prop("checked", false))
+                   });
+    
+       </script>
+      <style>
+          .button1 {background-color: #4CAF50;} /* Green */
+          .button2 {background-color: #e7e7e7; color: black;} /* Gray */
+          .button3 {background-color: #008CBA;} /* Blue */
+          .button4 {background-color: #f44336;} /* Red */
+          </style>
+
+

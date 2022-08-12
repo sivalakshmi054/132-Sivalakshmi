@@ -1,0 +1,1457 @@
+<!-- Candidate Resume Create Page -->
+<head>
+        <style type="text/css">
+            input[type='file'] {
+                opacity: 0;
+            }
+        </style>
+     
+    </head>
+    <div class="mainbody container-fluid" ng-init="ViewStudentDetails();AdmissionDateInit();">
+    <p class="page-title">Student Details</p>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        
+            <div><h1 class="page-title">StudentDetails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('tableid', 'tableid_img')" style="width: 20px;" id="tableid_img"></sub></h1></div>
+            <div class="panel panel-default" id="tableid">    
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" name="patientform" id="basicform">
+                   
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                           
+                        <tr>
+                            <td>
+                                <label>Application Number
+                                  
+                                </label>
+                            </td>
+                            <td ng-hide="Id>0">
+    
+                                <div angucomplete-alt id="ex1"
+                                placeholder=""
+                                maxlength="20"
+                                pause="100"
+                                ng-disabled="Id>0"
+                                selected-object="employeeselected"
+                                local-data="StudentEnquiryList"
+                                search-fields="ApplicationNumber"
+                                title-field="ApplicationNumber"
+                                minlength="1"
+                                input-class="form-control"
+                                match-class="highlight"
+                                ng-click="StudentEnquiryFill()"
+                                
+                               >    
+                                </div>  
+                            </td>
+                            <td ng-show="Id>0">
+                                <input type="text" class=form-control ng-model="ApplicationNumber" ng-disabled="Id>0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15%">
+                                <label>Student Id
+                                    <font class='mandatory-field' style="color: red" ;>*</font>
+                                </label>
+                            </td>
+                            <td>
+    
+                                <input type="text" class="form-control" id="Textarea30" ng-model="StudentId" ng-init="StudentId=''" placeholder="" ng-maxlength="20"
+                                    maxlength="20" onkeypress=" NoSpecChar(this.StudentId)"/>
+                            </td>
+                            <td width="15%" valign="top" rowspan="4">
+                                <label>Photo</label>
+                            </td>
+                            <td width="35%" valign="top" rowspan="6">
+                                <div>
+                                    <input type="file" id="StudentPhoto" fileread="StudentPhoto1" onchange="angular.element(this).scope().logoChange(this)" name="FileName"
+                                        title=" " style="height:0px !important" accept="image/x-png,image/gif,image/jpeg"
+                                    />
+                                   
+                               
+                                <span id='btnLogo' class="fa fa-arrow-circle-o-up" style="font-size: 20px;"></span> 
+                            </div>
+                                <img src="{{StudentPhoto1}}" width="120" height="150" class="mtb-7" alt="Image preview..." ng-if="StudentPhoto1!='/storage/null'"
+                                    ng-show="StudentPhoto1!=''"/>
+                                <img src="/img/NoPhoto.jpg" ng-if="StudentPhoto1=='/storage/null' || StudentPhoto1=='' " /> &nbsp &nbsp &nbsp
+                                <!-- <img src="/img/clearclr.png" style="width: 17px;" ng-click="imageclear() "title="clear" /> -->
+                            </td>
+                           
+                            <tr>
+                                <td>
+                                    <label>Admission Number
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td>
+    
+                                    <input type="text" class="form-control" id="Textarea2" ng-model="AdmissionNumber" ng-init="AdmissionNumber=''" placeholder=""
+                                        ng-maxlength="20" maxlength="20" onkeypress=" NoSpecChar(this.AdmissionNumber)"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <label>Admission Date
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td style="width:30%">
+                                    <div class="col-xs-12 input-group date" id="AdmissionDate" style="margin-left:-15px;">
+                                        <input type="text" id="AdmDate" class="form-control" ng-model="AdmissionDate" ng-required="true"
+                                            style="width:180px" ng-required="true">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-th" aria-hidden="true"></i>
+                                        </span>
+                                        <img src="/img/clearclr.png" style="width: 17px;" ng-click="dateclear1() "title="clear" />
+                                       
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>First Name
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td>
+    
+                                    <input type="text" class="form-control" id="FirstName" ng-model="FirstName" ng-init="FirstName=''" placeholder="" ng-maxlength="100"
+                                        maxlength="100" onkeypress="ParticularSpec(this.FirstName)" />
+                                    <tr>
+                                            <tr>
+                                                    <td>
+                                                        <label>Middle Name
+                                                           
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                        
+                                                        <input type="text" class="form-control" id="MiddleName" ng-model="MiddleName" ng-init="MiddleName=''" placeholder="" ng-maxlength="50"
+                                                            maxlength="50" onkeypress="ParticularSpec(this.MiddleName)" />
+                                                        <tr>
+                                        <td>
+                                            <label>Last Name
+                                                <font class='mandatory-field' style="color: red" ;>*</font>
+                                            </label>
+                                        </td>
+                                        <td>
+    
+                                            <input type="text" class="form-control" id="LastName" ng-model="LastName" ng-init="LastName=''" placeholder="" ng-maxlength="100"
+                                                maxlength="100" onkeypress="ParticularSpec(this.LastName)" />
+                                            <tr>
+                                                <td width="20%">
+                                                    <label>DOB
+                                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                                    </label>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <div class="col-xs-12 input-group date" style="margin-left:-15px;" id="DOB">
+                                                        <input type="text" id="DateBirth" class="form-control" ng-model="DOB" ng-init="DOB=''" ng-required="true" style="width:180px"
+                                                            ng-required="true">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-th" aria-hidden="true"></i>
+                                                        </span>
+                                                        <img src="/img/clearclr.png" style="width: 17px;" ng-click="dateclear() "title="clear" />
+                                                    </div>
+                                                </td>
+                                           
+                                                <td>
+                                                    <label>Father Name
+                                                      
+                                                    </label>
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="FatherName" ng-init="FatherName=''" placeholder="" ng-maxlength="50"
+                                                        maxlength="50" onkeypress="ParticularSpec(this.FatherName)"
+                                                    />
+    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>Mother Name
+                                                       
+                                                    </label>
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="MotherName" ng-init="MotherName=''" placeholder="" ng-maxlength="50"
+                                                        maxlength="50" onkeypress="ParticularSpec(this.MotherName)"
+                                                    />
+    
+                                                </td>
+                                            
+                                                <td>
+                                                    <label>Guardian Name</label>
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="GuardianName" ng-init="GuardianName=''" placeholder="" ng-maxlength="50"
+                                                        maxlength="50" onkeypress="ParticularSpec(this.GuardianName)"
+                                                    />
+    
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 20%">
+                                                    <label>Gender
+                                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                                    </label>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <select ng-model="Gender" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in Gender_list" ng-selected="Gender==sel.id" value="{{sel.id}}">{{sel.gender}}</option>
+                                                    </select>
+                                                </td>
+                                            
+                                                <td style="width: 20%">
+                                                    <label>Religion
+                                                       
+                                                    </label>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <select ng-model="Religion" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in Religion_list" ng-selected="Religion==sel.id" value="{{sel.id}}">{{sel.religion}}</option>
+                                                    </select>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 20%">
+                                                    <label>Community
+                                                        <font class='mandatory-field' style="color: red";>*</font>
+                                                    </label>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <select ng-model="Community" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in Community_list" ng-selected="Community==sel.id" value="{{sel.id}}">{{sel.community}}</option>
+                                                    </select>
+                                                </td>
+    
+                                          
+                                                <td style="width: 20%">
+                                                    <label>Caste</label>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <select ng-model="Caste" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in Caste_List" ng-selected="Caste==sel.id" value="{{sel.id}}">{{sel.castename}}</option>
+                                                    </select>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 20%">
+                                                    <label>Mother Tongue
+                                                        <font class='mandatory-field' style="color: red"
+                                                            ;>*</font>
+                                                    </label>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <select ng-model="MotherTongue" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in MotherTongue_list" ng-selected="MotherTongue==sel.id" value="{{sel.id}}">{{sel.mothertongue}}</option>
+                                                    </select>
+                                                </td>
+                                            
+                                                <td style="width: 20%">
+                                                    <label>Blood Group</label>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <select ng-model="BloodGroup" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in BloodGroup_List" ng-selected="BloodGroup==sel.id" value="{{sel.id}}">{{sel.bloodgroup}}</option>
+                                                    </select>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td>
+                                                    <label>Email</label>
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="SEmail" ng-init="SEmail=''" placeholder="" ng-maxlength="50"
+                                                        maxlength="50" onkeypress="EmailFormate(this.SEmail)" onkeypress=" NoSpecChar(this.SEmail)"
+                                                    />
+                                                </td>
+    
+                                            
+                                                <td>
+                                                    <label>Identity Mark1
+                                                        <font class='mandatory-field' style="color: red"
+                                                            ;>*</font>
+                                                    </label>
+                                                </td>
+                                              
+                                                <td>
+    
+                                                    <input type="text"  class="form-control" id="Textarea2" ng-model="IdentityMark" ng-init="IdentityMark=''" placeholder="" ng-maxlength="50"
+                                                        maxlength="50" />
+                                                </td>
+                                                <tr>
+                                                <td>
+                                                    <label>Identity Mark2
+                                                       
+                                                    </label>
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="IdentityMark2" ng-init="IdentityMark2=''" placeholder="" ng-maxlength="50"
+                                                        maxlength="50" />
+                                                </td>
+    
+                                         
+                                                <td>
+                                                    <label>Register Rollnumber</label>
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="RegisterNumber" ng-init="RegisterNumber=''" placeholder=""
+                                                        ng-maxlength="30" maxlength="30" onkeypress=" NoSpecChar(this.RegisterNumber)"
+                                                    />
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td>
+                                                    <label>Aadhar Number</label>  
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="SSN_UID_Number" ng-init="SSN_UID_Number=''" placeholder=""
+                                                        ng-maxlength="30" maxlength="30" onkeypress="OnlySpecCharNum(this.SSN_UID_Number)"
+                                                    />
+                                                </td>
+                                           
+                                                <td>
+                                                    <label>Mobile Number
+                                                        <font class='mandatory-field' style="color: red"
+                                                            ;>*</font>
+                                                    </label>
+                                                </td>
+                                                <td>
+    
+                                                    <input type="text" class="form-control" id="Textarea2" ng-model="SMobileNumber" ng-init="SMobileNumber=''" placeholder=""
+                                                        ng-maxlength="20" maxlength="20" onkeypress="OnlySpecCharNum(this.SMobileNumber)"
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                            <td>
+                                                <label>Category</label>  
+                                            </td>
+                                            <td>
+
+                                                <select ng-model="StudentCategory" class="form-control" ng-required="true">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in StudentCategory_List" ng-selected="CategoryName==sel.Id" value="{{sel.Id}}">{{sel.CategoryName}}</option>
+                                                </select>
+                                            </td>
+                                       
+                                        </tr>
+                </form>
+    
+                </table>
+            </div>
+            </div>
+    
+            <div><h1 class="page-title">Admission Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div2', 'tableid2_img')" style="width: 20px;" id="tableid2_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div2">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                    <!-- </tr> -->
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Joining Academic Year
+                                <font class='mandatory-field' style="color: red"
+                                    ;>*</font>
+                            </label>
+                        </td>
+                      
+                        <td style="width:30%">
+                            <select ng-model="AcademicYear" class="form-control" ng-required="true" ng-change="calculatePreviousAcademicYear();JoiningAcademicYearBasedCourseFunction();" ng-disabled="Id>0">
+                                <option value="">Select</option>
+                                <option ng-repeat="sel in AcademicYearList" ng-selected="AcademicYear==sel.id" value="{{sel.id}}">{{sel.academicyear}}</option>
+                            </select>
+                        </td>
+                        <td style="width: 20%">
+                            <label>Joining Course
+                                <font class='mandatory-field' style="color: red" ;>*</font>
+                            </label>
+                        </td>
+                        <td style="width:30%">
+                          
+                            <select ng-model="Course" class="form-control" ng-required="true"  ng-change="CourseBasedSectionClear()" ng-disabled="Id>0">
+                                <option value="">Select</option>
+                                <option ng-repeat="sel in Course_list" ng-selected="Course==sel.id" value="{{sel.id}}">{{sel.course}}</option>
+                            </select>
+                        </td>
+                       
+                    </tr>
+    
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Joining Medium
+                                <font class='mandatory-field' style="color: red" ;>*</font>
+                            </label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="MediumName" class="form-control" ng-required="true">
+                                <option value="">Select</option>
+                                <option ng-repeat="sel in Medium_list" ng-selected="MediumName==sel.id" value="{{sel.id}}">{{sel.mediumname}}</option>
+                            </select>
+                        </td>
+                        <td style="width: 20%">
+                            <label>Joining Section</label>
+                        </td>
+                        <td style="width:30%">
+                          
+                            <select ng-model="Section" class="form-control" ng-required="true">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Section_List"  ng-selected="Section==sel.id" value="{{sel.id}}">{{sel.sectionname}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>
+                                    Remarks
+                            </label>
+                        </td>
+                        <td>
+                            <textarea rows="3" id="Textarea2" class="form-control" ng-model="Remarks2" ng-init="Remarks2=''" placeholder="" ng-maxlength="250"
+                                maxlength="250"></textarea>
+                        </td>
+                    </tr>
+    
+            
+                </table>
+                </td>
+            </div>
+                </div>
+                
+            <div><h1 class="page-title">Father Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div3', 'tableid3_img')" style="width: 20px;" id="tableid3_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div3">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td width="20%">
+                            <label>Father Name</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="FatherName" ng-init="FatherName=''" onkeypress="ParticularSpec(this.FatherName)"
+                                placeholder="" ng-maxlength="100" maxlength="100" />
+    
+                        </td>
+                        <td width="20%">
+                            <label>Occupation</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="FOccupation" ng-init="FOccupation=''" placeholder="" ng-maxlength="100"
+                                maxlength="100" onkeypress="varifychar(this.FOccupation)" />
+                        </td>
+                        <tr>
+                            <td width="20%">
+                                <label>Qualification</label>
+                            </td>
+                            <td width="30%">
+                                <select ng-model="Father_Qualification" class="form-control" ng-required="true">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in Qualification_List" ng-selected="Father_Qualification==sel.id" value="{{sel.id}}">{{sel.qualification}}</option>
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <label>Aadhar Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="FSSN_UID_Number" ng-init="FSSN_UID_Number=''" placeholder=""
+                                    ng-maxlength="50" maxlength="50" onkeypress="NoSpecChar(this.FSSN_UID_Number)"
+                                />
+    
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td width="20%">
+                                <label>Mobile Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="FMobileNumber" ng-init="FMobileNumber=''" placeholder=""
+                                    ng-maxlength="20" maxlength="20" onkeypress="OnlySpecCharNum(this.FMobileNumber)"
+                                />
+    
+                            </td>
+                            <td width="20%">
+                                <label>Email</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="FEmail" ng-init="FEmail=''" placeholder="" ng-maxlength="50"
+                                    maxlength="50" onkeypress="EmailFormate(this.FEmail)" onkeypress=" NoSpecChar(this.FEmail)"
+                                />
+    
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td width="20%">
+                                <label>Communication Mobile Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Father_CommunicationNumber" ng-init="Father_CommunicationNumber=''" placeholder=""
+                                    ng-maxlength="20" maxlength="20" onkeypress="OnlySpecCharNum(this.FMobileNumber)"
+                                />
+    
+                            </td>
+                            <td width="20%">
+                                <label>Communication Email</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Father_CommunicationEmail" ng-init="Father_CommunicationEmail=''" placeholder="" ng-maxlength="50"
+                                    maxlength="50" onkeypress="EmailFormate(this.Father_CommunicationEmail)" onkeypress=" NoSpecChar(this.Father_CommunicationEmail)"
+                                />
+    
+                            </td>
+    
+                        </tr>
+    
+                        <tr>
+                            <td width="20%">
+                                <label>Organisation Name</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Father_OrganisationName" ng-init="Father_OrganisationName=''" placeholder=""
+                                    ng-maxlength="50" maxlength="50" 
+                                />
+    
+                            </td>
+                            <td width="20%">
+                                <label>Organisation Contact Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Father_OrganisationNumber" ng-init="Father_OrganisationNumber=''" placeholder="" ng-maxlength="20"
+                                    maxlength="20"  onkeypress=" OnlySpecCharNum(this.Father_OrganisationNumber)"
+                                />
+    
+                            </td>
+    
+                        </tr>
+                        <tr>
+                            <td width="20%">
+                                    <label>Organisation Address</label>
+                                </td>
+                                <td width="30%">
+                                    <input type="text" class="form-control" id="Textarea2" ng-model="Father_OrganisationAddress" ng-init="Father_OrganisationAddress=''" placeholder="" ng-maxlength="100"
+                                        maxlength="100"
+                                    />    
+                                </td>
+    
+                          </tr>
+    
+                        </table>
+            </div>
+            </div>
+    
+            <div><h1 class="page-title">Mother Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div4', 'tableid4_img')" style="width: 20px;" id="tableid4_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div4">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td width="20%">
+                            <label>Mother Name</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="MotherName" ng-init="MotherName=''" placeholder="" onkeypress="ParticularSpec(this.MotherName)"
+                                ng-maxlength="100" maxlength="100" />
+    
+                        </td>
+                        <td width="20%">
+                            <label>Occupation</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="MOccupation" ng-init="MOccupation=''" placeholder="" ng-maxlength="100"
+                                maxlength="100" onkeypress="varifychar(this.MOccupation)" />
+                        </td>
+                        <tr>
+                            <td width="20%">
+                                <label>Qualification</label>
+                            </td>
+                            <td width="30%">
+                                <select ng-model="Mother_Qualification" class="form-control" ng-required="true">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in Qualification_List" ng-selected="Mother_Qualification==sel.id" value="{{sel.id}}">{{sel.qualification}}</option>
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <label>Aadhar Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="MSSN_UID_Number" ng-init="MSSN_UID_Number=''" placeholder=""
+                                    ng-maxlength="50" maxlength="50" onkeypress="NoSpecChar(this.MSSN_UID_Number)"
+                                />
+    
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td width="20%">
+                                <label>Mobile Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="MMobileNumber" ng-init="MMobileNumber=''" placeholder=""
+                                    ng-maxlength="20" maxlength="20" onkeypress="OnlySpecCharNum(this.MMobileNumber)"
+                                />
+    
+                            </td>
+                            <td width="20%">
+                                <label>Email</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="MEmail" ng-init="MEmail=''" placeholder="" ng-maxlength="50"
+                                    maxlength="50" onkeypress="EmailFormate(this.MEmail)" onkeypress=" NoSpecChar(this.MEmail)"
+                                />
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%">
+                                <label>Communication Mobile Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Mother_CommunicationNumber" ng-init="Mother_CommunicationNumber=''" placeholder=""
+                                    ng-maxlength="20" maxlength="20" onkeypress="OnlySpecCharNum(this.FMobileNumber)"
+                                />
+    
+                            </td>
+                            <td width="20%">
+                                <label>Communication Email</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Mother_CommunicationEmail" ng-init="Mother_CommunicationEmail=''" placeholder="" ng-maxlength="50"
+                                    maxlength="50" onkeypress="EmailFormate(this.Mother_CommunicationEmail)" onkeypress=" NoSpecChar(this.Mother_CommunicationEmail)"
+                                />
+    
+                            </td>
+                        </tr>
+    <tr>
+                        <td width="20%">
+                            <label>Organisation Name</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="Mother_OrganisationName" ng-init="Mother_OrganisationName=''" placeholder=""
+                                ng-maxlength="50" maxlength="50"
+                            />
+    
+                        </td>
+                        <td width="20%">
+                            <label>Organisation Contact Number</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="Mother_OrganisationNumber" ng-init="Mother_OrganisationNumber=''" placeholder="" ng-maxlength="20"
+                                maxlength="20" onkeypress=" OnlySpecCharNum(this.Mother_OrganisationNumber)"
+                            />
+    
+                        </td>
+    
+                    </tr>
+    <tr>
+    <td width="20%">
+                            <label>Organisation Address</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="Mother_OrganisationAddress" ng-init="Mother_OrganisationAddress=''" placeholder="" ng-maxlength="100"
+                                maxlength="100" 
+                            />
+    
+                        </td>
+    
+    </tr>
+                        </table>
+            </div>
+            </div>
+    
+            <div><h1 class="page-title">Guardian Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div5', 'tableid5_img')" style="width: 20px;" id="tableid5_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div5">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td width="20%">
+                            <label>Guardian Name</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="GuardianName" ng-init="GuardianName=''" onkeypress="ParticularSpec(this.GuardianName)"
+                                placeholder="" ng-maxlength="100" maxlength="100" />
+    
+                        </td>
+                        <td width="20%">
+                            <label>Occupation</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="GOccupation" ng-init="GOccupation=''" placeholder="" ng-maxlength="100"
+                                maxlength="100" onkeypress="varifychar(this.GOccupation)" />
+                        </td>
+                        <tr>
+                            <td width="20%">
+                                <label>Qualification</label>
+                            </td>
+                            <td width="30%">
+                                <select ng-model="Guardian_Qualification" class="form-control" ng-required="true">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in QualificationList" ng-selected="Guardian_Qualification==sel.id" value="{{sel.id}}">{{sel.qualification}}</option>
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <label>Aadhar Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="GSSN_UID_Number" ng-init="GSSN_UID_Number=''" placeholder=""
+                                    ng-maxlength="50" maxlength="50" onkeypress="NoSpecChar(this.GSSN_UID_Number)"
+                                />
+    
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td width="20%">
+                                <label>Mobile Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="GMobileNumber" ng-init="GMobileNumber=''" placeholder=""
+                                    ng-maxlength="20" maxlength="20" onkeypress="OnlySpecCharNum(this.GMobileNumber)"
+                                />
+    
+                            </td>
+                            <td width="20%">
+                                <label>Email</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="GEmail" ng-init="GEmail=''" placeholder="" ng-maxlength="50"
+                                    maxlength="50" onkeypress="EmailFormate(this.GEmail)" onkeypress=" NoSpecChar(this.GEmail)"
+                                />
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%">
+                                <label>Communication Mobile Number</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Guardian_CommunicationNumber" ng-init="Guardian_CommunicationNumber=''" placeholder=""
+                                    ng-maxlength="20" maxlength="20" onkeypress="OnlySpecCharNum(this.FMobileNumber)"
+                                />
+    
+                            </td>
+                            <td width="20%">
+                                <label>Communication Email</label>
+                            </td>
+                            <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="Guardian_CommunicationEmail" ng-init="Guardian_CommunicationEmail=''" placeholder="" ng-maxlength="50"
+                                    maxlength="50" onkeypress="EmailFormate(this.Guardian_CommunicationEmail)" onkeypress=" NoSpecChar(this.Guardian_CommunicationEmail)"
+                                />
+    
+                            </td>
+                        </tr>
+    <tr>
+                    <td width="20%">
+                        <label>Organisation Name</label>
+                    </td>
+                    <td width="30%">
+                        <input type="text" class="form-control" id="Textarea2" ng-model="Guardian_OrganisationName" ng-init="Guardian_OrganisationName=''" placeholder=""
+                            ng-maxlength="50" maxlength="50" 
+                        />
+    
+                    </td>
+                    <td width="20%">
+                        <label>Organisation Contact Number</label>
+                    </td>
+                    <td width="30%">
+                        <input type="text" class="form-control" id="Textarea2" ng-model="Guardian_OrganisationNumber" ng-init="Guardian_OrganisationNumber=''" placeholder="" ng-maxlength="20"
+                            maxlength="20"onkeypress=" OnlySpecCharNum(this.Guardian_OrganisationNumber)"
+                        />
+    
+                    </td>
+    
+                </tr>
+                <tr>
+                <td width="20%">
+                        <label>Organisation Address</label>
+                    </td>
+                    <td width="30%">
+                        <input type="text" class="form-control" id="Textarea2" ng-model="Guardian_OrganisationAddress" ng-init="Guardian_OrganisationAddress=''" placeholder="" ng-maxlength="100"
+                            maxlength="100" 
+                        />
+    
+                    </td>
+    
+    </tr>
+    
+    
+                        </table>
+            </div>
+            </div>
+    
+            <div><h1 class="page-title">Present Address<sub>
+                <input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div6', 'tableid6_img')" style="width: 20px;" id="tableid6_img"></sub></h1> </div>
+            <div class="panel panel-default" id="Div6">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Address1</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="RAddress1" ng-init="RAddress1=''" placeholder="" ng-maxlength="50"
+                                maxlength="50" />
+                        </td>
+                        <td>
+                            <label>Address2</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="RAddress2" ng-init="RAddress2=''" placeholder="" ng-maxlength="50"
+                                maxlength="50" />
+                        </td>
+                    </tr>
+    
+                    <tr>
+                       
+                        <td width="20%">
+                            <label>Country</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="CountryName" ng-required="true" class="form-control" ng-change="ClearStatefunction()">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Country_List" ng-selected="CountryName==sel.id" value="{{sel.id}}">{{sel.countryname}}</option>
+                            </select>
+                        </td>
+                        <td width="20%">
+                                <label>State</label>
+                            </td>
+                            <td style="width:30%">
+                                <select ng-model="StateName" ng-required="true" class="form-control" ng-change="ClearCityfunction()">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in State_List | filter:{ CountryId:CountryName }" ng-selected="StateName==sel.id" value="{{sel.id}}">{{sel.statename}}</option>
+                                </select>
+                            </td>
+                    </tr>
+                   
+                    <td width="20%">
+                        <label>Location</label>
+                    </td>
+                    <td style="width:30%">
+                        <select ng-model="LocationName" ng-required="true" class="form-control">
+                            <option value="0">Select</option>
+                            <option ng-repeat="sel in Location_List | filter : {StateId : StateName}" ng-selected="LocationName==sel.id" value="{{sel.id}}">{{sel.locationname}}</option>
+                        </select>
+                    </td>
+                    <td width="20%">
+                        <label>Pincode</label>
+                    </td>
+                    <td width="30%">
+                        <input type="text" class="form-control" id="Textarea2" ng-model="RPinCode" ng-init="RPinCode=''" placeholder="" ng-maxlength="20"
+                            maxlength="20"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        <label>LandMark</label>
+                    </td>
+                    <td width="30%">
+                        <input type="text" class="form-control" id="Textarea2" ng-model="RLandmark" ng-init="RLandmark=''" placeholder="" ng-maxlength="50"
+                            maxlength="50" />
+                    </td>
+    
+                </tr>
+                        </table>
+            </div>
+            </div>
+    
+            <div><h1 class="page-title">Permanent Address<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div7', 'tableid7_img')" style="width: 20px;" id="tableid7_img"></sub></h1><td>
+                    <lable><input type="checkbox" ng-model="CommunicationAddress" ng-click="PresentAddress()">Same as Present Address</lable>
+                </td></div>
+            <div class="panel panel-default" id="Div7">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Address1</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="PAddress1" ng-init="PAddress1=''" placeholder="" ng-maxlength="50"
+                                maxlength="50" />
+                        </td>
+                        <td width="20%">
+                            <label>Address2</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="PAddress2" ng-init="PAddress2=''" placeholder="" ng-maxlength="50"
+                                maxlength="50" />
+                        </td>
+                    </tr>
+    
+                    <tr>
+                    
+                        <td width="20%">
+                            <label>Country</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="PermanentCountryName1" ng-required="true" class="form-control"ng-change="PermanentStateClearFunction()">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Country_List" ng-selected="PermanentCountryName1==sel.id" value="{{sel.id}}">{{sel.countryname}}</option>
+                            </select>
+                        </td>
+                        <td width="20%">
+                                <label>State</label>
+                            </td>
+                            <td style="width:30%">
+                                <select ng-model="PermanentStateName1" ng-required="true" class="form-control"ng-change="PermanentLocationClearFunction()">
+                                    <option value="0">Select</option>
+                                    <option ng-repeat="sel in State_List | filter:{ CountryId:PermanentCountryName1 }" ng-selected="PermanentStateName1==sel.id" value="{{sel.id}}">{{sel.statename}}</option>
+                                </select>
+                            </td>
+                    </tr>
+                    
+                    <tr>
+                        <td width="20%">
+                            <label>Location</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="PermanentCityName1" ng-required="true" class="form-control">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Location_List | filter : {StateId : PermanentStateName1}" ng-selected="PermanentCityName1==sel.id" value="{{sel.id}}">{{sel.locationname}}</option>
+                            </select>
+                        </td>
+                        <td width="20%">
+                            <label>Pincode</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="PPinCode" ng-init="PPinCode=''" placeholder="" ng-maxlength="20"
+                                maxlength="20" />
+                        </td>
+    
+    
+                    </tr>
+                    <tr>
+                        <td width="20%">
+                            <label>Land Mark</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="PLandmark" ng-init="PLandmark=''" placeholder="" ng-maxlength="50"
+                                maxlength="50" />
+                        </td>
+                    </tr>
+                        </table>
+            </div>
+            </div>
+    
+    
+            <div><h1 class="page-title">Income Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div8', 'tableid8_img')" style="width: 20px;" id="tableid8_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div8">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td width="20%">
+                            <label>Annual Income</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="AnnualIncome" ng-init="AnnualIncome=''" onkeypress="varifyNumberPositive(this.AnnualIncome)"
+                                placeholder="" ng-maxlength="20" maxlength="20" />
+                        </td>
+                        <td width="50%"></td>
+    
+                </tr>
+               </table>
+            </div>
+            </div>
+    
+    
+    
+            <div><h1 class="page-title">Bank Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div9', 'tableid9_img')" style="width: 20px;" id="tableid9_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div9">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">    
+                    <tr>
+                        <td width="20%">
+                            <label>AccHolderName</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="AccountName" ng-init="AccountName=''" placeholder="" ng-maxlength="100"
+                                maxlength="100" onkeypress="ParticularSpec(this.AccountName)" />
+                        </td>
+                        <td width="20%">
+                            <label>AccNumber</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="AccountNumber" ng-init="AccountNumber=''" placeholder=""
+                                ng-maxlength="30" maxlength="30" onkeypress="varifyNumberPositive(this.AccountNumber)"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%">
+                            <label>Bank Name</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="BankName" ng-required="true" class="form-control">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Bank_List" ng-selected="BankName==sel.id" value="{{sel.id}}">{{sel.bankname}}</option>
+                            </select>
+                        </td>
+                        <td width="20%">
+                            <label>Branch Name</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="BranchName" ng-required="true" class="form-control">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Branch_List" ng-selected="BranchName==sel.id" value="{{sel.id}}">{{sel.branchname}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%">
+                            <label>IFSC Code</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="IFSC_Code" ng-init="IFSC_Code=''" placeholder="" ng-maxlength="20"
+                                maxlength="20" onkeypress=" NoSpecChar(this.IFSC_Code)" />
+                        </td>
+                        <td width="20%">
+                            <label>MICR Number</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="MICR_Number" ng-init="MICR_Number=''" placeholder="" ng-maxlength="20"
+                                maxlength="20" onkeypress=" NoSpecChar(this.MICR_Number)" />
+                        </td>
+                    </tr>
+                        </table>
+            </div>
+            </div>
+    
+    
+            <div><h1 class="page-title">Previous Academic Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div10', 'tableid10_img')" style="width: 20px;" id="tableid10_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div10">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Course</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="CoursePrevious" class="form-control" ng-required="true">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Course_Lists" ng-selected="CoursePrevious==sel.id" value="{{sel.id}}">{{sel.course}}</option>
+                            </select>
+                        </td>
+                        <td style="width: 20%">
+                            <label>Medium</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="MediumPrevious" class="form-control" ng-required="true">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in Medium_Lists" ng-selected="MediumPrevious==sel.id" value="{{sel.id}}">{{sel.mediumname}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </td>
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Academic Year</label>
+                        </td>
+                        <td style="width:30%">
+                            <select ng-model="Year" class="form-control" ng-required="true">
+                                <option value="0">Select</option>
+                                <option ng-repeat="sel in AcademicYearList" ng-selected="Year==sel.id" value="{{sel.id}}">{{sel.academicyear}}</option>
+                            </select>
+                        </td>
+                        <td width="20%">
+                            <label>Previous Marks</label>
+                        </td>
+                        <td width="30%">
+                                <input type="text" class="form-control" id="Textarea2" ng-model="MarksObtained" ng-init="MarksObtained=''" placeholder=""
+                                onkeypress="Numberdot(this.MarksObtained)" ng-maxlength="20" maxlength="20"
+                            />
+                            <td width="10%">%</td>
+                        </td>
+    
+                    </tr>
+                    <tr>
+                        <td width="20%">
+                            <label>TC Number</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="TC_Number" ng-init="TC_Number=''" placeholder="" ng-maxlength="20"
+                                maxlength="20" onkeypress="NoSpecChar(this.TC_Number)" />
+                        </td>
+                        <td width="20%">
+                            <label>Institute Name</label>
+                        </td>
+                        <td width="30%">
+                            <input type="text" class="form-control" id="Textarea2" ng-model="InstituteName" ng-init="InstituteName=''" placeholder=""
+                                ng-maxlength="30" maxlength="30" onkeypress="ParticularSpec(this.InstituteName)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Institute Address</label>
+                        </td>
+                        <td>
+                            <textarea rows="3" id="Textarea2" class="form-control" ng-model="Address" ng-init="Address=''" placeholder="" ng-maxlength="100"
+                                maxlength="100"></textarea>
+                        </td>
+                        <td valign="top">
+                            <label>Remarks</label>
+                        </td>
+                        <td>
+                            <textarea rows="3" id="Textarea2" class="form-control" ng-model="Remarks" ng-init="Remarks=''" placeholder="" ng-maxlength="250"
+                                maxlength="250"></textarea>
+                        </td>
+                    </tr>
+                        </table>
+            </div>
+            </div>
+            <div><h1 class="page-title">Health Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div11', 'tableid11_img')" style="width: 20px;" id="tableid11_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div11">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td width="20%">
+                            <label>
+                                Any Health Related Issue
+                            </label>
+                        </td>
+                        <td class="nopadding" valign="top" width="30%">
+                            <table cellpadding="0" cellspacing="0" border="0" class="formControlGroup">
+                                <tr>
+                                    <td width="5%" valign="top"> 
+                                <input type="checkbox" name="HealthIssue" ng-model="HealthIssue" ng-init="HealthIssue=''" value="HealthIssue"/></td>
+                                    <td width="80%" valign="top"> 
+                                        <textarea class="form-control" id="HealthIssueType" placeholder="" ng-model="HealthIssueType" ng-init="HealthIssueType=''" ng-disabled="HealthIssue==false" ng-maxlength="100" maxlength="100"></textarea> 
+                                   
+                                   </td>
+                                   <td></td>
+                        </tr>
+                        </table>
+                        </td>
+                        <td width="50%"></td>
+                        </tr>
+                        </table>
+            </div>
+            </div>
+            <div><h1 class="page-title">Family Doctor Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div12', 'tableid12_img')" style="width: 20px;" id="tableid12_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div12">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Doctor Name</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="Textarea2" ng-model="FamilyDoctorName" ng-init="FamilyDoctorName=''" placeholder=""
+                            ng-maxlength="100" maxlength="100"onkeypress="ParticularSpec(this.FamilyDoctorName)" />
+                        </td>
+                  
+                        <td valign="top">
+                            <label>Mobile Number</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="Textarea2" ng-model="FamilyDoctorNumber" ng-init="FamilyDoctorNumber=''" placeholder=""
+                            ng-maxlength="20" maxlength="20"onkeypress="OnlySpecCharNum(this.FamilyDoctorNumber)" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Address</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="Textarea2" ng-model="FamilyDoctorAddress" ng-init="FamilyDoctorAddress=''" placeholder=""
+                            ng-maxlength="100" maxlength="100"  />
+                        </td>
+                    </tr>
+                        </table>
+            </div>
+            </div>
+            <div><h1 class="page-title">Scholarship Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div13', 'tableid13_img')" style="width: 20px;" id="tableid13_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div13">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                    <tr>
+                        <td style="width: 20%">
+                            <label>Eligibility</label>
+                        </td>
+                        <td>
+                            <input type="radio" ng-model="Eligibility" value="1"> Yes
+                            <input type="radio" ng-model="Eligibility" value="2" ng-checked="checked='true'"> No
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <label>Description</label>
+                        </td>
+                        <td>
+                            <textarea rows="3" id="Textarea2" class="form-control" ng-model="Description" ng-init="Description=''" placeholder="" ng-maxlength="250"
+                                maxlength="250"></textarea>
+                        </td>
+                    </tr>
+    
+    
+                        </table>
+            </div>
+            </div>
+            <div><h1 class="page-title">Reference Details<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div14', 'tableid14_img')" style="width: 20px;" id="tableid14_img"></sub></h1></div>
+            
+            <div class="panel panel-default" id="Div14">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                
+                    <tr>
+                        <td width="20%">
+                            <label>Reference Source</label>
+                        </td>
+                        <td  ng-show="ReferenceType == '1' " width="80%">
+                           <select ng-model="ReferenceType" class="form-control" >
+                                <option value="1">Select</option>
+    
+                                <option ng-repeat="sel in ReferenceTypelist" ng-selected="ReferenceType==sel.id" value="{{sel.id}}">{{sel.referencetype}}</option>
+                            </select>   
+                        </td>
+                    
+                        <td  ng-show="ReferenceType != '1' " >
+                                <select ng-model="ReferenceType" class="form-control" >
+                                     <option value="1">Select</option>
+         
+                                     <option ng-repeat="sel in ReferenceTypelist" ng-selected="ReferenceType==sel.id" value="{{sel.id}}">{{sel.referencetype}}</option>
+                                 </select>   
+                             </td>
+                        <td ng-show="ReferenceType == '3' ">
+                            <!-- <label>{{(CommontransactionList|filter : {Name:'StudentName'})[0].Value}} -->
+                                <label>StudentName
+                            </label>
+                            </td>
+                        <td ng-show="ReferenceType == '3' ">
+                    <div angucomplete-alt id="StudentId"
+                    placeholder=""
+                    maxlength="50"
+                    pause="100"
+                    selected-object="StudentSelected"
+                    local-data="Studentlist"
+                    search-fields="StudentName"
+                    title-field="StudentName"
+                    minlength="1"
+                    input-class="form-control"
+                    match-class="highlight"
+                    > 
+                    
+                    <td ng-show="ReferenceType == '2' " >
+                            <!-- <label>{{(CommontransactionList|filter : {Name:'EmployeeName'})[0].Value}}</label> -->
+                            <label>EmployeeName</label>
+                        </td>
+                        
+                        <!-- {{EmployeesNameList}} -->
+                        <td  ng-show="ReferenceType == '2' " >
+                                <div angucomplete-alt id="EmployeeId"
+                                placeholder=""
+                                maxlength="50"
+                                pause="100"
+                                selected-object="employeeselected"
+                                local-data="EmployeeNameList"
+                                search-fields="Employee"
+                                title-field="Employee"
+                                minlength="1"
+                                input-class="form-control"
+                                match-class="highlight"
+                               >
+                                </div>
+                        </td>
+                        <td   ng-show="ReferenceType =='4' || ReferenceType =='5' ||  ReferenceType =='6'" >
+                                <label>Name</label>
+                            </td>
+                        <td ng-show="ReferenceType=='4' || ReferenceType=='5' ||  ReferenceType=='6'">
+                                <input type="textbox" class="form-control" ng-model="OthersId" ng-init="OthersId=''" maxlength="100" ng-maxlength="100" onkeypress=ParticularSpec(this.RelationType)>
+                        </td>
+                            
+                            </tr>
+                        </table>
+            </div>
+            </div>
+            <div><h1 class="page-title">DocumentDetails<sub><input type="image" src="/img/collapse.gif" title='Click to Collapse' onclick="return divcollapse('Div15', 'tableid15_img')" style="width: 20px;" id="tableid15_img"></sub></h1></div>
+            <div class="panel panel-default" id="Div15">    
+            <div class="panel-body">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                    
+                        <tr>
+                            <td>
+                              
+                            </td>
+                        </tr>
+                     
+                        <tr>
+                            <td style="width: 20%" valign="top">
+                                <label>Document</label>
+    
+                            </td>
+                         
+                            <td colspan="2">
+                         
+                                <form class="form-horizontal" role="form" ng-submit="addNew()">
+                                    <table class="table table-striped table-bordered" template-pagination="custom/pager" style="width: 83%; margin-bottom:0px !important">
+                                        <thead>
+                                            <tr >
+                                                <th width="5%" style="text-align: right">Sl No.</th>
+                                                <th width="20%" style="text-align: left">Document Type</th>
+                                                <th width="20%">Upload</th>
+                                            
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-if="AddDocument.length==0">
+                                                <td colspan="4" style="text-align: center">
+                                                    No Records Found
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: center" ng-repeat="row in AddDocument">
+                                                <td width="5%" style="text-align: right">{{$index+1}}</td>
+                                                <td width="20%" style="text-align: left">
+                                                  
+                                                    {{row.Document}}
+                                                  
+                                                 
+                                                </td>
+                                                <td style="text-align: left">
+                                                        <div>
+                                                                  <input type="file" id="DocumentID"  fileread="row.docfile" onchange="angular.element(this).scope().docfileChange(this, angular.element(this).scope().$index)"
+                                                                name="FileName"/>
+                                                               
+                                                              
+                                                            <span id='DocumentLogo' class="fa fa-arrow-circle-o-up" style="font-size: 20px;"></span> 
+                                                            <!-- {{row.DocumentFileName}} -->
+                                                            <a ng-href={{row.DocumentFullPath}} target="_blank">
+                                                                    {{row.DocumentFileName}}</a>
+                                                        </div>
+                                                </td>
+                                            
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            </div>
+    
+            <div style="text-align: center;">
+                <button type="button" class="btn  btn-save" ng-click="StudentDetails_AddEdit()">Save</button>
+                <button type="button" class="btn btn-save" ng-click="ListRedirect()">Cancel</button>
+            </div>
+     </div>
+     <script>
+            
+            $('#DocumentLogo').click(function () {
+                $("#DocumentID").trigger('click');
+            })
+        
+            $('#btnLogo').click(function () {
+                $("#StudentPhoto").trigger('click');
+            })          
+        
+            //Photo upload
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+        
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(200);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+        <style>
+            .nav2 {
+                float: left;
+                margin-right: 3px;
+            }
+        
+            li.nav2.active .linetags {
+                border-top: 1px solid #0066bb;
+                border-left: 1px solid #0066bb;
+                border-right: 1px solid #0066bb;
+                border-radius: 5px 5px 0px 0px;
+                background-color: #0066bb;
+                color: #fff !important;
+                text-decoration: none;
+            }
+        
+        
+        
+            .pointer {
+                cursor: pointer;
+            }
+        
+            .nav1 {
+                padding-bottom: 31px !important;
+            }
+        </style>
+        <style>
+            .document {
+                /* border: 1px solid black; */
+                border: 1px solid #C7C7CC;
+                border-collapse: collapse;
+            }
+        </style>
+        
+        <script>
+            $('#btndocfile').click(function () {
+                $("#DocumentID").trigger('click');
+            })
+        </script>
+    
+    
+    <script>
+            $('#AdmissionDate').datepicker({
+                format: "dd-M-yyyy",
+                //endDate: '+0d',
+                startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+    
+            $("#DOB").datepicker({
+                format: "dd-M-yyyy",
+                endDate: '+0d',
+                // startDate: new Date(),
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true,
+                todayBtn: true
+    
+            });
+        </script>

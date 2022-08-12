@@ -1,0 +1,412 @@
+<style type="text/css">
+    .chx input[type=checkbox] {
+    top: 0;
+    box-shadow: none;
+    background-color: red;
+    width: 19px; height: 19px;
+    border: 3px solid red;
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+  }
+  </style>
+  <div class="container">
+  <div class="row" ng-init="AttendanceDateInit()">
+      <div class="col-md-12">
+           <p class="page-title">{{CommonTransaction_Title}}</p> 
+          <div class="row"> 
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <form class="form-horizontal" role="form">
+                      <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                          <tr>
+                           
+                          </tr>
+                          <tr>
+                              <td width="11%">
+                                  <label>{{(CommontransactionList|filter : {Name:'AcademicYear'})[0].Value}}
+                                    <font class='mandatory-field' style="color: red" ;>*</font>
+                                  </label>
+                              </td>
+                              <td >
+                                  <select ng-model="AcademicYear_Id" ng-change="Academicyear_MonthyearList();AcademicYearbasedCourse();CourseClearFunction()" class="form-control" ng-required="true">
+                                      <option value="">Select</option>
+                                      <option ng-repeat="sel in AcademicYearList" ng-selected="AcademicYear_Id==sel.Id" value="{{sel.Id}}">{{sel.AcademicYear}}</option>
+                                  </select>
+                              </td>   
+                              <td >
+                                  <label>{{(CommontransactionList|filter : {Name:'Course'})[0].Value}}
+                                    <font class='mandatory-field' style="color: red" ;>*</font>
+                                  </label>
+                              </td>
+                              <td>
+                                  <select ng-model="Course" class="form-control" ng-required="true" ng-change="CourseBasedSectionFunction();SectionClearFunction">
+                                      <option value="0">Select</option>
+                                      <option ng-repeat="sel in Courselist" ng-selected="Course==sel.Id" value="{{sel.Id}}">{{sel.Course}}</option>
+                                  </select> 
+                              </td>
+                             
+                              <td>
+                                  <label>{{(CommontransactionList|filter : {Name:'Section'})[0].Value}}</label>
+                              </td>
+                              <td width="10%">
+                                  <select ng-model="Section"  class="form-control" ng-required="true">
+                                      <option value="0">Select</option>
+                                      <option ng-repeat="sel in CourseBasedSectionList" ng-selected="Section==sel.Id" value="{{sel.Id}}">{{sel.SectionName}}</option>
+                                  </select> 
+                              </td> 
+                            </tr>
+                <tr>                                                    
+                              <td>
+                                  <label>{{(CommontransactionList|filter : {Name:'Medium'})[0].Value}}</label>
+                              </td>
+                              <td>
+                                   <select ng-model="Medium"  class="form-control" ng-required="true">
+                                      <option value="">Select</option>
+                                      <option ng-repeat="sel in MediumList" ng-selected="Medium==sel.Id" value="{{sel.Id}}">{{sel.MediumName}}</option>
+                                  </select>
+                              </td>
+                        
+                      <td>
+                          <label>{{(CommontransactionList|filter : {Name:'SendSMS'})[0].Value}}</label></td>
+                     </td>
+                  <td>
+                      <input type="checkbox" value="applicable" name = "Send sms">
+                    </td>
+                  <td ng-show="LoginUser=='2'">
+                      Attendance Date
+                  </td>
+                  <td ng-show="LoginUser=='2'">
+                    <div class="col-xs-12 input-group date" id="AttendanceDate" style="margin-left:-15px;">
+                        <input type="text" id="text22" class="form-control" ng-model="AttendanceDate"ng-required="true" style="width:100px" ng-required="true" onkeypress="isDate(this.AttendanceDate)">
+                        <span class="input-group-addon"><i class="fa fa-th" aria-hidden="true" ></i></span>
+                        <!-- <img src="/img/clearclr.png" style="width: 17px;" ng-click="dateclear() "title="clear" /> -->
+                    </div>
+                </td>
+                <td>
+                <div>
+                        <button type="button" class="btn btn-small Go" ng-click="ListValidationcontrols();Student_AttendanceList(AttendanceDate);">Go</button>
+                </td>
+                <td ng-show="LoginUser=='2'">
+                 
+                         <a href="javascript:" ng-disabled="AttenGo==false" ng-click="AttendanceAddModal(ClearAttendancePopup())"  title="Click to Add new Record" class="btn btn-autosize pull-right mb-15">Attendance</a>
+                                    
+                  
+                    </div>    
+                </td>
+             </tr>
+                      </table>
+                  </form>  
+                  <div  class="row">
+      <div class="mainbody container-fluid">
+     <div class="col-md-12 col-lg-12">
+             <!-- <tabs>
+                      <pane ng-repeat="pane in Academic_MonthYearList" heading="{{pane.months}}" active="true">{{pane.months}}</pane>
+                  </tabs> -->
+                  <div class="lineTab" ng-init="Academicyear_MonthyearList()">
+                          <a href="javascript:" ng-click="AttendancemonthClick(row.months, row.years, row.days)" id="A1" ng-class="{'lineActive linetags': row.months == currMonthName, 'linetags': row.months != currMonthName}" ng-repeat="row in Academic_MonthYearListdetails">{{row.months}}</a>
+                          <!-- <a href="javascript:" ng-click="AttendancemonthClick(row.months, row.years, row.days)" id="A1" ng-class="getcurrentmonth(row.months == currMonthName)" ng-repeat="row in Academic_MonthYearListdetails">{{row.months}}</a> -->
+                      </div> 
+  
+          </div>
+       
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         
+             <div class="panel panel-default" id="Jan">
+                   <div class="panel-body">
+      <form class="form-horizontal" role="form" name="form1" id="form1">
+      <table st-table="emptydata" style="width: 100%" st-safe-src="StudentList" class="table table-striped table-bordered">
+                  <thead>
+                       
+                      <tr style="text-align: center">
+                          <th  st-ratio="3">{{(CommontransactionList|filter : {Name:'SerialNumber'})[0].Value}}</th>
+                          <th st-ratio="10" st-sort="">{{(CommontransactionList|filter : {Name:'StudentId'})[0].Value}}</th>
+                          <th st-ratio="5" st-sort="">{{(CommontransactionList|filter : {Name:'RollNumber'})[0].Value}}</th>
+                          <th st-ratio="12" st-sort="">{{(CommontransactionList|filter : {Name:'StudentName'})[0].Value}}</th>
+                          <th ng-repeat="row in numberdays">
+                          <span>{{row.dayName}}</span>
+                          <span>{{$index + 1}}</span>                         
+                      <input type="checkbox"  ng-if="row.dayName!='S'" ng-disabled="row.attenday!=AttendanceDate" ng-model="attendaylist[$index]" ng-click="checkAll(row.dayIndex)">
+                      <input type="checkbox" ng-if="row.dayName=='S'" class="chx" ng-disabled="row.attenday!=Current_Date && row.attenday!=AttendanceDate " ng-model="attendaylist[$index]" ng-click="checkAll(row.dayIndex)" /></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-if="flag==0 && StudentList.length==0">
+                          <td colspan="35" class="text-center">
+                              No Records Found
+                          </td>
+                      </tr>
+                      <!-- {{StudentList}} -->
+                      <tr ng-repeat="Student in StudentList">
+                          <td style="text-align: right">{{((current_page-1)*page_size) + $index+1}}</td>
+                          <td style="text-align: left">{{Student.studentid}}</td>
+                          <td style="text-align: left">{{Student.rollnumber}}</td>
+                          <td style="text-align: left">{{Student.studentname}}</td>
+                          <td ng-repeat="row in numberdays" style="text-align: center">
+                  
+                 
+                          <input type="checkbox"ng-show="LoginUser=='2'"  ng-true-value="1" ng-false-value="0" ng-disabled="row.attenday!=AttendanceDate" ng-model="AttendanceStatus[$parent.$index][row.dayIndex]"ng-change="Attendisabledfunction()" ng-init="AttendanceStatus[$parent.$index][row.dayIndex]=((StudentAttendanceList  | filter:{attenday:row.attenday,Id:Student.Id}:true)[0].AttendanceStatus)" />
+
+
+                          <input type="checkbox"ng-show="LoginUser!='2'"  ng-true-value="1" ng-false-value="0" ng-disabled="row.attenday!=Current_Date " ng-model="AttendanceStatus[$parent.$index][row.dayIndex]" 
+                          ng-init="AttendanceStatus[$parent.$index][row.dayIndex]=((StudentAttendanceList  | filter:{attenday:row.attenday,Id:Student.Id}:true)[0].AttendanceStatus)" />
+                   
+                        </td>
+                      </tr>
+                  </tbody>
+                  <tfoot ng-show="StudentList.length >10">
+                      <tr>
+                          <td colspan="35" class="text-center">
+                              <items-page items-On-Page ="itemsOnPage" total-Items="StudentList.length"></items-page> items per page
+                              <div st-items-by-page="itemsOnPage" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+                          </td>
+                      </tr>
+                  </tfoot>
+              </table>
+                      </form>
+                  </div>
+              </div>
+  
+              </div>
+          <div style="text-align: center;">
+                  <button type="button" class="btn btn-save" ng-click="StudentAttendance_AddEdit()">Save</button>
+                  <button type="button" class="btn btn-save" ng-click="StudentDetailsList();Student_AttendanceList(AttendanceDate);">Reset</button>
+              </div>        
+          </div> 
+          </div>
+      </div> 
+          </div>
+      </div>
+      </div>
+      </div>
+      </div>
+  </div>
+
+
+  <!--  For Add Modal -->
+
+  <div id="AttendanceAddModal" class="modal fade" role="dialog">
+        <div class="modal-dialog" style="width:60%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Attendance Details</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" style="font-size: small">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                            <tr>
+                                <td width="20%">
+                                        <label>Attendance Date 
+                                            <!-- <font class="mandatory-field" style="color: red;">*</font> -->
+                                        </label>
+                                    </td>
+                                    <td width="20%" >   {{AttendanceDate}} </td>
+                                    <td width="20%"></td>
+                                    <td valign="top" colspan="2"><h5>Total</h5></td>
+                                    <td ><font color="black">{{Total}}</font></td>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td> <label>Student Name
+                                       
+                                        </label></td>
+                                     <td width="20%">
+                                            <div angucomplete-alt id="StudentName"
+                                            placeholder=""
+                                            maxlength="50"
+                                            pause="100"
+                                            selected-object="StudentSelected"
+                                            local-data="StudentNameDetails"
+                                            search-fields="Name"
+                                            title-field="Name"
+                                            minlength="1"
+                                            input-class="form-control"
+                                            match-class="highlight"
+                                            style="width:200px" >
+                                            </div>
+                                            </td>
+                                    <td>  <button type="button" class="btn  btn-save" title="Click to Save the Records" 
+                                        ng-click="AbsentList_Add()">Add</button></td>
+                                        <td width="20%" valign="top" colspan="2"> <h5>No of Present</h5></td>
+                                    <td width="20%" >{{Total-AbsentSummary}}
+                                 
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td valign="top" colspan="2"><h5>No of Absentees</h5></td>
+                                    <td><font color="red">{{AbsentSummary}}</font></td>
+                                 
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                 
+                    <form class="form-horizontal" role="form">
+                        <div class="modal-body tab" style="overflow-y:auto ; height:180px;">         
+                            <tr>
+                                    <td>
+                                            <h4 class="modal-title">Absentees List</h4>
+                                    </td>
+                               </tr>
+                            <table class="table table-striped table-bordered" template-pagination="custom/pager"
+                                style="margin-bottom:10px !important">
+                                <thead>
+                                    <tr style="text-align: center">
+                                        <th st-ratio="7">Sl No.</th>
+                                        <th st-ratio="20">Student Id</th>
+                                        <th st-ratio="20">Roll No.</th>
+                                        <th st-ratio="43">Student Name</th>
+                                        <th st-ratio="10">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-if="flag1==0 && StudentAttendanceAbsentlist.length==0">
+                                        <td colspan="5" class="text-center">
+                                            No Records Found
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="rows in StudentAttendanceAbsentlist" >
+                                            <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+                                            <td style="text-align: left" >{{rows.studentid}} </td>
+                                            <td style="text-align: left" > {{rows.rollnumber}}</td>
+                                            <td style="text-align: left" >{{rows.studentname}}</td>
+                                            <td  style="text-align: center" >
+                                            <!-- <a href="javascript:" ng-click="Absentees_Delete(rows.Id,rows.StudentName)" title="Delete">
+                                                    <img src="/img/deleteIcon.png"  />
+                                             </a> -->
+                                             <a href="javascript:" ng-click="Absentees_Delete(rows,$index)" title="Delete">
+                                                    <img src="/img/deleteIcon.png"/>
+                                             </a>
+                                        </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                    </form>
+                </td>
+            </div>
+            <td colspan="3">
+                    <form class="form-horizontal" role="form">
+                        <div class="modal-body tab" style="overflow-y:auto ; height:180px;">
+                            <tr>
+                                <td>
+                                        <h4 class="modal-title">Presentees List</h4>
+                                </td>
+                              </tr>
+                            <table class="table table-striped table-bordered" template-pagination="custom/pager"
+                                style="margin-bottom:10px !important">
+                                <thead>
+                                        <tr style="text-align: center">
+                                                <th st-ratio="7">Sl No.</th>
+                                                <th st-ratio="20">Student Id</th>
+                                                <th st-ratio="20">Roll No.</th>
+                                                <th st-ratio="43">Student Name</th>
+                                                <!-- <th st-ratio="10">Action</th> -->
+                                            </tr>
+                                </thead>
+                            
+                                <tbody>
+                                    <tr ng-if="flag==0 && StudentAttendancePresentlist.length==0">
+                                        <td colspan="5" class="text-center">
+                                            No Records Found
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="Present in StudentAttendancePresentlist | filter : {AttendanceStatus : '!2'}">
+                                            <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+                                            <td style="text-align: left" >{{Present.studentid}} </td>
+                                            <td style="text-align: left" > {{Present.rollnumber}}</td>
+                                            <td style="text-align: left" >{{Present.studentname}}</td>
+                                            <!-- <td  style="text-align: center" >
+                                            <a href="javascript:" ng-click="Present_Delete(Present.Id,1)"  title="Delete">
+                                                    <img src="/img/deleteIcon.png"  />
+                                             </a>
+                                        </td> -->
+                                        </tr>
+                                </tbody>
+                            </table>
+                    </form>
+                </td>
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn  btn-save" title="Click to Save the Records" 
+                ng-click="StudentAttendancePresent_AddEdit()">Save</button>
+                <button type="button" class="btn btn-save" title="Click to Cancel" 
+                data-dismiss="modal" ng-click="AttendanceDetailsCancel()">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+  <style>
+  
+  .month
+      {
+          border-bottom: 1px solid #fff;
+          width: 746px;
+          height: 23px;
+          margin-left: -4px;
+          margin-right: -18px;
+      }
+  
+  input[type="radio"], input[type="checkbox"]
+      {
+          margin:0px!important;
+      }
+  </style>
+  
+  <script>
+      $('.panel').addClass('collapse');
+      $('#Jan').removeClass('collapse');
+  
+      $(function () {
+          $('.linetags').click(function () {
+              $('.linetags').removeClass('lineActive');
+              $(this).addClass('lineActive');
+  
+          });
+      });
+  
+  
+      function TabClick(item) {
+          $('.panel').addClass('collapse');
+          $('#' + item).removeClass('collapse');
+      }
+  
+      $('.input-group.date').datepicker({
+          format: "dd/M/yyyy",
+          forceParse: false,
+          autoclose: true,
+          todayHighlight: true,
+          toggleActive: true,
+          todayBtn: true
+      }); 
+  
+      $(document).ready(function(){
+              $(".tab-content").hide();
+       $(".linetags").click(function(){
+          $(".tab-content").show();
+      });   
+      }); 
+  
+      $(document).ready(function(){
+      $(".lineTab").hide();
+      $(".Go").click(function(){
+          $(".lineTab").show();
+      });   
+      }); 
+      
+  </script> 
+  <script>
+    $('#AttendanceDate').datepicker({
+        format: "dd-M-yyyy",
+        endDate: '+0d',
+        startDate: new Date(),
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        toggleActive: true,
+        todayBtn: true
+
+    });
+    </script>

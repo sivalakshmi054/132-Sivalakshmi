@@ -1,0 +1,114 @@
+Delimiter //
+
+Create procedure OtherIncomeDeduction_SP_Listall (
+p_Id int/* =null */,
+sysId int/* =null */)
+
+begin
+   select         
+   		 employees.Id,
+         employees.EmployeeName,
+         employees.DOJ,
+         employees.SystemRoleId,
+         systemroles.Id,
+         systemroles.SystemRollName		
+	from
+	     employees 
+		 left join systemroles  on employees.SystemRoleId = systemroles.Id
+	 where
+	    (employees.Id= p_Id or ifnull(p_Id, 0)=0) and
+		(employees.SystemRoleId= sysId or ifnull(sysId, 0)=0);
+    Leave sp_lbl;
+End;
+//
+
+DELIMITER ;
+
+
+
+-----------This is STORED PROCEDURE for Over Time Details List--------------
+if exists(select * from sysobjects where xtype='p' and name='EmployeeListSP')
+Begin
+   Drop Procedure [dbo].[EmployeeListSP]
+  End
+Go
+
+Create procedure [dbo].[EmployeeListSP]
+@Id int = null,
+@EmployeeName nvarchar(100)=null,
+@SystemRoleId int=null
+
+as
+BEGIN
+        SELECT
+         employees.Id,
+         employees.EmployeeName,
+         employees.DOJ,
+         employees.SystemRoleId,
+         systemroles.Id,
+         systemroles.SystemRollName	
+
+        from       employees 
+		 left join systemroles  on employees.SystemRoleId = systemroles.Id
+	       
+        where
+
+           (employee.Id = @Id or isnull(@Id, 0) = 0) and            
+           (EmployeeName like '%' + isnull(@EmployeeName,'') + '%' and
+           (SystemRoleId= @SystemRoleId or isnull(@SystemRoleId, 0) = 0)    
+        
+        return
+END
+Go
+
+
+
+
+
+BEGIN
+        SELECT
+         employees.Id,
+         employees.EmployeeName,
+         employees.DOJ,
+         employees.SystemRoleId,
+         systemroles.Id,
+         systemroles.SystemRollName	
+
+        from       employees 
+		 left join systemroles  on employees.SystemRoleId = systemroles.Id
+	       
+        where
+
+           (employee.Id = p_Id or ifnull(p_Id, 0) = 0) and            
+           (EmployeeName like '%' + (p_EmployeeName,'') , '%') and
+           (SystemRoleId= p_SystemRoleId or ifnull(p_SystemRoleId, 0) = 0);    
+           
+           
+           
+           
+           
+           
+           
+           
+           BEGIN
+SELECT
+ employees.Id,
+         employees.EmployeeName,
+         employees.DOJ,
+         employees.SystemRoleId,
+         systemroles.SystemRollName
+         
+FROM employees 
+ left join systemroles  on employees.SystemRoleId = systemroles.Id
+where 
+(employees.EmployeeName like '%' ,ename, '%') and
+(employees.SystemRoleId= roleid or ifnull(roleid, 0)=0) ;
+
+
+where 
+(employees.EmployeeName like concat('%',name,'%') || ifnull(name,'')='%') and (employees.SystemRoleId= roleid or ifnull(roleid, 0)=0) ;
+END
+
+
+
+(employees.EmployeeName like concat('%',name,'%') || ifnull(name,'')||'%') and (employees.SystemRoleId= roleid or ifnull(roleid, 0)=0) ;

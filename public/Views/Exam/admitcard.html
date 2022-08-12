@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admit card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+.page {
+    width: 90%;
+    margin: 0 auto;
+    /* border: 1px solid #000; */
+}
+.admit_header {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 6px;
+    text-align: center;
+}
+.admit_details {
+    width: 100%;
+    margin: 0 auto;
+}
+table {
+    width: 90%;
+    margin: 0 auto;
+}
+td th {
+    max-width: 200px;
+}
+table, th, td {
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.admit_papers_details {
+    /* padding: 20px 0; */
+}
+.admit_notes {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #000;
+}
+.admit_footer {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #000;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.col1 h4 {
+    margin-left: 20px;
+    text-align: center;
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;;
+}
+.col2 h4 {
+    margin-right: 20px;
+    text-align: center;
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;;
+}
+</style>
+<div class="page">
+    
+<div class="admit_header">
+    <div class="row" style="margin-left: 69px;">
+        <div>
+            <h4 style="text-align: center;">MADHYA PRADESH NURSES REGISTRATION COUNCIL BHOPAL</h4>
+            <h5 style="text-align: center;">EXAMINATION SESSION JUN 2021, Regular</h5>
+            <h5 style="text-align: center;">Admit Card G.N.M. NEW Third Year</h5>
+        </div>
+        <div class="col2" style="margin-right: 4px;">
+           
+    <img src="img\barcode.png" style="text-align: center;
+                margin: 0 auto;" width="100px" height="60px" alt="Student Image">
+        </div>
+    </div>
+</div>
+    <div class="admit_details">
+        <table>
+            <tr>
+                <th>Roll No.</th>
+                <td>{{HallTicketHeaderData.RollNumber}}</td>
+                <th>Enrollment No.</th>
+                <td>{{HallTicketHeaderData.enrollmentNumber}}</td>
+                <td rowspan="5">
+                    <img src="/Uploads/{{HallTicketHeaderData.StudentPhoto}}" style="text-align: center;width: 100%;
+                    margin: 0 auto;" width="150px" height="220px" alt="Student Image"><br>
+                    <p style="margin-top: 50px;text-align: center;" class="sign">SIGNATURE OF THE CANDIDATE</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{HallTicketHeaderData.StudentName}}</td>
+                <th>Date of Birth</th>
+                <td>{{HallTicketHeaderData.DOB}}</td>
+            </tr>
+            <tr>
+                <th>Father's Name</th>
+                <td>{{HallTicketHeaderData.FatherName}}</td>
+                <th>Category</th>
+                <td>OBC</td>
+            </tr>
+            <tr>
+                <th>Exam Centre</th>
+                <td>{{HallTicketHeaderData.Center_Name}}</td>
+                <th>TIme Of Exam</th>
+                <td>09:00 AM to 12:00 PM</td>
+            </tr>
+            <tr>
+                <th>Training Centre</th>
+                <td>Mother Mary College of Nursing, Indore-Indore[201032]</td>
+                <th>Medium</th>
+                <td>{{HallTicketHeaderData.MediumName}}</td>
+            </tr>
+            
+        </table>
+
+    </div>
+    <div class="admit_papers_details">
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Type</th>
+                <th>Date Of Exam</th>
+            </tr>
+            <tr ng-repeat ="item in HallTicketChildData">
+                <td>{{item.SubjectName}}</td>
+                <td>Theory</td>
+                <td>{{item.ExamDate| date:'dd/MM/yyyy EEEE'}}</td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="admit_notes">
+        <p>Note:</p>
+        <ol>
+            <li>Students must be in full uniform in the examination hall.</li>
+            <li>Electronic items not permitted in the examination hall.</li>
+            <li>Before entering the examination hall, tally the roll number, admit card and valid ID proof. If you find any difference, Inform immediately to Centre Superintendent and Observer and take necessary action/decision and inform Madhya Pradesh Nurses Registration Council, Bhopal on phone no. 0755-2770047. </li>
+            <li>In Case if a candidate is caught red handed using unfair means, then the Invigilator or Central Superintendent should fill up the UFM form approved by MPNRC, Bhopal and inform Nursing Council about the action/decision taken regarding that matter.</li>
+            <li>Wearing of mask is mandatory for all students. Student without mask will not be allowed to enter the examination hall.</li>
+            <li>Students have to follow COVID-19 norms of social distancing.</li>
+            <li>Students bring their own hand sanitizers.</li>
+        </ol>
+    </div>
+    <div class="admit_footer">
+        <div class="row">
+            <div class="col1">
+                <h4>
+                    PRINCIPAL <br>
+                Mother Mary College of Nursing,
+                Indore, Indore [201032]
+                </h4>
+            </div>
+            <div class="col2">
+               <h4>
+                REGISTRAR, <br>
+                MADHYA PRADESH NURSES REGISTRATION COUNCIL,
+                BHOPAL(M.P.) 
+               </h4>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

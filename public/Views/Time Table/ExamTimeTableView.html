@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row" ng-init="ExamTimetable_View()">
+        <div class="col-md-12">
+            <h1 class="page-title">Exam TimeTable Details </h1>
+            <div class="panel panel-default panel-info">
+                <div class="panel-body" ng-init="ViewWorkScheduleDetails()">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td style="width: 10%">
+                                <label>Academic Year</label>
+                            </td>
+                            <td style="width:20%">
+                                <span>{{ViewAcademicYear}}</span>
+                            </td>
+
+                            <td style="width: 10%">
+                                <label>Course</label>
+                            </td>
+                            <td style="width:20%">
+                                <span>{{ViewCourse}}</span>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td valign="top">
+                                <label>Examination</label>
+                            </td>
+                            <td style="width:20%">
+                                <span>
+                                    <div class="textwrap">{{ViewExamination}}</span>
+                                </div>
+                            </td>
+
+                            <td style="width: 10%">
+                                <label>Subject</label>
+                            </td>
+                            <td style="width:20%">
+                                <span>{{ViewSubject}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <label>End Time</label>
+                            </td>
+                            <td style="width:20%">
+                                <span>{{EndTime}}</span>
+                            </td>
+
+
+                            <td style="width: 10%">
+                                <label>StartTime</label>
+                            </td>
+                            <td style="width:20%">
+                                <span>{{StartTime}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                           
+                            <td valign="top">
+                                <label>Exam Date</label>
+                            </td>
+                            <td style="width:20%">
+                                <span>{{ExaminationDate}}</span>
+                            </td>
+
+                            <td valign="top">
+                                <label>Remarks</label>
+                            </td>
+                            <td>
+                                <div class="textwrap">{{Remarks}}</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div class="col-sm-offset-2 col-sm-9">
+                    <button type="button" class="btn btn-save" ng-click="ListRedirect()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

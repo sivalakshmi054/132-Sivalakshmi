@@ -1,0 +1,102 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use SchoolManagement\Models\MonthMaster;
+
+class MonthMasterSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //
+       
+        MonthMaster::create([
+            'MonthSequence'=>'1',
+            'AYSequence'=>'8',
+            'MonthDays'=>'31',
+            'MonthName'=>'January',
+            'ShortName'=>'Jan',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'2',
+            'AYSequence'=>'9',
+            'MonthDays'=>'28',
+            'MonthName'=>'February',
+            'ShortName'=>'Feb',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'3',
+            'AYSequence'=>'10',
+            'MonthDays'=>'31',
+            'MonthName'=>'March',
+            'ShortName'=>'Mar',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'4',
+            'AYSequence'=>'11',
+            'MonthDays'=>'30',
+            'MonthName'=>'April',
+            'ShortName'=>'Apr',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'5',
+            'AYSequence'=>'12',
+            'MonthDays'=>'31',
+            'MonthName'=>'May',
+            'ShortName'=>'May',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'6',
+            'AYSequence'=>'1',
+            'MonthDays'=>'30',
+            'MonthName'=>'June',
+            'ShortName'=>'Jun',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'7',
+            'AYSequence'=>'2',
+            'MonthDays'=>'31',
+            'MonthName'=>'July',
+            'ShortName'=>'Jul',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'8',
+            'AYSequence'=>'3',
+            'MonthDays'=>'31',
+            'MonthName'=>'August',
+            'ShortName'=>'Aug',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'9',
+            'AYSequence'=>'4',
+            'MonthDays'=>'30',
+            'MonthName'=>'September',
+            'ShortName'=>'Sep',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'10',
+            'AYSequence'=>'5',
+            'MonthDays'=>'31',
+            'MonthName'=>'October',
+            'ShortName'=>'Oct',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'11',
+            'AYSequence'=>'6',
+            'MonthDays'=>'30',
+            'MonthName'=>'November',
+            'ShortName'=>'Nov',
+        ]);
+        MonthMaster::create([
+            'MonthSequence'=>'12',
+            'AYSequence'=>'7',
+            'MonthDays'=>'31',
+            'MonthName'=>'December',
+            'ShortName'=>'Dec',
+        ]);
+    }
+}

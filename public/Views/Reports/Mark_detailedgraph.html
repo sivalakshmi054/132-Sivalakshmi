@@ -1,0 +1,325 @@
+<div class="container">
+    
+    <div class="row" ng-init="evaluationdetails_graphs_list();evaluation_subject_graphs_list();marks_detailed_graph();attendance_detailed_graph();attendance_subject_graph();ExamBasedSubjectforList()">
+        <div class="lds-ripple" id="chatLoaderPV" style="display: none;z-index:10000"><div></div><div></div></div>
+            <div class="col-md-12">
+                <div class="mainbody container-fluid">
+                  
+                    <div class="row">
+                        
+                         <div class="col-md-12 col-lg-12">
+                           
+                                <div class="lineTab">
+                                    <a href="javascript:" onclick="TabClick('Graphs')" id="A1" class="lineActive linetags" ng-click="Graphs()" >Dashboard
+                                        </a>
+                                    <a href="javascript:" onclick="TabClick('Attendance')" id="A9" class="linetags" ng-click="Attendance()">Attendance
+                                        </a>
+                                        <a href="javascript:" onclick="TabClick('CenterWise')" id="A9" class="linetags" ng-click="CenterWise()">Exam Center Wise Attendance
+                                            </a>
+                                            <a href="javascript:" onclick="TabClick('Evaluation')" id="A9" class="linetags" ng-click="Evaluation()">Evaluation
+                                                </a>
+                                </div>
+                               
+                        </div> 
+                       
+                    </div>
+                    <p class="page-title">Dashboard</p>
+                <div class="row" id="Graphs" style="border-bottom: 10px solid #ccc;border-left: 10px solid #ccc;border-right: 10px solid #ccc;">
+                  
+                    <div class="col-md-6"><p class="page-title">Evaluation </p></div>
+                    <div class="col-md-6"><p class="page-title">Result Detailed  </p></div>
+                    <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 ">
+                        <div class="graph" style="width: 100%;display: flex; justify-content: space-between;" >
+                            <form class="form-horizontal" role="form">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr> 
+                                                    <td width="25%">
+                                                            <label>Exam Centre</label>
+                                                        </td>
+                                                        <td width="16%">
+                                                            <select ng-model="CenterIdgraph1" class="form-control" ng-required="true" style="width:190px;">
+                                                                <option value="0">Select</option>
+                                                                <option ng-repeat="sel in ExamCentre_List" 
+                                                                ng-selected="CenterIdgraph1 == sel.id" 
+                                                                value="{{sel.id}}">{{sel.center_name}}</option>
+                                                            </select>    
+                                                        </td>
+                                                    </tr><tr>
+                                                        <td width="16%">
+                                                                        <label>
+                                                                               Subject </label>
+                                                                    </td>
+                                                                    <td width="16%">
+                                                                        <select ng-model="SubjectIdgraph1" class="form-control" style="width:200px;"ng-required="true" >
+                                                                            <option value="0">Select</option>
+                                                                            <option ng-repeat="sel in SubjectListObj " ng-selected="SubjectIdgraph1==sel.id"
+                                                                                value="{{sel.id}}">{{sel.subjectname}}</option>
+                                                                        </select>  
+                                                                    </td>
+                                                      
+                                                               
+                                        <td >
+                                            <button type="button" class="btn btn-small"  title="Click to List the Records" ng-click="evaluationdetails_graphs_list()">Go</button>
+                                        </td>
+                                    </tr> 
+                                </table>
+                            </form>
+                        
+                        </div>    
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="graph" style="width: 100%;display: flex; justify-content: space-between;"  >
+                            <form class="form-horizontal" role="form">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr> 
+                                           
+                                                    <td width="25%">
+                                                            <label>Exam Centre</label>
+                                                        </td>
+                                                        <td width="16%">
+                                                            <select ng-model="CenterIdgraph2" class="form-control" ng-required="true" style="width:190px;"ng-change="InstitutionClearfunction(2);InstitutionCenterBased(2);">
+                                                                <option value="0">Select</option>
+                                                                <option ng-repeat="sel in ExamCentre_List" 
+                                                                ng-selected="CenterIdgraph2 == sel.id" 
+                                                                value="{{sel.id}}">{{sel.center_name}}</option>
+                                                            </select>    
+                                                        </td>
+                                                    </tr><tr>
+                                                        <td width="25%">
+                                                            <label>
+                                                                   Institution </label>
+                                                        </td>
+                                                        <td width="16%">
+                                                            <select ng-model="FilterInstitutionIdgraph2"  class="form-control" ng-required="true" style="width:190px;" >
+                                                                <option value="0">Select</option>
+                                                                
+                                                                <option ng-repeat="sel in Institution_List2" 
+                                                                ng-selected="FilterInstitutionIdgraph2==sel.id"
+                                                                value="{{sel.id}}">{{sel.institutionname}}</option>
+                                                            </select>  
+                                                        </td>
+                                                      
+                                                               
+                                        <td >
+                                            <button type="button" class="btn btn-small"  title="Click to List the Records" ng-click="evaluation_subject_graphs_list()">Go</button>
+                                        </td>
+                                    </tr> 
+                                </table>
+                            </form>
+                                   
+                                
+                               
+                                </div>
+                        </div>   
+                    </div>
+                           
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <div id="container_abchecker" style="width: 320px;"></div>
+                        </div>
+                        <div class="col-md-6">
+                             <div id="container_subject" style="width: 320px;"></div>
+                        </div>
+                    </div>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                </div> 
+                </div>         
+                <div class="row" id="Graphs" style="border-bottom: 10px solid #ccc;border-left: 10px solid #ccc;border-right: 10px solid #ccc;">
+                    <div class="col-md-6">    <p class="page-title">Result Overall </p></div>
+                    <div class="col-md-6">  <p class="page-title">Attendance Overall </p></div>
+                <div class="col-md-12">
+                <div clsss="row">
+                    <div class="col-md-6">
+                    <div class="graph" style="width: 100%;display: flex; justify-content: space-between;" >
+                               
+                               
+                        <form class="form-horizontal" role="form">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                    <tr> 
+                                       
+                                                <td width="16%">
+                                                        <label>Exam Centre</label>
+                                                    </td>
+                                                    <td width="16%">
+                                                        <select ng-model="CenterIdgraph3" class="form-control" ng-required="true" style="width:190px;"ng-change="InstitutionClearfunction(3);InstitutionCenterBased(3);">
+                                                            <option value="0">Select</option>
+                                                            <option ng-repeat="sel in ExamCentre_List" 
+                                                            ng-selected="CenterIdgraph3 == sel.id" 
+                                                            value="{{sel.id}}">{{sel.center_name}}</option>
+                                                        </select>    
+                                                    </td>
+                                                </tr><tr>
+                                                    <td width="16%">
+                                                        <label>
+                                                               Institution </label>
+                                                    </td>
+                                                    <td width="16%">
+                                                        <select ng-model="FilterInstitutionIdgraph3"  class="form-control" ng-required="true" style="width:190px;" >
+                                                            <option value="0">Select</option>
+                                                            
+                                                            <option ng-repeat="sel in Institution_List3" 
+                                                            ng-selected="FilterInstitutionIdgraph3==sel.id"
+                                                            value="{{sel.id}}">{{sel.institutionname}}</option>
+                                                        </select>  
+                                                    </td>
+                                                  
+                                                           
+                                    <td >
+                                        <button type="button" class="btn btn-small"  title="Click to List the Records" ng-click="marks_detailed_graph()">Go</button>
+                                    </td>
+                                </tr> 
+                            </table>
+                        </form>
+                    
+                   
+               
+                    </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="graph" style="width: 100%;display: flex; justify-content: space-between;"  >
+                               <form class="form-horizontal" role="form">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                                <tr> 
+                                                   
+                                                            <td width="16%">
+                                                                    <label>Exam Centre</label>
+                                                                </td>
+                                                                <td width="16%">
+                                                                    <select ng-model="CenterIdgraph4" class="form-control" ng-required="true" style="width:190px;"ng-change="InstitutionClearfunction(4);InstitutionCenterBased(4);">
+                                                                        <option value="0">Select</option>
+                                                                        <option ng-repeat="sel in ExamCentre_List" 
+                                                                        ng-selected="CenterIdgraph4 == sel.id" 
+                                                                        value="{{sel.id}}">{{sel.center_name}}</option>
+                                                                    </select>    
+                                                                </td>
+                                                            </tr><tr>
+                                                                <td width="16%">
+                                                                    <label>
+                                                                           Institution </label>
+                                                                </td>
+                                                                <td width="16%">
+                                                                    <select ng-model="FilterInstitutionIdgraph4"  class="form-control" ng-required="true" style="width:190px;" >
+                                                                        <option value="0">Select</option>
+                                                                        
+                                                                        <option ng-repeat="sel in Institution_List4" 
+                                                                        ng-selected="FilterInstitutionIdgraph4==sel.id"
+                                                                        value="{{sel.id}}">{{sel.institutionname}}</option>
+                                                                    </select>  
+                                                                </td>
+                                                              
+                                                                       
+                                                <td >
+                                                    <button type="button" class="btn btn-small"  title="Click to List the Records" ng-click="attendance_detailed_graph()">Go</button>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </form>
+                                
+                                   
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-6">
+                         <div id="container_marks" style="width: 320px;"></div>
+                        </div>
+                        
+                    <div class="col-md-6">
+                        <div id="container_attendance" style="width: 320px;"></div>
+                   </div>
+                </div>
+                </div>
+                </div>
+                <div class="row" id="Graphs" style="border-bottom: 10px solid #ccc;border-left: 10px solid #ccc;border-right: 10px solid #ccc;">
+                    <div class="col-md-12">   <p class="page-title">Attendance Detailed </p></div>
+                    <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="graph" style="width: 100%;display: flex; justify-content: space-between;">
+                        <div class="row" >
+                                <form class="form-horizontal" role="form">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                            <tr> 
+                                               
+                                                        <td width="16%">
+                                                                <label>Exam Centre</label>
+                                                            </td>
+                                                            <td width="16%">
+                                                                <select ng-model="CenterIdgraph5" class="form-control" ng-required="true" style="width:190px;"ng-change="InstitutionClearfunction(5);InstitutionCenterBased(5);">
+                                                                    <option value="0">Select</option>
+                                                                    <option ng-repeat="sel in ExamCentre_List" 
+                                                                    ng-selected="CenterIdgraph5 == sel.id" 
+                                                                    value="{{sel.id}}">{{sel.center_name}}</option>
+                                                                </select>    
+                                                            </td>
+                                                            <td width="16%">
+                                                                <label>
+                                                                       Institution</label>
+                                                            </td>
+                                                            <td width="16%">
+                                                                <select ng-model="FilterInstitutionIdgraph5"  class="form-control" ng-required="true" style="width:190px;" >
+                                                                    <option value="0">Select</option>
+                                                                    
+                                                                    <option ng-repeat="sel in Institution_List5" 
+                                                                    ng-selected="FilterInstitutionIdgraph5==sel.id"
+                                                                    value="{{sel.id}}">{{sel.institutionname}}</option>
+                                                                </select>  
+                                                            </td>
+                                                          
+                                                                   
+                                            <td >
+                                                <button type="button" class="btn btn-small"  title="Click to List the Records" ng-click="attendance_subject_graph()">Go</button>
+                                            </td>
+                                        </tr> 
+                                    </table>
+                                </form>
+                            
+                           
+                        </div>
+                    </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="row">    
+                    <div class="col-md-12">
+                         <div id="container_attendancesubject" style="width: 320px;"></div>
+                        </div>
+                </div>     
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.panel').addClass('collapse');
+    $('#Graphs').removeClass('collapse');
+
+    $(function () {
+        $('.linetags').click(function () {
+            $('.linetags').removeClass('lineActive');
+            $(this).addClass('lineActive');
+
+        });
+    });
+
+    function TabClick(item) {
+        $('.panel').addClass('collapse');
+        $('#' + item).removeClass('collapse');
+    }
+    $('.input-group.date').datepicker({
+        format: "dd/M/yyyy",
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        toggleActive: true,
+        todayBtn: true
+
+    });
+</script>

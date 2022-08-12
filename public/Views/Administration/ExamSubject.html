@@ -1,0 +1,473 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mainbody container-fluid">
+                <p class="page-title">Master Setting</p>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                       
+                        <div class="lineTab">
+                             <a href="javascript:" id="A1" class="linetags" ng-click="AcademicYearRedirect()">Academic Year</a>
+                            <a href="javascript:" id="A9"class="linetags"ng-click="CourseSecRedirect()">Course/Sec</a>
+                            <a href="javascript:" id="A9" class="linetags" ng-click="GradeRedirect()">Grade</a>
+                            <a href="javascript:" id="A9" class="linetags" ng-click="ExamMenuRedirect()">Exam</a>
+                            <a href="javascript:" id="A9" class="linetags" ng-click="SubjectRedirect()">Subject</a>
+                            <a href="javascript:" id="A9" class="lineActive linetags" ng-click="ExamSubjectRedirect()">Exam/Subject</a>
+                        </div>
+                    </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                            <div class="panel panel-default" id="ExamSubject">
+                                <div class="panel-body">
+                                    <form class="form-horizontal" role="form">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+    
+                                            <tr>
+                                                <td width="12%">
+                                                    <label>Academic Year<font class='mandatory-field' style="color: red" ;>*</font></label>
+                                                </td>
+                                                <td width="15%">
+                                                    <select ng-model="AcademicYearId" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in AcademicYearList" ng-selected="AcademicYearId==sel.id" value="{{sel.id}}">{{sel.academicyear}}</option>
+                                                    </select>
+                                                </td>
+                                                <td width="7%">
+                                                    <label>Course</label>
+                                                </td>
+                                                <td width="15%">
+                                                    <select ng-model="CourseId" class="form-control" ng-required="true" ng-change="CourseBasedExamNameFunction();ExamNameClearFunction()">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in Courselist" ng-selected="CourseId==sel.id" value="{{sel.id}}">{{sel.course}}</option>
+                                                    </select>
+                                                </td>
+                                         
+                                                <td width="10%">
+                                                    <label>Exam Name</label>
+                                                </td>
+                                              
+                                                <td width="15%">
+                                                    <select ng-model="ExamNameId" class="form-control" ng-required="true">
+                                                        <option value="">Select</option>
+                                                        <option ng-repeat="sel in Filter_ExamNameList" ng-selected="ExamNameId==sel.examnameid" value="{{sel.examnameid}}">{{sel.examname}}</option>
+                                                    </select>
+                                                </td>
+                                                <td width="7%">
+                               
+                                                        <label>Status</label>
+                                                    </td>
+                                                    <td width="15%">
+                                                        <select class="form-control" ng-model="IsActive">
+                                                            <option value="-1">All</option>
+                                                            <option value="0">Inactive</option>
+                                                            <option value="1">Active</option>
+                                                        </select>
+                                                    </td>
+                                                <td width="40%">
+                                                    <button type="button" class="btn btn-small"  title="Click to List the Records" ng-click="ExamSubjectsearch()">Go</button>
+                                                </td>
+                                                <!-- <td width="40%">
+    
+                                                </td> -->
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                                <!-- <button type="button" class="btn btn-autosize pull-right mb-15" ng-click="AddExamSubjectModal()">Add New</button>
+                               <!-- <a href="javascript:" ng-click="AddExamSubjectModal()" class="btn btn-autosize addnew pull-right mb-15">Add New</a> -->
+                               <!-- </div> -->
+                               <div class="col-lg-12 tabpage">
+                                    <a href="javascript:" ng-click="AddExamSubjectModal(ClearPopup())"  title="Click to Add new Record" class="btn btn-autosize pull-right mb-15">Add New</a>
+                                </div>
+                                 
+                                <form class="form-horizontal" role="form" name="patientform" id="patientform">
+                                    <!-- <div excel-export header-Data="headerData" child-Data="childData" filterdata="filterdata"
+                                    export-data="exportData" header-title="HeaderTitle" schoolname="schoolname" address="address" 
+                                    loginuserId="loginuserId" inlinetabdata="inlinetabdata" inlineheaderdata="inlineheaderdata" class="btn btn-dril-autosize pull-right mb-15" file-name="{{fileName}}">
+                                </div> -->
+                                    <!-- <div class="row">
+                                     
+                                    <div class="col-md-12"> -->
+<table st-table="emptydata" style="width: 100%" st-safe-src="ExamSubjectList" class="table table-striped table-bordered">
+<thead>
+    <tr style="text-align: center">
+        <th st-ratio="5">#</th>
+        <!-- <th st-ratio="10">{{(CommontransactionList|filter :
+                {Name:'AcademicYear'})[0].Value}}</th> -->
+        <th st-ratio="9">Course</th>
+        <th st-ratio="10">Exam Name</th>
+        <th st-ratio="9">Exam Code</th>
+        <th st-ratio="40">Subject Name</th>            
+        <th st-ratio="10">Pass Mark</th>
+        <th st-ratio="10">Total Mark</th>
+        
+        <th st-ratio="8">Action</th>
+                <tr ng-if="flag2==0 && ExamSubjectList.length==0">
+                        <td colspan="8" class="text-center">
+                            No Records Found
+                        </td>
+                    </tr>
+                    <tr ng-repeat="row in emptydata">
+                        <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+                        <td style="text-align: left">{{row.course}}</td>
+                        <td style="text-align: left">{{row.examname}}</td>
+                        <td style="text-align: left">{{row.examcode}}</td>
+                        <td colspan="3">
+                            <table style="width: 100%">
+                                <tr ng-repeat="col in ExamSubjectInnerTableList | filter:{examsubjectid:row.id} : true">
+                                    <td style="text-align: left" ng-show="col.subjectparentid==0">
+                                    <div class="textwrap">  {{col.subjectname}}</td>
+                                        <td style="text-align: left" ng-show="col.subjectparentid!=0">
+                                            <div class="textwrap"></div>  - - {{col.subjectname}}</td>
+                                
+                                    <td width="15%">{{col.pass}} </td>
+                                    <td width="15%">{{col.total}} </td>
+                                </tr>
+                            </table>
+                        </td>
+        <td style="text-align: center">
+            <a href="javascript:" ng-click="ViewExamSubjectModal(row.id)" title="View">
+                <img src="/img/ViewIcon.png" />
+            </a>
+            <a href="javascript:" ng-click="row.isactive == 0 ||EditExamSubjectModal(row.id)" title="Edit">
+                <img src="/img/EditIcon.png" ng-if="row.isactive==1" />
+            </a>
+            <a href="javascript:" ng-click="ErrorFunction()" title="Edit">
+                <img src="/img/EditIcon.png" ng-if="row.isactive==0" />
+            </a>
+            <a href="javascript:" ng-click="InActiveExamSubject(row.id)" title="Active">
+                <img src="/img/ActiveIcon.png" ng-if="row.isactive==1" />
+            </a>
+            <a href="javascript:" ng-click="ActiveExamSubject(row.id)" title="Inactive">
+                <img src="/img/InActiveIcon.png" ng-if="row.isactive==0" />
+            </a>
+        </td>
+    </tr>
+</tbody>
+
+<tfoot ng-show="ExamSubjectList.length >10">
+    <tr>
+        <td colspan="10" class="text-center">
+            <items-page items-On-Page ="itemsOnPage" total-Items="ExamSubjectList.length"></items-page> items per page
+            <div st-items-by-page="itemsOnPage" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+            <!--<items-page items-On-Page ="itemsOnPage" total-Items="pagetotalSize"></items-page>-->
+
+        </td>
+    </tr>
+</tfoot> 
+</table>
+</div>
+
+
+<!-- Exam Subject Add Modal -->
+<div id="ExamSubjectAddModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" title="Close"  data-dismiss="modal">&times;</button>
+                <h1 class="page-title">Exam And Subject</h1>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" style="font-size:small">
+                      
+                    <table cellpadding="" cellspacing="0" border="0" width="100%" class="formControlGroup" >
+                        <tr>
+                            <td width="20%">
+                                <label>Academic Year
+                                    <font class='mandatory-field' style="color: red" ;>*</font>
+                                </label>
+                            </td>
+                            <td width="50%" ng-hide="Id>0">
+                               
+                                <select ng-model="ESAcademicYear" class="form-control" style="width:200px" ng-required="true" ng-change="AcademicYearBasedCourseFunction();CourseClearFunction()">
+                                    <option value="">Select</option>
+                                    <option ng-repeat="sel in AcademicYearList" ng-selected="ESAcademicYear==sel.id" value="{{sel.id}}">{{sel.academicyear}}</option>
+                                </select>
+                            </td>
+                            <td style="width:30%" ng-show="Id>0">
+                                <span>{{ViewAcademicYear}}</span>
+                            </td>
+                             <td>
+                                <label>Course
+                                    <font class='mandatory-field'  style="color: red" ;>*</font>
+                                </label>
+                            </td>
+                            <td ng-hide="Id>0">
+                               <select ng-model="ESCourse" style="width:200px" class="form-control" ng-required="true" ng-change="CourseBasedSubjectFunction()">
+                                       
+                                    <option value="">Select</option>
+                                    <option ng-repeat="sel in Courselist" ng-selected="ESCourse==sel.id" value="{{sel.id}}">{{sel.course}}</option>
+                                </select>
+
+                            </td>
+                            <td style="width:30%" ng-show="Id>0">
+                                <span>{{ViewCourseName}}</span>
+                            </td>
+                            <tr> 
+                            <td>
+                                    <label>Exam Name
+                                        <font class='mandatory-field' style="color: red" ;>*</font>
+                                    </label>
+                                </td>
+                                <td ng-hide="Id>0">
+                                    <select ng-model="ExamName" class="form-control" ng-required="true" style="width:200px">
+                                        <option value="">Select</option>
+                                        <option ng-repeat="sel in ExamNameList" ng-selected="ExamName==sel.examnameid" value="{{sel.examnameid}}">{{sel.examname}}</option>
+                                    </select>
+                                </td>
+                                <td style="width:30%" ng-show="Id>0">
+                                    <span>{{ViewExamName}}</span>
+                                </td>
+                                <td width="15%"  valign="top">
+                                    <label>Description</label>
+                                </td>
+                                <td width="30%">
+                                    <textarea id="Textarea2" class="form-control" ng-model="Description" style="width:200px" ng-init="Description=''" placeholder="" ng-maxlength="200"
+                                        maxlength="200"></textarea>
+                                </td>
+                        </tr>
+                </table>
+                    <table cellpadding="" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td width="20%">
+                                <h1 class="page-title">Subject Details</h1>
+                            </td>
+                        <td width="15%">
+                        <label>
+                        Pass Mark</label></td>
+                      <td width="15%">
+                        <input type="text" class="form-control" ng-model="PassMark" onkeypress="varifyNumberPositive(this.PassMark)" ng-maxlength="5" maxlength="5">
+                        </td>
+                      <td width="10%"><button type="button" class="btn btn-small" title="Fill PassMark" ng-click="FillPassfunction()">Fill</button>          
+                        </td>
+                      <td width="10%">
+                        <label>Total Mark</label>
+                        </td>
+                            <td width="15%">
+                                <input type="text" class="form-control" ng-model="TotalMark" onkeypress="varifyNumberPositive(this.TotalMark)"ng-maxlength="5" maxlength="5" ng-change="ClearFunction()">
+                            </td>
+                            <td width="10%">
+                                <button type="button" class="btn btn-small" title="Fill TotalMark" ng-click="FillTotalfunction()">Fill</button>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                   
+                    <div class="modal-body" style="overflow-y:scroll; height:250px;">
+                    <table valign="top" cellpadding="" cellspacing="0" border="0" width="100%" class="table table-striped table-bordered" template-pagination="custom/pager" style="margin-bottom:10px !important">      
+                        
+                        <thead>
+                            <tr style="text-align: center">
+                                       <th width="5%"><input type="checkbox" id="CheckAll" ng-model="master" ng-click="isSelectAll()"/></th>
+                                       <th width="50%" colspan="2">Subject Name</th>                                      
+                                       <th width="10%">Pass Mark</th>                                     
+                                       <th width="20%">Total Mark</th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                 
+                                    <tr ng-if="SubjectFlag==0 && SubjectNameList.length==0">
+                                            <td colspan="9" class="text-center">
+                                                No Records Found
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: center" ng-repeat="sel in SubjectNameList" >
+                                               
+                                            <td style="text-align: center">
+                                                <input type="checkbox" ng-model="sel.selectedstudent" ng-change="SubjectsbasedCheckboxfunction(sel.subjectparentid,sel.id)"ng-init="sel.selectedstudent=true" />
+                                            </td>
+                                            <td width="35%" style="text-align: left" ng-show="sel.subjectparentid==0" >
+                                                        {{sel.subjectname}}
+                                                    </td>
+                                            <td>
+    
+                                            </td>
+                                            <td width="30%" style="text-align: left" ng-show="sel.subjectparentid!=0">
+                                                    {{sel.subjectname}}
+                                            </td>
+                                            <td width="15%">
+                                              
+                                                    <input type="text" id="Text7" class="form-control" ng-model="sel.Pass" ng-change="TotalMarks(sel.subjectparentid)" ng-maxlength="5" maxlength="5" onkeypress="varifyNumberPositive(this.Pass)"
+                                                    ng-disabled="(SubjectNameList | filter:{subjectparentid:sel.id} : true).length>0 || sel.selectedstudent== false">
+                                            </td>
+                                            <td width="20%">
+                                                    <input type="text" id="Text7" class="form-control" ng-model="sel.Total"  ng-change="TotalMarks(sel.subjectparentid)" ng-maxlength="5" maxlength="5" onkeypress="varifyNumberPositive(this.Total)"
+                                                    ng-disabled="(SubjectNameList | filter:{subjectparentid:sel.id} : true).length>0  || sel.selectedstudent== false">
+                                            </td>
+                                            <!-- <td style="text-align: center"><input type="checkbox" ng-model="selectedFeeDetails" /></td> -->
+                                        </tr>
+                                        
+                               </tbody>
+                            
+                            
+                        </table>
+                    </div>
+               
+            </form>
+          
+            <div class="modal-footer" style="text-align:center;">
+                <button type="button" class="btn  btn-save" title="Click to Save the Records"  ng-click="ExamSubject_AddEdit()">Save</button>
+                <button type="button" class="btn  btn-save" title="Click to Cancel"  ng-click="CancelPopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Subject View Modal -->
+<div id="ExamSubjectViewModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Exam And Subject</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" style="font-size:small">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                        <tr>
+                            <td>
+                                <label>Academic Year</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewAcademicYear}}</span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">
+                                <label>Course</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewCourseName}}</span>
+                            </td>
+                        </tr>
+                        <!-- <tr>
+                            <td style="width: 20%">
+                                <label>Subject Name</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewSubjectName}}</span>
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <td>
+                                <label>Exam Name</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{ViewExamName}}</span>
+                            </td>
+
+                        </tr>
+                        <!-- <tr>
+                            <td>
+                                <label>Pass/Total</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>{{Pass}} / {{Total}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <label>Description</label>
+                            </td>
+                            <td style="width:30%">
+                                <span>
+                                    <div class="textwrap">{{Description}}</div>
+                                </span>
+                            </td>
+
+                        </tr> -->
+                        <tr>
+                            
+                         <td colspan="2">
+                                
+                                 <table st-table="emptydatas" style="width: 100%" st-safe-src="ViewSubjectList" class="table table-striped table-bordered">
+                                         <h4>Subject Details</h4>
+                                     <thead>
+                                         <tr style="text-align: center">
+                                             <th st-ratio="10%">#</th>
+                                             <th st-ratio="50%">Subject Name</th>
+                                             <th st-ratio="20%">Pass Mark</th>
+                                             <th st-ratio="20%">Total Mark</th>
+                                         
+                                             <!--<th st-ratio="23">Action</th>-->
+                                         </tr>
+                                     </thead>
+         
+                                     <tbody>
+         
+                                         <tr style="text-align: center" ng-if="(ViewSubjectList.length==0)">
+                                             <td colspan="6" class="text-center" style="text-align:center;">
+                                                 No Records Found
+                                             </td>
+                                         </tr>
+                                    
+                                         <tr ng-repeat="row in ViewSubjectList">
+                                             <td style="text-align: right">{{((current_page-1)*page_size)+$index+1}}</td>
+                                             <!--<td style="text-align: left">{{row.LicenseFileName}}</td>-->
+                                             <td style="text-align: left" ng-show="row.subjectparentid==0">
+                                                    <div class="textwrap">  {{row.subjectname}}</td>
+                                                       
+                                                        <td style="text-align: left" ng-show="row.subjectparentid!=0">
+                                                            <div class="textwrap"></div> -- {{row.subjectname}}</td>
+                                             <td>{{row.pass}} </td>
+                                             <td>{{row.total}} </td>
+                                         </tr>
+                                     </tbody>
+         
+                                 </table>
+         
+                             </div>
+                             <div>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align:center;">
+                <button type="button" class="btn  btn-save"  title="Click to Cancel"  ng-click="CancelPopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    #tag.li {
+        border-top: 1px solid black;
+        padding: .3em 0;
+    }
+
+    #tag2.ul {
+        margin-left: 40px;
+        padding-left: 0px;
+        border-bottom: 1px solid black;
+        list-style: none;
+        width: 36%;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        $('.linetags').click(function () {
+            $('.linetags').removeClass('lineActive');
+            $(this).addClass('lineActive');
+
+        });
+    });
+
+    function TabClick(item) {
+        $('.panel').addClass('collapse');
+        $('#' + item).removeClass('collapse');
+    }
+</script>
+<style>
+        .tabpage {
+            padding-top: 10px;
+            padding-right: 0px;
+        }
+    </style>

@@ -1,0 +1,48 @@
+<head>
+        <style type="text/css">
+            input[type='file'] {
+                opacity: 0;
+            }
+        </style>
+        <script>
+    
+            $('#btnLogo').click(function () {
+                $("#companyphoto").trigger('click');
+            })
+    
+            $('#btndoc').click(function () {
+                $("#Employee").trigger('click');
+            })
+        </script>
+
+<div class="panel panel-default" id="Import">
+      
+        
+        <div class="panel-body form-horizontal">
+                <h1 class="page-title">Employee Details Upload</h1>
+                <form class="form-horizontal" role="form">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                <tr>
+                    <td style="vertical-align:top" width="12%">
+                        <label>Employee Details </label>
+                    </td>
+                    <td width="90%">
+                        <!-- <input type="file" ng-model="import_file" name= "import_file"/> -->
+                        <span id='btndoc' class="btn  btn-autosize">Choose File</span>  
+                    &nbsp &nbsp  &nbsp                      
+                    <a ng-href="../img/CommonExcelTemplates/Employee Details.xlsx" target="_blank">                          
+                    <u>Download Template</u></a>
+                    &nbsp &nbsp  &nbsp   
+                    <a href="javascript:" ng-click="fileclear()" title="Clear">
+                        <u>Clear</u></a>
+                        <input type="file" id="Employee" fileread="licedoc" style="height: 0px" onchange="angular.element(this).scope().doclogoChange(this)" name="LicenseFileName" />
+                        <!-- {{LicenseFileName}} -->
+                    </td>
+                </tr>
+            </table>
+            <div style="text-align: center;">
+                <button type="button" class="btn  btn-save" ng-click="EmployeeExcel_AddEdit()">Upload</button>
+            </div>
+            </form>
+        </div>
+    </div>

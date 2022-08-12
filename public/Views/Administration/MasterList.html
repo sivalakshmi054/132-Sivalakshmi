@@ -1,0 +1,183 @@
+    <div class="row">
+        <div class="col-md-12">
+            <p class="page-title nopadding">Master</p>
+            <div class="panel panel-default" id="Import">
+                <div class="panel-body form-horizontal" ng-init="getCommonTable()">
+                        <form class="form-horizontal" role="form">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                            <tr>
+                                <td style="width: 10%">
+                                    <label>Masters List<sup><font class='mandatory-field'>*</font></sup></label>
+                                </td>
+                                <td style="width: 22%">
+                                    <select ng-model="UITableName" id="Select1" class="form-control" style="width: 200px">
+                                        <option value="0">Select </option>
+                                        <option ng-repeat="sel in MasterList" value="{{sel.id}}">{{sel.uitablename}}</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn  btn-small" ng-click="TableColumn_ListSearchGo(Validationcontrols())">Go</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-12" ng-show="rowCollection.length>0">
+                <div class="form-inline">
+                    <div class="form-group pull-left  mb-10">
+                        <label style="margin-right: 35px;">Search</label>
+                        <input type="text" ng-model="query" class="form-control ml-10 search-input" placeholder="" style="width: 200px" />
+                        <label style="margin-left: 63px;text-align: left;width: 80px;">Status</label>
+
+                        <select class="form-control" ng-model="IsActive" style="width: 200px" ng-change="AcitveFilterChange()">
+                            <option value="-1">All</option>
+                            <option value="0">Inactive</option>
+                            <option value="1">Active</option>
+                        </select>
+
+                    </div>
+                    <button type="button" class="btn btn-autosize pull-right open-nav" ng-click="AddClick()">Add New</button>
+                </div>
+                <!-- search-watch-model="query"-->
+                <table search-watch-model="query" st-table="emptydata" style="width: 100%" st-safe-src="ResultListFiltered" class="table table-striped table-bordered">
+                    <thead>
+                        <tr style="text-align: center">
+                            <th st-ratio="5">#</th>
+                            <th st-ratio="{{item.listwidth}}" st-sort="{{item.sortingrequired == 1?item.dbcolumnname : ''}}" ng-repeat="item in rowCollection | filter : {listrequired:1}">
+                                {{item.uicolumnname}}
+                                <!--<span class="pull-right" ng-if="item.SortingRequired == 1"><img src="Images/ascending.png" /></span>-->
+                                <!--<span class="pull-right" ng-if="item.SortingRequired == 1"><img src="Images/ascending.png" /></span>-->
+                            </th>
+                            <th st-ratio="8">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-if="flag==0 && ResultListFiltered.length==0">
+                            <td colspan="{{(rowCollection|filter:{listrequired:1}).length+2}}" class="text-center">
+                                No Records Found
+                            </td>
+                        </tr>
+                        <tr ng-if="flag==1 && (emptydata|filter:{DBColumnResult:query}).length==0">
+                            <td colspan="{{(rowCollection|filter:{listrequired:1}).length+2}}" class="text-center">
+                                No Records Found
+                            </td>
+                        </tr>
+                        <tr ng-repeat="item in emptydata | filter : {DBColumnResult:query}">
+                            <td>{{((current_page-1)*page_size)+$index+1}}</td>
+                            <td ng-repeat="col in rowCollection | filter : {listrequired:1}" style="text-align: left" ng-if="col.validationtype==1">
+                                {{item[$index+1].DBColumnResult}}
+                            </td>
+                            <td ng-repeat="col in rowCollection | filter : {listrequired:1}" style="text-align: right" ng-if="col.validationtype!=1">
+                                {{item[$index+1].DBColumnResult}}
+                            </td>
+                            <td style="text-align: center">
+                                <a href="javascript:" ng-click="ViewClick(item[0].DBColumnResult)" title="View"><img src="/img/ViewIcon.png" /></a>
+                                <a href="javascript:" ng-click="item[0].IsActive==0 ||EditClick(item[0].DBColumnResult)" title="Edit"><img src="/img/EditIcon.png" ng-if="item[0].IsActive==1" /></a>
+                                <a href="javascript:" ng-click="ErrorFunction()" title="Edit"><img src="/img/EditIcon.png" ng-if="item[0].IsActive==0" /></a>
+                                <a href="javascript:" ng-click="MasterDelete(item[0].DBColumnResult)" title="Active"><img src="/img/ActiveIcon.png" ng-if="item[0].IsActive==1" /></a>
+                                <a href="javascript:" ng-click="MasterActive(item[0].DBColumnResult)" title="Inactive"><img src="/img/InActiveIcon.png" ng-if="item[0].IsActive==0" /></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <!-- <tfoot ng-show="ResultListFiltered.length>5">
+                        <tr>
+                            <td colspan="{{(rowCollection|filter:{ListRequired:1}).length+2}}" class="text-center">
+                                <div st-items-by-page="5" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Masters/Views/pagination.custom.html"></div>
+                            </td>
+                        </tr>
+                    </tfoot> -->
+                    <tfoot ng-show="ResultListFiltered.length >10">
+                        <tr>
+                            <td colspan="{{(rowCollection|filter:{listrequired:1}).length+2}}" class="text-center">
+                                
+                                <items-page items-On-Page ="itemsOnPage" total-Items="ResultListFiltered.length"></items-page> items per page
+                                <div st-items-by-page="itemsOnPage" st-page-change="rembemberCurrentPage(newPage)" st-pagination="" st-template="Views/Administration/pagination.custom.html"></div>
+                                <!--<items-page items-On-Page ="itemsOnPage" total-Items="pagetotalSize"></items-page>-->             
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <div id="MasterAddmodal" class="modal fade right" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="CancelMasterColumns()" title="Close" style="color:#8B0000;">&times;</button>
+                        <h1 class="page-title nopadding">
+                            {{UIMasterName}}</h1>
+                        <strong class="error">{{errorList}}</strong>
+                        <!--<h1 class="page-title">{{UIMasterName}}</h1>-->
+                    </div>
+                    <div class="modal-body">
+                        <!--<div ng-include="MasterAddEdit.html"></div>-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default panel-info">
+                                        <div class="panel-body">
+                                            <form class="form-horizontal" role="form">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                                    <tr ng-repeat="ctl in resultCollection | filter : {isdefault:0}">
+                                                        <td style="width:40%;" ng-if="ctl.fieldtype != 2">
+                                                            <label>{{ctl.uicolumnname}}</label>
+                                                            <!--<i class="fa fa-asterisk" style="font-size: 6px; color: red" ng-if="ctl.UIMandatory==1" ng-show="Mode!=2"></i>-->
+                                                            <font class="mandatory-field" ng-if="ctl.uimandatory==1" ng-show="Mode!=2"><sup><font class="mandatory-field">*</font></sup></font>
+                                                        </td>
+                                                        <td style="width: 30%; vertical-align: top;" ng-if="ctl.fieldtype == 2">
+                                                            <label>{{ctl.uicolumnname}}</label>
+                                                            <i class="fa fa-asterisk" style="font-size: 6px; color: red" ng-if="ctl.uimandatory==1" ng-show="Mode!=2"></i>
+                                                        </td>
+                                                        <td>
+                                                            <label ng-show="Mode==2">{{ControlValues[ctl.dbcolumnname]}}</label>
+                                                            <input type="text" class="form-control" maxlength="{{ctl.uimaxlength}}" id="Text1" ng-model="ControlValues[ctl.dbcolumnname]" placeholder="" ng-if="ctl.fieldtype == 1" ng-readonly="noneditable" ng-show="Mode!=2">
+                                                            <textarea rows="5" class="form-control" maxlength="{{ctl.uimaxlength}}" id="Textarea1" ng-model="ControlValues[ctl.dbcolumnname]" placeholder="" ng-if="ctl.fieldtype == 2" ng-readonly="noneditable" ng-show="Mode!=2"></textarea>
+                                                            <!--<div ng-if="ctl.FilterColumn!=''">-->
+
+                                                            <select class="form-control" id="Select2" ng-model="ControlValues[ctl.dbcolumnname]" ng-if="ctl.fieldtype == 3 && ctl.filtercolumn!=''" ng-readonly="noneditable" ng-show="Mode!=2">                                                                 
+                                                                    <option value=''>Select</option>
+                                                                    <!--populate only Active Items from Master-->
+                                                                    <option ng-repeat="sel in ddlValues[ctl.dbcolumnname] | filter : {active:1,filterid:ControlValues[ctl.filtercolumn]}" ng-selected="ControlValues[ctl.dbcolumnname]==sel.id" value="{{sel.id}}">{{sel.name}}</option>
+                                                                  
+                                                                    <!--If the current entry is for Inactive Item, then show only that inactive item in Dropdown in Edit page-->
+                                                                    <option ng-repeat="sel in ddlValues[ctl.dbcolumnname] | filter : {active:0}" ng-if="Mode == 3" ng-selected="ControlValues[ctl.dbcolumnname]==sel.id" value="{{sel.id}}">{{sel.name}}</option>
+                                                                                                                                
+                                                            </select>
+
+                                                            <select class="form-control" id="Select2" ng-model="ControlValues[ctl.dbcolumnname]" ng-if="ctl.fieldtype == 3 && ctl.filtercolumn==''" ng-readonly="noneditable" ng-show="Mode!=2" ng-change="Clearfunction(ctl.DBColumnName)">
+                                                                        <option value=''>Select</option>
+                                                                        <!--populate only Active Items from Master-->
+                                                                         <option ng-repeat="sel in ddlValues[ctl.dbcolumnname] | filter : {active:1}" ng-selected="ControlValues[ctl.dbcolumnname]==sel.id" value="{{sel.id}}">{{sel.name}}</option> -->
+                                                                        <!--If the current entry is for Inactive Item, then show only that inactive item in Dropdown in Edit page-->
+                                                                      <option ng-repeat="sel in ddlValues[ctl.dbcolumnname] | filter : {active:0}" ng-if="Mode == 3" ng-selected="ControlValues[ctl.dbcolumnname]==sel.id" value="{{sel.id}}">{{sel.name}}</option>
+                                                            </select>
+                                                            <input type="radio" class="form-control" id="Radio1" ng-model="ControlValues[ctl.dbcolumnname]" placeholder="" ng-if="ctl.fieldtype == 4" ng-readonly="noneditable" ng-show="Mode!=2">
+                                                            <input type="checkbox" class="form-control" id="Checkbox1" ng-model="ControlValues[ctl.dbcolumnname]" ng-if="ctl.fieldtype == 5" ng-readonly="noneditable" ng-show="Mode!=2">
+                                                            <input type="datetime" class="form-control" id="Datetime1" ng-model="ControlValues[ctl.dbcolumnname]" placeholder="" ng-if="ctl.fieldtype == 6" ng-readonly="noneditable" ng-show="Mode!=2">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button type="button" class="btn  btn-save" ng-show="Mode!=2" ng-click="SaveMasterColumns()">Save</button>
+                        <button type="button" class="btn  btn-save" ng-click="CancelMasterColumns()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

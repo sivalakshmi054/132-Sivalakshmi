@@ -1,0 +1,161 @@
+<div class="container">
+        <div class="panel-body" ng-init="Clearlist()">
+            <div class="row"  ng-init="ExamTimetable_View()">
+                <div class="col-md-12">
+                    <h1 class="page-title">Exam TimeTable Details</h1>
+                    <div class="panel panel-default panel-info">
+                        <form class="form-horizontal" ng-init="ViewWorkScheduleDetails()">
+    
+                           
+    
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                    <tr>
+                                            <td>
+                                                <label>Academic Year
+                                                    <sup>
+                                                        <font class='mandatory-field'>*</font>
+                                                    </sup>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <select ng-model="AcademicYear" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in AcademicYearList" ng-selected="AcademicYear==sel.Id" value="{{sel.Id}}">{{sel.AcademicYear}}</option>
+                                                </select>
+                                            </td>
+                
+                
+                                            <td>
+                                                <label>Course
+                                                    <sup>
+                                                        <font class='mandatory-field'>*</font>
+                                                    </sup>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <select ng-model="Course" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in Courselist" ng-selected="CourseId==sel.Id" value="{{sel.Id}}">{{sel.Course}}</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Examination
+                                                    <sup>
+                                                        <font class='mandatory-field'>*</font>
+                                                    </sup>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <select ng-model="Examination" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in ExamList" ng-selected="Examination==sel.Id" value="{{sel.Id}}">{{sel.ExamName}}</option>
+                                                </select>
+                                            </td>
+                
+                
+                                            <td>
+                                                <label>Subject
+                                                    <sup>
+                                                        <font class='mandatory-field'>*</font>
+                                                    </sup>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <select ng-model="Subject" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option ng-repeat="sel in SubjectList" ng-selected="Subject==sel.Id" value="{{sel.Id}}">{{sel.SubjectName}}</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                
+                
+                                        <tr>
+                                            <td>
+                                                <label>Start Time</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-group bootstrap-timepicker timepicker" style="width:60%">
+                                                    <input id="timepicker3" type="text" class="form-control input-small" ng-model="StartTime" ng-init="StartTime=''">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-clock-o"></i></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                
+                
+                                            <td>
+                                                <label>End Time</label>
+                                            </td>
+                                            <td>
+                                                <div class="input-group bootstrap-timepicker timepicker" style="width:60%">
+                                                    <input id="timepicker4" type="text" class="form-control input-small" ng-model="EndTime" ng-init="StartTime=''">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-clock-o"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                
+                                        <tr>
+                                            <td>
+                                                <label>Exam Date
+                                                    <sup>
+                                                        <font class='mandatory-field'>*</font>
+                                                    </sup>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <div class="col-xs-12 input-group date" id="EnquiryDate" style="margin-left:-15px;">
+                                                    <input type="text" id="text22" class="form-control" ng-model="ExaminationDate" ng-init="ExaminationDate=''" ng-required="true"
+                                                        style="width:100px" ng-required="true" onkeypress="isDate(this.ExaminationDate)">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-th" aria-hidden="true"></i>
+                                                    </span>
+                                                    <a href="javascript:" ng-click="dateclear()" title="Clear">
+                                                        <u>Clear</u>
+                                                    </a>
+                                                </div>
+                
+                                            </td>
+                
+                
+                                            <td>
+                                                <label>Remarks</label>
+                                            </td>
+                                            <td>
+                                                <textarea rows="3" id="Textarea2" class="form-control" ng-model="Remarks" ng-init="Remarks=''" placeholder="" ng-maxlength="250"
+                                                    maxlength="250" onkeypress=" NoSpecChar(this.Remarks)"></textarea>
+                                            </td>
+                                        </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div style="text-align:center;">
+                    <button type="submit" class="btn btn-save" ng-click="ExamTimetable_AddEdit()">Save</button>
+                    <button type="button" class="btn btn-save" ng-click="ListRedirect()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+    
+        $('#timepicker3').timepicker();
+        $('#timepicker4').timepicker();
+
+        $('.input-group.date').datepicker({
+        format: "dd-M-yyyy",
+          //      endDate: '+0d',
+            startDate: new Date(),
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        toggleActive: true,
+        todayBtn: true
+    });
+    </script>
+    

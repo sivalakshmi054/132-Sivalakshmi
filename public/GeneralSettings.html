@@ -1,0 +1,1028 @@
+<div ui-view>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <p class="page-title">General Settings</p>
+                <div class="lineTab">
+                    <a href="javascript:" onclick="TabClick('Idsettings')" id="A1" class="lineActive linetags">ID Settings</a>
+                    <a href="javascript:" onclick="TabClick('Email')" id="A9" class="linetags">Email</a>
+                    <a href="javascript:" onclick="TabClick('SMS')" id="A2" class="linetags">SMS</a>
+                    <a href="javascript:" onclick="TabClick('Settings')" id="A2" class="linetags">Settings</a>
+                    <a href="javascript:" onclick="TabClick('Holidays')" id="A2" class="linetags">Holidays</a>
+                    <a href="javascript:" onclick="TabClick('Import')" id="A2" class="linetags">Import</a>
+                    <a href="javascript:" onclick="TabClick('Leaves')" id="A2" class="linetags">Leaves</a>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="menuleftcontent">
+                        <div class="panel panel-default" id="Idsettings">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form" name="patientform" id="patientform">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td>
+                                                <label><h1 class="page-title">ID Settings</h1></label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="10%">
+                                                <label>Category</label>
+                                            </td>
+                                            <td width="40%">
+                                                <select class="form-control" ng-model="Blood_Group" id="Select7">
+                                       
+                                    <option value="">Select</option></select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>ID Type</label>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" ng-model="Blood_Group" id="Select7">
+                                        
+                                    <option value="">Select</option></select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>School Code</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" id="Text25" name="Emg_Contact_Person" ng-model="Emg_Contact_Person" ng-init="Emg_Contact_Person=''" onkeypress="varifychar(this.Emg_Contact_Person)" placeholder="" ng-maxlength="100" maxlength="100" />
+                                            </td>
+                                            <td width="10%">
+                                                <label>Separator</label>
+                                                <td width="40%">
+                                                    <input type="text" class="form-control" id="Text25" name="Emg_Contact_Person" ng-model="Emg_Contact_Person" /></td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>ID Starts From</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" id="Text25" name="Emg_Contact_Person" ng-model="Emg_Contact_Person" ng-init="Emg_Contact_Person=''" onkeypress="varifychar(this.Emg_Contact_Person)" placeholder="" ng-maxlength="100" maxlength="100" />
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td width="15%">
+                                                <label>Include Course Code</label>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" value="applicable" name="Send sms" style="width:20%">
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>
+                                                <label>Preview </label>
+                                            </td>
+                                            <td>
+                                                <input type="text" name="Preview" placeholder="14SAK-1001" class="form-control" id="Checkbox6" ng-init="Weekday.Sat=0" readonly="true">
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="Email">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form" name="patientform" id="Form1">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td>
+                                                <lable>
+                                                    <h1 class="page-title">Email Template</h1>
+                                                </lable>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="12%">
+                                                <label>Type</label>
+                                            </td>
+                                            <td width="30%">
+                                                <select class="form-control" ng-model="Branch_Name" id="Select3">
+                                       
+                                    <option value="">Select</option></select>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td width="15%">
+                                                <label>Category</label>
+                                            </td>
+                                            <td width="30%">
+                                                <select class="form-control" ng-model="Branch_Name" id="Select3">
+                                       
+                                    <option value="">Select</option></select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Subject</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" id="Text1" />
+                                            </td>
+                                            <td>
+                                                <label>Tags</label>
+                                                <ul style="list-style-position:inside; border:1px solid #a1a1a1; width: 45%;">
+                                                    <li style="border:0.5px solid lightblue;"><a href="">Home</a></li>
+                                                    <li style="border:0.5px solid lightblue;"><a href="">Student</a></li>
+                                                </ul>
+                                            </td>
+
+
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <lable>Template</lable>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div class="btn-toolbar" role="toolbar">
+
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-default"><span class="fa fa-bold"></span></button>
+                                                            <button class="btn btn-default"><span class="fa fa-italic"></span></button>
+                                                            <button class="btn btn-default"><span class="fa fa-underline"></span></button>
+                                                        </div>
+
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-default"><span class="fa fa-align-left"></span></button>
+                                                            <button class="btn btn-default"><span class="fa fa-align-right"></span></button>
+                                                            <button class="btn btn-default"><span class="fa fa-align-center"></span></button>
+                                                            <button class="btn btn-default"><span class="fa fa-align-justify"></span></button>
+                                                        </div>
+
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-default"><span class="fa fa-indent"></span></button>
+                                                            <button class="btn btn-default"><span class="fa fa-outdent"></span></button>
+                                                        </div>
+
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-default"><span class="fa fa-list-ul"></span></button>
+                                                            <button class="btn btn-default"><span class="fa fa-list-ol"></span></button>
+                                                        </div>
+                                                        <button class="btn btn-default"><span class="fa fa-trash-o"></span></button>
+                                                        <button class="btn btn-default"><span class="fa fa-paperclip"></span></button>
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="fa fa-tags"></span><span class="caret"></span></button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="#">add label <span class="label label-danger">Home</span></a></li>
+                                                                <li><a href="#">add label <span class="label label-info">Job</span></a></li>
+                                                                <li><a href="#">add label <span class="label label-success">Clients</span></a></li>
+                                                                <li><a href="#">add label <span class="label label-warning">News</span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <textarea class="mt-10 form-control" id="message" name="body" rows="12" placeholder="Subject"></textarea>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="SMS">
+                            <div class="panel-body">
+
+                                <form class="form-horizontal" role="form" name="patientform" id="Form2">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td>
+                                                <lable>
+                                                    <h1 class="page-title">SMS</h1>
+                                                </lable>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width=10%">
+                                                <label>Transaction</label>
+                                            </td>
+                                            <td width="30%">
+                                                <select class="form-control" ng-model="Branch_Name" id="Select3">
+                                       
+                                    <option value="">Select</option></select>
+                                            </td>
+                                            <td>
+                                                <label>Tags</label>
+                                                <!-- <ul style="list-style-position:inside; border:1px solid #a1a1a1; width: 36%;"> -->
+                                                    <!-- <li style="border:0.5px solid lightblue;"><a href="">Home</a></li>
+                                                    <li style="border:0.5px solid lightblue;"><a href="">Student</a></li> -->
+                                                </ul>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <lable>Category</lable>
+                                            </td>
+                                            <td width="30%">
+                                                <select class="form-control" ng-model="Branch_Name" id="Select3">
+                                       
+                                    <option value="">Select</option></select>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td width="10%">
+                                                <label>Message</label>
+                                            </td>
+                                            <td width="30%">
+                                                <textarea class="form-control" id="Remarks" placeholder="" ng-model="Remarks" ng-init="Remarks=''" ng-maxlength="250" maxlength="250"></textarea>
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="Settings">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form" name="patientform" id="patientform">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td width="15%">
+                                                <label><h1 class="page-title">Settings</h1></label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Send SMS</label>
+                                            </td>
+                                            <td>
+                                                <select id="SystemRoleId" name="SystemRoleId" class="form-control" multiple>
+                                                <option value="0">Select</option>
+                                                <option>Enrollment</option>
+                                                <option>Fee Payment</option>  
+                                                <option>Exam Result</option>
+                                                <option>Logins</option>
+                                            </select>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Week Off</label>
+                                            </td>
+
+                                            <td>
+                                                <input type="checkbox" value="applicable" width="5%">Mon
+                                                <input type="checkbox" value="applicable" width="5%">Tue
+                                                <input type="checkbox" value="applicable" width="5%">Wed
+                                                <input type="checkbox" value="applicable" width="5%">Thu
+                                                <input type="checkbox" value="applicable" width="5%">Fri
+                                                <input type="checkbox" value="applicable" width="5%">Sat
+                                                <input type="checkbox" value="applicable" width="5%">Sun
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Start Day of Working</label>
+                                            </td>
+
+                                            <td>
+                                                <select id="SystemRoleId" name="SystemRoleId" class="form-control">
+                                                <option value="0">Select</option>
+                                                <option>Sunday</option>
+                                                <option>Monday</option>  
+                                                <option>Tuesday</option>
+                                                <option>Wednesday</option>
+                                                <option>Thursday</option>  
+                                                <option>Friday</option>
+                                                <option>Saturday</option>
+                                            </select>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Saturday working Consideration</label>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" value="applicable" width="2%">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Admin Phone No</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control mb-10" id="Text6" name="FirstName" />
+                                                <input type="text" class="form-control mb-10" id="Text6" name="FirstName" />
+                                            </td>
+                                            <td>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Pass Percentage</label>
+                                            </td>
+
+                                            <td>
+                                                <input type="text" class="form-control" id="EmployeeName" name="EmployeeName" />%
+                                                <input type="checkbox" value="applicable" width="2%">Result Beside Marks
+
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Grade in Marklist</label>
+                                            </td>
+
+                                            <td>
+                                                <input type="checkbox" value="applicable" width="2%">Grade
+                                                <input type="checkbox" value="applicable" width="2%">Grade Point
+
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Grade Name</label>
+                                            </td>
+
+                                            <td>
+                                                <input type="checkbox" value="applicable" width="20%">A1
+                                                <input type="checkbox" value="applicable" width="20%">A2
+                                                <input type="checkbox" value="applicable" width="5%">B1
+                                                <input type="checkbox" value="applicable" width="5%">B2
+                                                <input type="checkbox" value="applicable" width="5%">C1
+                                                <input type="checkbox" value="applicable" width="5%">C2
+                                                <input type="checkbox" value="applicable" width="5%">D
+                                                <input type="checkbox" value="applicable" width="5%">E
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Grade Points</label>
+                                            </td>
+
+                                            <td>
+                                                <input type="checkbox" value="applicable" width="2%">10
+                                                <input type="checkbox" value="applicable" width="2%">9
+                                                <input type="checkbox" value="applicable" width="2%">8
+                                                <input type="checkbox" value="applicable" width="2%">7
+                                                <input type="checkbox" value="applicable" width="2%">6
+                                                <input type="checkbox" value="applicable" width="2%">5
+                                                <input type="checkbox" value="applicable" width="2%">4
+                                                <input type="checkbox" value="applicable" width="2%">3
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Grade Range</label>
+                                            </td>
+
+                                            <td>
+                                                <input type="text" class="form-control" id="EmployeeName" name="EmployeeName" /><input type="text" class="form-control" id="EmployeeName" name="EmployeeName" />
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="Holidays">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td width="12%">
+                                                <label>Academic Year</label>
+                                            </td>
+                                            <td width="30%">
+                                                <select class="form-control" ng-model="Area" id="Select2">
+                                   <option value="">All</option> 
+                                </select>
+                                            </td>
+                                            <td width="60%"> <button type="button" class="btn btn-small" ng-click="OtherIncomeDeduction_ListGo()">Go</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                            <div class="col-lg-12 tabpage">
+                                <button type="button" class="btn btn-autosize pull-right mb-15" data-toggle="modal" data-target="#HolidayModal">Add new</button>
+                            </div>
+
+                            <table st-table="emptydata" style="width: 100%" st-safe-src="rowCollection" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr style="text-align: center">
+                                        <th st-ratio="2">Sl No.</th>
+                                        <th st-ratio="20">Academic Year</th>
+                                        <th st-ratio="20">Holiday</th>
+                                        <th st-ratio="20" st-sort="">Days</th>
+                                        <th st-ratio="15">Start Date</th>
+                                        <th st-ratio="15">End Date</th>
+                                        <th st-ratio="15">Description</th>
+                                        <th st-ratio="7">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-if="rowCollection.length==0">
+                                        <td colspan="8" class="text-center">
+                                            No Records Found
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel panel-default" id="Import">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form" name="patientform" id="patientform">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td width="5%">
+                                                <label><h1 class="page-title">Import</h1></label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15%">
+                                                <label>Student Details</label>
+                                            </td>
+                                            <td width="40%">
+                                                <input type="text" class="form-control" id="Text3" name="Employee_No" />
+                                            </td>
+                                            <td width="10%">
+                                                <label>Browse</label>
+                                            </td>
+                                            <td width="40%">
+                                                <input type='file' onchange="readURL(this);" />
+                                                <img id="blah" src="#" img-align="center" />
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="Leaves">
+                            <div class="panel-body">
+                                <div class="page-title">Leave Policy List</div>
+                                <form class="form-horizontal" role="form">
+                                    <table cellpadding="0" cellspacing="" border="0" width="100%" class="formControlGroup">
+                                        <tr>
+                                            <td width="10%">
+                                                <label>Leave Type</label>
+                                            </td>
+                                            <td width="22%">
+                                                <select class="form-control" ng-model="Leave_Name" id="Select4">
+                                                <option value="0">All</option>
+                                            </select>
+                                            </td>
+                                            <td width="6%">
+                                                <label>From</label>
+                                            </td>
+                                            <td width="15%">
+                                                <select class="form-control" ng-model="From_Year" id="Select8">
+                                                <option value="0">All</option>                      
+                                            
+                                            </select>
+                                            </td>
+                                            <td width="15%">
+                                                <select class="form-control" ng-model="To_Year" id="Select9">
+                                                <option value="0">All</option>                      
+                                               
+                                            </select>
+                                            </td>
+                                            <td width="10%">
+                                                <button type="button" class="btn btn-small" ng-click="LeavePolicy_ListsearchGo()">Go</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </form>
+                            </div>
+                            <button type="button" class="btn btn-autosize pull-right mb-15" data-toggle="modal" data-target="#LeaveModel">Add Leave Policy</button>
+
+                            <table st-table="emptydata" style="width: 100%" st-safe-src="rowCollection" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr style="text-align: center">
+                                        <th st-ratio="5" st-sort="Id">Sl No.</th>
+                                        <th st-ratio="10" st-sort="Name">Leave Type</th>
+                                        <th st-ratio="12" st-sort="Location">Location</th>
+                                        <th st-ratio="12" st-sort="Department_Name">Department</th>
+                                        <th st-ratio="8" st-sort="Grade">Grade</th>
+                                        <th st-ratio="10" st-sort="BasedOn">Based on</th>
+                                        <th st-ratio="8" st-sort="Period">Period</th>
+                                        <th st-ratio="8" st-sort="EntitledLimit">Limit / year</th>
+                                        <th st-ratio="5" st-sort="MaxCarryforward">Accumulated</th>
+                                        <th st-ratio="7" st-sort="MinDaysRequest">Min. Request</th>
+                                        <th st-ratio="7" st-sort="MaxDaysRequest">Max. Request</th>
+                                        <th st-ratio="8">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="12" class="text-center">No Records Found
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id="LeaveModel" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 80%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="CancelPopup()" title="Close" style="color:	#8B0000;">&times;</button>
+                        <h4 class="modal-title">Leave Policy</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y:scroll ; height:400px;">
+                        <form class="form-horizontal" role="form" style="font-size:small">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                <tr>
+                                    <td width="10%">
+                                        <label>Leave Type<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td width="20%">
+                                        <select class="form-control" ng-model="Name" id="Select1">
+                                                <option value="0">Select</option>                       
+                                                
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Location<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" ng-model="LocationName" name="Location_DualList[]" ng-options="av as av.LocationName for av in LocationNameList track by av.Id" multiple bs-duallistbox></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Department<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+
+                                        <select class="form-control" ng-model="Department_Name" name="Department_DualList[]" ng-options="av as av.Department_Name for av in DepartmentNameList track by av.Id" multiple bs-duallistbox></select>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Grade<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" ng-model="Grade" name="Grade_DualList[]" ng-options="av as av.Grade_Name for av in GradeList track by av.Id" multiple bs-duallistbox></select>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                <tr>
+                                    <td width="10%">
+                                        <label>Effective From Year<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td width="20%">
+                                        <select class="form-control" ng-model="FromYear" id="Select2">
+                                                <option value="0">Select</option>                       
+                                               
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Effective To Year<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" ng-model="ToYear" id="Select3">
+                                                <option value="0">Select</option>                       
+                                                
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Applicable To<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <!-- <select class="form-control" ng-model="AddApplicableTo" id="Select10">
+                                                 <option value="0">Select</option>                       
+                                                 <option value="1">Male</option>  
+                                                 <option value="2">Female</option>  
+                                                 <option value="3">Both</option>  
+                                            </select>-->
+
+                                        <select class="form-control" ng-model="AddApplicableTo" id="Select5">
+                                                <option value="0">Select</option>                       
+                                               
+                                                         <option value="-1">Both</option>  
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Based On<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" ng-model="AddBasedOn" id="Select11">
+                                                <option value="0">Select</option>                       
+                                                <option value="1">Calendar Year</option> 
+                                                <option value="2">Financial Year</option> 
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Effective From<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="cold-md-3 col-lg-3 col-sm-3 col-xs-3">
+                                                <select class="form-control mb-10" ng-model="AddEffectiveFrom" id="Select12">
+                                                <option value="0">Select</option>
+                                                <option value="1">Calendar Year</option> 
+                                                <option value="2">From Joining Year</option>  
+                                            </select>
+                                            </div>
+                                            <div class="cold-md-3 col-lg-3 col-sm-3 col-xs-3">
+                                                <select class="form-control mb-10" ng-model="AddEffectiveType" id="Select16">
+                                                <option value="0">Select</option>
+                                                <option value="1">Month</option> 
+                                                <option value="2">Days</option>  
+                                            </select>
+                                            </div>
+                                            <div class="cold-md-3 col-lg-3 col-sm-3 col-xs-3">
+                                                <input type="text" class="form-control" id="Text1" name="EffectiveMonth" ng-model="EffectiveMonth" ng-init="EffectiveMonth=''" ng-disabled="AddEffectiveType==2" placeholder="" onkeypress="varifyNumberPositive(this.EffectiveMonth)" ng-maxlength="5" maxlength="5"
+                                                />
+                                            </div>
+                                            <div class="cold-md-3 col-lg-3 col-sm-3 col-xs-3">
+                                                <input type="text" class="form-control" id="Text4" name="EffectiveDays" ng-model="EffectiveDays" ng-init="EffectiveDays=''" ng-disabled="AddEffectiveType==1" placeholder="" onkeypress="varifyNumberPositive(this.EffectiveDays)" ng-maxlength="5" maxlength="5"
+                                                />
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Entitled Limit for the Year<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+
+
+                                        <input type="text" class="form-control" style="display:inline-block" id="Text3" ng-model="EntitledLimit" ng-init="EntitledLimit=''" placeholder="" onkeypress="varifyNumberPositive(this.EntitledLimit)" ng-maxlength="3" maxlength="3">                                        Days
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Can be carry forwarded?<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" ng-model="AddCarryforward" id="Select17">
+                                                 <option value="0">Select</option>                       
+                                                 <option value="1">Yes</option>                       
+                                                 <option value="2">No</option> 
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Maximum carry forward per Year<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" style="display:inline-block" id="Text5" ng-model="MaxCarryforward" ng-init="MaxCarryforward=''" placeholder="" ng-disabled="AddCarryforward==2" onkeypress="varifyNumberPositive(this.MaxCarryforward)" ng-maxlength="3"
+                                            maxlength="3"> days
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Can be Encashed?<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+
+                                        <select class="form-control" ng-model="AddEncashed" id="Selected18">
+                                                 <option value="0">Select</option>  
+                                                 <option value="1">Yes</option>  
+                                                 <option value="2">No</option>
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Maximum Encashable per Year<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" style="display:inline-block" id="Text6" ng-model="MaxEncashableDays" ng-init="MaxEncashableDays=''" placeholder="" ng-disabled="AddEncashed==2" onkeypress="varifyNumberPositive(this.MaxEncashableDays)" ng-maxlength="3"
+                                            maxlength="3"> days
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Minimum Days per Request<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" style="display:inline-block" id="Text7" ng-model="MinDaysRequest" ng-init="MinDaysRequest=''" placeholder="" onkeypress="varifyNumberPositive(this.MinDaysRequest)" ng-maxlength="3" maxlength="3">                                        days
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Maximum Days per Request<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" style="display:inline-block" id="Text8" ng-model="MaxDaysRequest" ng-init="MaxDaysRequest=''" placeholder="" onkeypress="varifyNumberPositive(this.MaxDaysRequest)" ng-maxlength="3" maxlength="3">                                        days </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Leave Roundoff Required</label>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" ng-model="AddLeaveRoundOff" id="Select15">
+                                                <option value="0">Select</option>
+                                                <option value="1">Yes</option>                       
+                                                <option value="2">No</option> 
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>HR Approval Required</label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="HRApproval" ng-model="HRApproval" ng-init="HRApproval=''" value="HRApproval" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Include Holiday</label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="IncHoliday" ng-model="IncHoliday" ng-init="IncHoliday=''" value="IncHoliday" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Is Earned Leave<sup><font class='mandatory-field'>*</font></sup></label>
+                                    </td>
+                                    <td class="nopadding">
+                                        <table cellpadding="0" cellspacing="0" border="0" class="formControlGroup">
+                                            <tr>
+                                                <td width="15%">
+                                                    <input type="checkbox" name="IsEarnedLeave" ng-model="IsEarnedLeave" ng-init="IsEarnedLeave=''" value="IsEarnedLeave" /></td>
+                                                <td>
+                                                    <select class="form-control" style="width: 180px !important;" ng-model="AddEarnedLeaveType" id="Select17" ng-disabled="!IsEarnedLeave" ng-required="false">
+                                              <option value="0">Select</option>
+                                              <option value="1">Begining Month</option>
+                                              <option value="2">End Month</option>                                    
+                                        </select>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <tr>
+
+                                        <tr>
+                                            <td>
+                                                <label>Allow Backdated Leave</label>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="AllowLeave" ng-model="AllowLeave" ng-init="AllowLeave=''" value="AllowLeave" />
+                                            </td>
+                                        </tr>
+                            </table>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="text-align:center;">
+                        <button type="submit" class="btn btn-save" ng-click="LeavePolicy_AddEdit(Validationcontrols())">Save</button>
+                        <button type="button" class="btn btn-save" ng-click="CancelPopup()">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="HolidayModal" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 60%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Holidays Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" style="font-size:small">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="formControlGroup">
+                                <tr>
+                                    <td width="20%">
+                                        <label>Academic Year</label>
+                                    </td>
+                                    <td width="30%">
+                                        <select class="form-control" ng-model="Area" id="Select2">
+                                   <option value="">Select</option>
+                                </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%">
+                                        <label>Holiday Name</label>
+                                    </td>
+                                    <td width="30%">
+                                        <input type="text" class="form-control" id="Text1" name="LastName" ng-model="Category" ng-init="Category=''" placeholder="" ng-required="true" ng-maxlength="100" maxlength="100" onkeypress="varifychar(this.Category)" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Holiday Period </label>
+                                    </td>
+                                    <td>
+                                        <div class="col-md-10 input-group date">
+                                            <input type="text" class="form-control" id="Text5" ng-model="BirthDate" name="BirthDate" ng-init="BirthDate=''" ng-required="true" style="width:230px" />
+                                            <span class="input-group-addon" enddate='+0d'><i class="glyphicon glyphicon-th"></i></span>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="col-md-10 input-group date">
+                                            <input type="text" class="form-control" id="Text5" ng-model="BirthDate" name="BirthDate" ng-init="BirthDate=''" ng-required="true" style="width:230px" />
+                                            <span class="input-group-addon" enddate='+0d'><i class="glyphicon glyphicon-th"></i></span>
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                <td width="20%">
+                                    <label>Category</label>
+                                </td>
+                                <td width="30%">
+                                    <select class="form-control" ng-model="Area" id="Select2">
+                                   <option value="">Select</option>
+                                </select>
+                                </td>
+                                <tr>
+                                    <td>
+                                        <label>No Of Days</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" id="Text1" name="LastName" ng-model="Category" ng-init="Category=''" placeholder="" ng-required="true" ng-maxlength="100" maxlength="100" onkeypress="varifychar(this.Category)" />
+                                    </td>
+
+
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Description</label>
+                                    </td>
+                                    <td>
+                                        <textarea class="form-control" id="Remarks" placeholder="" ng-model="Remarks" ng-init="Remarks=''" ng-maxlength="250" maxlength="250"></textarea>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button type="button" class="btn  btn-save" ng-click="OtherIncomeDeduction_AddEdit(Validationcontrols())">Save</button>
+                        <button type="button" class="btn btn-save" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button type="button" class="btn  btn-save" ng-click="EmployeeDetails_AddEdit(Validationcontrols())">Save</button>
+            <button type="button" class="btn btn-save" ng-click="ListRedirect()">Cancel</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style type="text/css">
+    #tag.li {
+        border-top: 1px solid black;
+        padding: .3em 0;
+    }
+    
+    #tag2.ul {
+        margin-left: 40px;
+        padding-left: 0px;
+        border-bottom: 1px solid black;
+        list-style: none;
+        width: 36%;
+    }
+</style>
+
+<script type="text/javascript">
+    $('.panel').addClass('collapse');
+    $('#Idsettings').removeClass('collapse');
+
+    $(function() {
+        $('.linetags').click(function() {
+            $('.linetags').removeClass('lineActive');
+            $(this).addClass('lineActive');
+
+        });
+    });
+
+    function TabClick(item) {
+        $('.panel').addClass('collapse');
+        $('#' + item).removeClass('collapse');
+    }
+    $('.input-group.date').datepicker({
+        format: "dd/M/yyyy",
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true,
+        toggleActive: true,
+        todayBtn: true
+
+    });
+
+    //Photo upload
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(document).ready(function() {
+        var tagApi = $(".tm-input").tagsManager();
+
+        jQuery(".typeahead").typeahead({
+            name: 'tags',
+            displayKey: 'name',
+            source: function(query, process) {
+                return $.get('ajaxpro.php', {
+                    query: query
+                }, function(data) {
+                    data = $.parseJSON(data);
+                    return process(data);
+                });
+            },
+            afterSelect: function(item) {
+                tagApi.tagsManager("pushTag", item);
+            }
+        });
+    });
+</script>
+<style>
+    .tabpage {
+        padding-top: 10px;
+        padding-right: 0px;
+    }
+</style>
